@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Guardiões da Verdade | Clube de Desbravadores</title>
+
+        <!-- Meta Descrição (SEO) -->
+        <meta name="description" content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.">
+
+        <!-- Canonical URL (SEO) -->
+        <link rel="canonical" href="https://www.guardioesverdade.com/index.html">
+
+        <!-- Robots Meta Tag (SEO) -->
+        <meta name="robots" content="index, follow">
+
+        <!-- Favicon (Ícone do Site) -->
+        <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="any">
+        <link rel="icon" href="/assets/img/favicon/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Clube de Desbravadores Guardiões da Verdade">
+        <meta property="og:description" content="Formando guardiões para a vida. O Clube de Desbravadores Guardiões da Verdade é mais que um clube — é um chamado para proteger, servir e marcar.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.guardioesverdade.com/index.html">
+        <meta property="og:image" content="https://www.guardioesverdade.com/assets/img/og-image.jpg">
+        <meta property="og:image:alt" content="Brasão Guardiões da Verdade">
+        <meta property="og:site_name" content="Guardiões da Verdade">
+        <meta property="og:locale" content="pt_BR">
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Clube de Desbravadores Guardiões da Verdade">
+        <meta name="twitter:description" content="Junte-se aos Guardiões da Verdade — coragem, propósito e missão.">
+        <meta name="twitter:image" content="https://www.guardioesverdade.com/assets/img/twitter-image.jpg">
+        <meta name="twitter:image:alt" content="Brasão Guardiões da Verdade">
+
+        <!-- Structured Data (Schema.org - JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Clube de Desbravadores Guardiões da Verdade",
+            "url": "https://www.guardioesverdade.com/",
+            "logo": "https://www.guardioesverdade.com/assets/img/og-image.jpg",
+            "sameAs": [
+            "https://www.instagram.com/guardioesverdade/"
+            ],
+            "description": "O Clube de Desbravadores Guardiões da Verdade é uma comunidade que forma jovens guardiões para servir, proteger e impactar."
+        }
+        </script>
+
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/fonts.css">
+        <link rel="stylesheet" href="assets/css/variables.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/logo.css">
+        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/pages/home.css">
+    </head>
+
+
+    <body class="page">
+        <div id="header-placeholder"></div> <!--Header-->
+
+        <main>
+            
+        </main>
+
+        <div id="footer-placeholder"></div> <!--Footer-->
+
+        <script>
+            // Função para carregar um componente HTML
+            function loadComponent(placeholderId, filePath ) {
+                const placeholder = document.getElementById(placeholderId);
+                if (placeholder) {
+                    fetch(filePath)
+                        .then(res => {
+                            if (!res.ok) {
+                                throw new Error(`HTTP error! status: ${res.status}`);
+                            }
+                            return res.text();
+                        })
+                        .then(data => {
+                            placeholder.innerHTML = data;
+                            // Se houver scripts dentro do HTML injetado, eles não serão executados automaticamente.
+                            // Para o header/footer, isso geralmente não é um problema, pois a lógica (main.js) está sendo carregada separadamente e com 'defer'.
+                        })
+                        .catch(error => console.error(`Erro ao carregar ${filePath}:`, error));
+                }
+            }
+
+            // Carrega o header e o footer
+            loadComponent('header-placeholder', 'includes/header.html');
+            loadComponent('footer-placeholder', 'includes/footer.html');
+
+            // IMPORTANTE: O script main.js (que contém a lógica do menu hambúrguer)
+            // deve ser carregado DEPOIS que o header for injetado no DOM.
+            // Como você está usando 'defer' no script de main.js, ele já espera o DOM estar pronto.
+            // Então, a ordem no HTML (script de fetch primeiro, depois main.js com defer) está OK.
+        </script>
+
+        <script src="/assets/js/main.js" defer></script>
+    </body>
+</html>

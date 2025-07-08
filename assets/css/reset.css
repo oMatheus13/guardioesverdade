@@ -1,0 +1,114 @@
+/* src/assets/css/reset.css */
+
+/* 1. Box-sizing para facilitar o layout */
+/* Garante que padding e border sejam incluídos na largura/altura do elemento */
+html {
+  box-sizing: border-box;
+  /* Define o tamanho base da fonte para 16px (1rem = 16px) */
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* 2. Remove margens e paddings padrão de elementos comuns */
+body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+figure, figcaption,
+hr,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove estilos de lista padrão (bolinhas/números) */
+ol, ul {
+  list-style: none;
+}
+
+/* 4. Garante que imagens e mídias sejam responsivas e se comportem como blocos */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Remove espaço extra abaixo de imagens */
+  max-width: 100%; /* Garante que não excedam o contêiner */
+  height: auto;    /* Mantém a proporção da imagem */
+}
+
+/* 5. Remove a decoração de texto padrão de links e faz com que herdem a cor */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. Redefine estilos de formulário para consistência */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* Herda a fonte do corpo */
+  font-size: 100%;      /* Herda o tamanho da fonte */
+  line-height: 1.15;    /* Consistência na altura da linha */
+  margin: 0;            /* Remove margens padrão */
+}
+
+/* Remove a aparência padrão de botões e inputs para estilização completa */
+/* Esta é a parte que você mencionou. 'appearance: none;' é o padrão moderno. */
+/* Os prefixos são para compatibilidade com navegadores mais antigos. */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none; /* Para navegadores WebKit (Chrome, Safari) */
+  -moz-appearance: none;    /* Para navegadores Mozilla (Firefox) */
+  appearance: none;         /* Padrão CSS */
+  background-color: transparent; /* Remove o fundo padrão do botão */
+  border: none;              /* Remove a borda padrão do botão */
+  cursor: pointer;           /* Indica que é clicável */
+}
+
+/* Corrige o overflow em botões no IE */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/* Corrige o estilo de foco em botões no Firefox */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* Redefine o estilo de textarea */
+textarea {
+  overflow: auto;    /* Adiciona scrollbars se o conteúdo exceder */
+  resize: vertical;  /* Permite redimensionamento vertical pelo usuário */
+}
+
+/* Remove a borda padrão de fieldset */
+fieldset {
+  border: 0;
+}
+
+/* Esconde o atributo hidden */
+[hidden] {
+  display: none;
+}
+
+/* Garante que elementos HTML5 semânticos se comportem como blocos em navegadores antigos */
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}

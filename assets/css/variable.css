@@ -1,0 +1,45 @@
+:root {
+    /* Cores Primárias */
+    --color-moss: #404b43;
+    --color-sand: #f2e9dc;
+    --color-terracotta: #c08457;
+    
+    /* Cores Secundárias */
+    --color-obsidian: #0d1b2a;
+    --color-stonegray: #a6a2a2;
+
+    /* Cores De Apoio */
+
+    /* Cores Variáveis */
+    --color-olivegreen: #909d66;
+
+    /* Tipografia */
+    --font-family-primary: 'Griff';
+    --font-family-secondary: 'Work Sans';
+
+    --font-weight-thin: 100;
+    --font-weight-extralight: 200;
+    --font-weight-light: 300;
+    --font-weight-regular: 400; /* Equivalente a 'normal' */
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700; /* Equivalente a 'bold' */
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900; /* Também conhecido como 'heavy' */
+
+    --font-size-base: 1rem; /* 16px */
+    --font-size-h1: 3rem;   /* 48px */
+    --font-size-h2: 2.5rem; /* 40px */
+    --font-size-h3: 2rem;   /* 32px */
+
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 1rem;   /* 16px */
+    --spacing-md: 1.5rem; /* 24px */
+    --spacing-lg: 2rem;   /* 32px */
+    --spacing-xl: 3rem;   /* 48px */
+
+    /* Outros */
+    --border-radius-sm: 4px;
+    --box-shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
