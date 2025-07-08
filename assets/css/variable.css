@@ -1,17 +1,14 @@
 :root {
     /* Cores Primárias */
-    --color-moss: #404b43;
-    --color-sand: #f2e9dc;
+    --color-black: #404b43;
+    --color-white: #f2e9dc;
     --color-terracotta: #c08457;
     
     /* Cores Secundárias */
-    --color-obsidian: #0d1b2a;
-    --color-stonegray: #a6a2a2;
 
     /* Cores De Apoio */
 
     /* Cores Variáveis */
-    --color-olivegreen: #909d66;
 
     /* Tipografia */
     --font-family-primary: 'Griff';
