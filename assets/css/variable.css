@@ -12,14 +12,8 @@
 
     /* Tipografia */
     --font-family-primary: 'Panchang';
-    --font-family-extraligth: 'Panchang-Extralight';
-    --font-family-ligth: 'Panchang-Light';
-    --font-family-regular: 'Panchang-Regular';
-    --font-family-medium: 'Panchang-Medium';
-    --font-family-semibold: 'Panchang-Semibold';
-    --font-family-bold: 'Panchang-Bold';
-    --font-family-extrabold: 'Panchang-Extrabold';
-    --font-family-variable: 'Panchang-Variable';
+    --font-family-primary-variable: 'Panchang-Variable';
+    --font-family-secondary: 'Work Sans';
 
     --font-weight-thin: 100;
     --font-weight-extralight: 200;
