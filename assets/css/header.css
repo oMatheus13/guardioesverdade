@@ -7,10 +7,10 @@
 
 /* Estilos do Cabeçalho Principal */
 .header {
-    background-color: var(--color-moss); /* Cor de fundo do cabeçalho */
+    background-color: var(--color-black); /* Cor de fundo do cabeçalho */
     padding: var(--spacing-md) 0; /* Padding superior e inferior */
     font-family: var(--font-family-primary);
-    color: var(--color-sand); /* Cor do texto no cabeçalho */
+    color: var(--color-white); /* Cor do texto no cabeçalho */
     position: sticky; /* Faz o cabeçalho "grudar" no topo ao rolar */
     top: 0;
     z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */

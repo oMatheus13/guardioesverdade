@@ -1,27 +1,12 @@
 /* Bloco: footer */
 .footer {
-    background-color: var(--color-sand); /* Cor de fundo escura para o footer */
-    color: var(--color-sand); /* Cor do texto clara */
+    background-color: var(--color-black); /* Cor de fundo escura para o footer */
+    color: var(--color-white); /* Cor do texto clara */
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-regular);
     line-height: 1.6;
     position: relative; /* Para posicionar o SVG */
     overflow: hidden; /* Garante que o SVG não cause scroll lateral */
-}
-
-/* Elemento: footer__divider */
-.footer__divider {
-    width: 100%;
-    height: auto;
-    line-height: 0; /* Remove espaço extra abaixo do SVG */
-    margin-bottom: -5px; /* Ajuste fino para o SVG se sobrepor um pouco ao conteúdo abaixo */
-    fill: var(--color-moss);
-}
-
-.footer__divider svg {
-    display: block; /* Remove espaço extra abaixo do SVG */
-    width: 100%;
-    height: auto;
 }
 
 /* Elemento: footer__content */
