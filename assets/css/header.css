@@ -1,3 +1,5 @@
+@import url('font.css');
+
 /* Container para centralizar o conteúdo */
 .container {
     max-width: 100vw; /* Largura máxima do seu conteúdo */

@@ -20,63 +20,63 @@
 */
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Extralight.woff2') format('woff2'),
-       url('../fonts/Panchang-Extralight.woff') format('woff'),
-       url('../fonts/Panchang-Extralight.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Extralight.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Extralight.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Extralight.ttf') format('truetype');
   font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Light.woff2') format('woff2'),
-       url('../fonts/Panchang-Light.woff') format('woff'),
-       url('../fonts/Panchang-Light.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Light.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Light.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Light.ttf') format('truetype');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Regular.woff2') format('woff2'),
-       url('../fonts/Panchang-Regular.woff') format('woff'),
-       url('../fonts/Panchang-Regular.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Regular.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Regular.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Medium.woff2') format('woff2'),
-       url('../fonts/Panchang-Medium.woff') format('woff'),
-       url('../fonts/Panchang-Medium.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Medium.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Medium.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Medium.ttf') format('truetype');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Semibold.woff2') format('woff2'),
-       url('../fonts/Panchang-Semibold.woff') format('woff'),
-       url('../fonts/Panchang-Semibold.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Semibold.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Semibold.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Bold.woff2') format('woff2'),
-       url('../fonts/Panchang-Bold.woff') format('woff'),
-       url('../fonts/Panchang-Bold.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Bold.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Bold.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('../fonts/Panchang-Extrabold.woff2') format('woff2'),
-       url('../fonts/Panchang-Extrabold.woff') format('woff'),
-       url('../fonts/Panchang-Extrabold.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Extrabold.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Extrabold.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Extrabold.ttf') format('truetype');
   font-weight: 800;
   font-display: swap;
   font-style: normal;
@@ -91,9 +91,9 @@
 */
 @font-face {
   font-family: 'Panchang-Variable';
-  src: url('../fonts/Panchang-Variable.woff2') format('woff2'),
-       url('../fonts/Panchang-Variable.woff') format('woff'),
-       url('../fonts/Panchang-Variable.ttf') format('truetype');
+  src: url('assets/fonts/panchang/Panchang-Variable.woff2') format('woff2'),
+       url('assets/fonts/panchang/Panchang-Variable.woff') format('woff'),
+       url('assets/fonts/panchang/Panchang-Variable.ttf') format('truetype');
   font-weight: 200 800;
   font-display: swap;
   font-style: normal;
