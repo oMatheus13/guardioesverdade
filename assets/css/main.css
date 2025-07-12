@@ -1,8 +1,0 @@
-@import url('variable.css');
-@import url('font.css');
-
-.page {
-    max-width: 100vw;
-    font-family: var(--font-family-primary);
-    font-family: var(--font-family-secondary);
-}
