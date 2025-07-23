@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <title>###TITULO###</title>
+    <title>###TITULO###</title>
 
-        <meta name="description" content="@@@DESCRICAO@@@">
-        <meta name="keywords" content="Desbravadores, Clube, Guardiões da Verdade">
+    <meta name="description" content="@@@DESCRICAO@@@" />
+    <meta name="keywords" content="Desbravadores, Clube, Guardiões da Verdade" />
 
-        <link rel="canonical" href="https://www.guardioesverdade.com/">
+    <link rel="canonical" href="https://www.guardioesverdade.com/" />
 
-        <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow" />
 
-        <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
-        <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-        <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
 
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="###TITULO###">
-        <meta property="og:description" content="@@@DESCRICAO@@@">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://www.guardioesverdade.com/">
-        <meta property="og:image" content="img/og-image.jpg">
-        <meta property="og:image:alt" content="Brasão Guardiões da Verdade">
-        <meta property="og:site_name" content="Guardiões da Verdade">
-        <meta property="og:locale" content="pt_BR">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="###TITULO###" />
+    <meta property="og:description" content="@@@DESCRICAO@@@" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.guardioesverdade.com/" />
+    <meta property="og:image" content="img/og-image.jpg" />
+    <meta property="og:image:alt" content="Brasão Guardiões da Verdade" />
+    <meta property="og:site_name" content="Guardiões da Verdade" />
+    <meta property="og:locale" content="pt_BR" />
 
-        <!-- Twitter Card Meta Tags -->
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="###TITULO###">
-        <meta name="twitter:description" content="Clube de Desbravadores Guardiões da Verdade">
-        <meta name="twitter:image" content="img/twitter-image.jpg">
-        <meta name="twitter:image:alt" content="Brasão Guardiões da Verdade">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="###TITULO###" />
+    <meta name="twitter:description" content="Clube de Desbravadores Guardiões da Verdade" />
+    <meta name="twitter:image" content="img/twitter-image.jpg" />
+    <meta name="twitter:image:alt" content="Brasão Guardiões da Verdade" />
 
-        <!-- Structured Data (Schema.org - JSON-LD) -->
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Guardiões da Verdade",
-            "url": "https://www.guardioesverdade.com/",
-            "logo": "https://www.guardioesverdade.com/img/og-image.jpg",
-            "sameAs": [
-            "https://www.instagram.com/guardioesverdade/"
-            ],
-            "description": "Clube de Desbravadores Guardiões da Verdade"
+    <!-- Structured Data (Schema.org - JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Guardiões da Verdade",
+        "url": "https://www.guardioesverdade.com/",
+        "logo": "https://www.guardioesverdade.com/img/og-image.jpg",
+        "sameAs": ["https://www.instagram.com/guardioesverdade/"],
+        "description": "Clube de Desbravadores Guardiões da Verdade"
+      }
+    </script>
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/logo.css" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+    <link rel="stylesheet" href="/css/pages/index.css" />
+  </head>
+
+  <body>
+    <!--Header-->
+    <div id="header-placeholder"></div>
+
+    <main></main>
+
+    <!--Footer-->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(placeholderId, filePath) {
+        const placeholder = document.getElementById(placeholderId);
+        if (placeholder) {
+          fetch(filePath)
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              return res.text();
+            })
+            .then((data) => {
+              placeholder.innerHTML = data;
+            })
+            .catch((error) => console.error(`Erro ao carregar ${filePath}:`, error));
         }
-        </script>
-
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/variable.css">
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/logo.css">
-        <link rel="stylesheet" href="css/components/header.css">
-        <link rel="stylesheet" href="css/components/footer.css">
-        <link rel="stylesheet" href="css/pages/index.css">
-    </head>
-
-
-    <body class="page">
-        <!--Header-->
-        <div id="header-placeholder"></div>
-
-        <main></main>
-        
-        <!--Footer-->
-        <div id="footer-placeholder"></div>
-
-        <script>
-            function loadComponent(placeholderId, filePath ) {
-                const placeholder = document.getElementById(placeholderId);
-                if (placeholder) {
-                    fetch(filePath)
-                        .then(res => {
-                            if (!res.ok) {
-                                throw new Error(`HTTP error! status: ${res.status}`);
-                            }
-                            return res.text();
-                        })
-                        .then(data => {
-                            placeholder.innerHTML = data;
-                        })
-                        .catch(error => console.error(`Erro ao carregar ${filePath}:`, error));
-                }
-            }
-
-            loadComponent('header-placeholder', 'includes/header.html');
-            loadComponent('footer-placeholder', 'includes/footer.html');
-        </script>
-
-        <script src="js/main.js" defer></script>
-    </body>
+      }
+      loadComponent("header-placeholder", "/includes/header.html");
+      loadComponent("footer-placeholder", "/includes/footer.html");
+    </script>
+    <script src="/js/main.js" defer></script>
+  </body>
 </html>

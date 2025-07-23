@@ -1,3 +1,60 @@
-@import url('reset.css');
-@import url('variable.css');
-@import url('font.css');
+@import url('variables.css');
+@import url('fonts.css');
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.main article {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/*
+* {
+    outline: 1px solid red;
+}
+
+* * {
+    outline: 1px solid orange;
+}
+
+* * * {
+    outline: 1px solid yellow;
+}
+
+* * * * {
+    outline: 1px solid green;
+}
+
+* * * * * {
+    outline: 1px solid blue;
+}
+
+* * * * * * {
+    outline: 2px solid purple;
+}
+
+* * * * * * * {
+    outline: 2px solid pink;
+}
+
+* * * * * * * * {
+    outline: 3px solid cyan;
+}
+
+* * * * * * * * * {
+    outline: 3px solid lime;
+}
+
+* * * * * * * * * * {
+    outline: 4px solid brown;
+}
+*/

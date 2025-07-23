@@ -1,0 +1,89 @@
+:root {
+  /* Cores Primárias */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-black-purple: #7423c1;
+  --color-white-purple: #5700a8;
+
+  /* Cores Secundárias */
+  --color-black-green: #7ac223;
+  --color-white-green: #5ca800;
+
+  /* Cores de Apoio (ex: Alertas, Sucesso, Info) */
+  --color-support-success: #28a745; /* Verde para sucesso */
+  --color-support-info: #17a2b8; /* Azul claro para informação */
+  --color-support-warning: #ffc107; /* Amarelo para aviso */
+  --color-support-error: #dc3545; /* Vermelho para erro */
+
+  /* Cores de Fundo (Backgrounds) */
+  --color-background-default: #f8f9fa; /* Cinza claro para o fundo geral */
+  --color-background-secondary: #e9ecef; /* Um tom mais escuro para seções */
+
+  /* Cores de Texto */
+  --color-text-primary: #212529; /* Preto/cinza escuro para texto principal */
+  --color-text-secondary: #6c757d; /* Cinza para texto secundário/legenda */
+  --color-text-light: #fff; /* Branco para texto em fundos escuros */
+
+  /* Cores de Borda */
+  --color-border-default: #dee2e6; /* Cinza claro para bordas */
+
+  /* Cores Variáveis (Temas) */
+  /* Aqui você serão as variáveis para temas claros e escuros, quando necessário */
+
+  /* Tipografia */
+  --font-family-primary: "Panchang", sans-serif;
+  --font-family-primary-variable: "Panchang-Variable", sans-serif;
+  --font-family-secondary: "Work Sans", sans-serif;
+
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --line-height-base: 1.5; /* Espaçamento entre linhas padrão */
+  --letter-spacing-default: 0.02em; /* Espaçamento entre letras padrão */
+
+  /* Tamanhos de Fonte */
+  --font-size-base: 1rem; /* 16px - Tamanho base para o corpo do texto */
+  --font-size-sm: 0.875rem; /* 14px - Tamanhos menores para legendas */
+  --font-size-lg: 1.25rem; /* 20px - Para destacar textos */
+
+  --font-size-h1: 3rem; /* 48px - Títulos principais */
+  --font-size-h2: 2.5rem; /* 40px - Subtítulos */
+  --font-size-h3: 2rem; /* 32px - Títulos de seção */
+  --font-size-h4: 1.75rem; /* 28px */
+  --font-size-h5: 1.5rem; /* 24px */
+  --font-size-h6: 1.25rem; /* 20px */
+
+  /* Espaçamentos */
+  --spacing-xxs: 0.25rem; /* 4px */
+  --spacing-xs: 0.5rem; /* 8px */
+  --spacing-sm: 0.75rem; /* 12px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 3rem; /* 48px */
+  --spacing-xxxl: 4rem; /* 64px */
+
+  /* Outros */
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius-md: 0.375rem; /* 6px */
+  --border-radius-lg: 0.5rem; /* 8px */
+  --border-radius-full: 50%; /* Para botões e elementos circulares */
+
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+
+  --box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --box-shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
+
+  --transition-duration-fast: 0.15s;
+  --transition-duration-default: 0.3s;
+  --transition-timing-function-default: ease-in-out;
+}
