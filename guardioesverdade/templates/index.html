@@ -70,7 +70,7 @@
 
     <main class="main">
       <section class="banner">
-        <a href="/events">
+        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">
           <picture>
             <source
               media="(max-width: 750px)"
@@ -99,7 +99,7 @@
           Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno:
           <strong>a verdade de Deus.</strong>
         </p>
-        <a href="/about">Conheça nossa história</a>
+        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/about.html') }}">Conheça nossa história</a>
       </section>
 
       <section>
@@ -109,10 +109,11 @@
           Participe de um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.
         </p>
         <p>
-          9 de agosto | ⏰ A partir das 15h30 <br>
+          9 de agosto | A partir das 15h30 <br>
           Parte 1 na Igreja Adventista – Loteamento <br>
           parte 2 na escola Fulano de Tal
         </p>
+        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">Ver detalhes</a>
       </section>
 
       <section>
@@ -120,7 +121,7 @@
         <p>
           O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
         </p>
-        <a href="">Conhecer o Projeto</a>
+        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/socio-guardiao.html') }}">Conhecer o Projeto</a>
       </section>
     </main>
 
