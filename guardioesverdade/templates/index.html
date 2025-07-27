@@ -7,7 +7,10 @@
 
     <title>Guardiões da Verdade | Clube de Desbravadores</title>
 
-    <meta name="description" content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação."/>
+    <meta
+      name="description"
+      content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação."
+    />
     <meta name="keywords" content="Desbravadores, Clube, Guardiões da Verdade" />
 
     <link rel="canonical" href="https://www.guardioesverdade.com/" />
@@ -63,16 +66,21 @@
 
   <body>
     <!--Header-->
-    <div id="header-placeholder">
-      {% include '/includes/header.html' %}
-    </div>
+    <div id="header-placeholder">{% include '/includes/header.html' %}</div>
 
     <main class="main">
       <section class="banner">
         <a href="/events">
           <picture>
-            <source media="(max-width: 750px)" srcset="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg') }}" type="image/jpg">
-            <img src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}" alt="">
+            <source
+              media="(max-width: 750px)"
+              srcset="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg') }}"
+              type="image/jpg"
+            />
+            <img
+              src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}"
+              alt=""
+            />
           </picture>
         </a>
       </section>
@@ -80,23 +88,44 @@
       <section>
         <h1>Quem são os Guardiões da Verdade?</h1>
         <p>
-          Somos mais do que um clube. <br>
+          Somos mais do que um clube. <br />
           Somos uma missão viva.
         </p>
         <p>
-          Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
+          Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental
+          e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
         </p>
         <p>
-          Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno: <strong>a verdade de Deus.</strong>
+          Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno:
+          <strong>a verdade de Deus.</strong>
         </p>
         <a href="/about">Conheça nossa história</a>
+      </section>
+
+      <section>
+        <h1>Próximo Evento</h1>
+        <p>
+          O Retorno do Guardião já tem data marcada. <br />
+          Participe de um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.
+        </p>
+        <p>
+          9 de agosto | ⏰ A partir das 15h30 <br>
+          Parte 1 na Igreja Adventista – Loteamento <br>
+          parte 2 na escola Fulano de Tal
+        </p>
+      </section>
+
+      <section>
+        <h1>Seja um Sócio Guardião</h1>
+        <p>
+          O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
+        </p>
+        <a href="">Conhecer o Projeto</a>
       </section>
     </main>
 
     <!--Footer-->
-    <div id="footer-placeholder">
-      {% include '/includes/footer.html' %}
-    </div>
+    <div id="footer-placeholder">{% include '/includes/footer.html' %}</div>
 
     <!-- <script>
       function loadComponent(placeholderId, filePath) {
@@ -134,4 +163,3 @@
     <script src="/js/main.js" defer></script>
   </body>
 </html>
-
