@@ -7,16 +7,16 @@
 
     <title>Guardiões da Verdade | Clube de Desbravadores</title>
 
+    <!-- Metadados -->
     <meta
       name="description"
       content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação."
     />
     <meta name="keywords" content="Desbravadores, Clube, Guardiões da Verdade" />
-
     <link rel="canonical" href="https://www.guardioesverdade.com/" />
-
     <meta name="robots" content="index, follow" />
 
+    <!-- Favicon -->
     <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.ico') }}" sizes="any" />
     <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.svg') }}" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="{{ url_for ('static', filename='/assets/img/favicon/apple-touch-icon.png') }}" />
@@ -55,6 +55,7 @@
       }
     </script>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for ('static', filename='/css/reset.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='/css/variables.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='/css/fonts.css') }}" />
@@ -64,13 +65,13 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='/css/pages/index.css') }}" />
   </head>
 
-  <body>
+  <body class="body">
     <!--Header-->
     <div id="header-placeholder">{% include '/includes/header.html' %}</div>
 
     <main class="main">
       <section class="banner">
-        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">
+        <a class="banner__link" href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">
           <picture>
             <source
               media="(max-width: 750px)"
@@ -78,89 +79,76 @@
               type="image/jpg"
             />
             <img
+              class="banner__image"
               src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}"
-              alt=""
+              alt="Banner O Retorno do Guardião"
             />
           </picture>
         </a>
       </section>
 
-      <section>
-        <h1>Quem são os Guardiões da Verdade?</h1>
-        <p>
+      <section class="section">
+        <h1 class="section__title">Quem são os Guardiões da Verdade?</h1>
+        <p class="section__paragraph">
           Somos mais do que um clube. <br />
           Somos uma missão viva.
         </p>
-        <p>
+        <p class="section__paragraph">
           Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental
           e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
         </p>
-        <p>
+        <p class="section__paragraph">
           Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno:
-          <strong>a verdade de Deus.</strong>
+          <strong class="section__highlight">a verdade de Deus.</strong>
         </p>
-        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/about.html') }}">Conheça nossa história</a>
+        <a class="section__link"
+        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/about.html') }}">Conheça nossa história</a>
       </section>
 
-      <section>
-        <h1>Próximo Evento</h1>
-        <p>
+      <!-- Próximo Evento -->
+      <section class="section">
+        <h1 class="section__title">Próximo Evento</h1>
+        <p class="section__paragraph">
           O Retorno do Guardião já tem data marcada. <br />
           Participe de um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.
         </p>
-        <p>
+        <p class="section__paragraph">
           9 de agosto | A partir das 15h30 <br>
           Parte 1 na Igreja Adventista – Loteamento <br>
           parte 2 na escola Fulano de Tal
         </p>
-        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">Ver detalhes</a>
+        <a class="section__link"
+        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">Ver detalhes</a>
       </section>
 
-      <section>
-        <h1>Seja um Sócio Guardião</h1>
-        <p>
+      <!-- Seja um sócio guardião -->
+      <section class="section">
+        <h1 class="section__title">Seja um Sócio Guardião</h1>
+        <p class="section__paragraph">
           O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
         </p>
-        <a href="{{ url_for('static', filename='/guardioesverdade/templates/pages/socio-guardiao.html') }}">Conhecer o Projeto</a>
+        <a class="section__link"
+        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/socio-guardiao.html') }}">Conhecer o Projeto</a>
       </section>
     </main>
 
     <!--Footer-->
     <div id="footer-placeholder">{% include '/includes/footer.html' %}</div>
 
-    <!-- <script>
-      function loadComponent(placeholderId, filePath) {
-        const placeholder = document.getElementById(placeholderId);
-        if (placeholder) {
-          fetch(filePath)
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-              }
-              return res.text();
-            })
-            .then((data) => {
-              placeholder.innerHTML = data;
-              // SE for o header, ativa o menu hambúrguer
-              if (placeholderId === "header-placeholder") {
-                const toggle = document.querySelector(".nav__toggle");
-                const menu = document.getElementById("nav__menu");
+    <!--
+    // SE for o header, ativa o menu hambúrguer
+    if (placeholderId === "header-placeholder") {
+      const toggle = document.querySelector(".nav__toggle");
+      const menu = document.getElementById("nav__menu");
 
-                if (toggle && menu) {
-                  toggle.addEventListener("click", () => {
-                    const expanded = toggle.getAttribute("aria-expanded") === "true";
-                    toggle.setAttribute("aria-expanded", !expanded);
-                    menu.classList.toggle("active"); // Corrected class name
-                  });
-                }
-              }
-            })
-            .catch((error) => console.error(`Erro ao carregar ${filePath}:`, error));
-        }
+      if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+          const expanded = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", !expanded);
+          menu.classList.toggle("active"); // Corrected class name
+        });
       }
-      loadComponent("header-placeholder", "/includes/header.html");
-      loadComponent("footer-placeholder", "/includes/footer.html");
-    </script> -->
+    } -->
     <script src="/js/main.js" defer></script>
   </body>
 </html>
