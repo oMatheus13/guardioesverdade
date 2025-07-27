@@ -14,9 +14,9 @@
 
     <meta name="robots" content="index, follow" />
 
-    <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="any" />
-    <link rel="icon" href="/assets/img/favicon/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png" />
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.ico') }}" sizes="any" />
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.svg') }}" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{ url_for ('static', filename='/assets/img/favicon/apple-touch-icon.png') }}" />
     <link rel="manifest" href="site.webmanifest" />
 
     <!-- Open Graph Meta Tags -->
@@ -52,25 +52,27 @@
       }
     </script>
 
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/variables.css" />
-    <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/components/header.css" />
-    <link rel="stylesheet" href="/css/components/footer.css" />
-    <link rel="stylesheet" href="/css/pages/index.css" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/variables.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/header.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/footer.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/pages/index.css') }}" />
   </head>
 
   <body>
     <!--Header-->
-    <div id="header-placeholder"></div>
+    <div id="header-placeholder">
+      {% include '/includes/header.html' %}
+    </div>
 
     <main class="main">
       <section class="banner">
         <a href="/events">
           <picture>
-            <source media="(max-width: 750px)" srcset="/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg" type="image/jpg">
-            <img src="/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg" alt="">
+            <source media="(max-width: 750px)" srcset="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg') }}" type="image/jpg">
+            <img src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}" alt="">
           </picture>
         </a>
       </section>
@@ -92,9 +94,11 @@
     </main>
 
     <!--Footer-->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder">
+      {% include '/includes/footer.html' %}
+    </div>
 
-    <script>
+    <!-- <script>
       function loadComponent(placeholderId, filePath) {
         const placeholder = document.getElementById(placeholderId);
         if (placeholder) {
@@ -126,7 +130,7 @@
       }
       loadComponent("header-placeholder", "/includes/header.html");
       loadComponent("footer-placeholder", "/includes/footer.html");
-    </script>
+    </script> -->
     <script src="/js/main.js" defer></script>
   </body>
 </html>
