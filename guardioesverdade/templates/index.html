@@ -1,77 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+{% extends "base/base.html" %}
 
-    <title>Guardiões da Verdade | Clube de Desbravadores</title>
+{% block title %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block description %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block ogtitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block ogdescription %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block twittertitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
 
-    <!-- Metadados -->
-    <meta
-      name="description"
-      content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação."
-    />
-    <meta name="keywords" content="Desbravadores, Clube, Guardiões da Verdade" />
-    <link rel="canonical" href="https://www.guardioesverdade.com/" />
-    <meta name="robots" content="index, follow" />
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/index.css') }}" />
+{% endblock %}
 
-    <!-- Favicon -->
-    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.ico') }}" sizes="any" />
-    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.svg') }}" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="{{ url_for ('static', filename='/assets/img/favicon/apple-touch-icon.png') }}" />
-    <link rel="manifest" href="site.webmanifest" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Guardiões da Verdade | Clube de Desbravadores" />
-    <meta
-      property="og:description"
-      content="Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.guardioesverdade.com/" />
-    <meta property="og:image" content="img/og-image.jpg" />
-    <meta property="og:image:alt" content="Brasão Guardiões da Verdade" />
-    <meta property="og:site_name" content="Guardiões da Verdade" />
-    <meta property="og:locale" content="pt_BR" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Guardiões da Verdade | Clube de Desbravadores" />
-    <meta name="twitter:description" content="Clube de Desbravadores Guardiões da Verdade" />
-    <meta name="twitter:image" content="img/twitter-image.jpg" />
-    <meta name="twitter:image:alt" content="Brasão Guardiões da Verdade" />
-
-    <!-- Structured Data (Schema.org - JSON-LD) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Guardiões da Verdade",
-        "url": "https://www.guardioesverdade.com/",
-        "logo": "https://www.guardioesverdade.com/img/og-image.jpg",
-        "sameAs": ["https://www.instagram.com/guardioesverdade/"],
-        "description": "Clube de Desbravadores Guardiões da Verdade"
-      }
-    </script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/variables.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/fonts.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/main.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/header.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/footer.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/pages/index.css') }}" />
-  </head>
-
-  <body class="body">
-    <!--Header-->
-    <div id="header-placeholder">{% include '/includes/header.html' %}</div>
-
+<!-- body -->
+    <!-- main -->
+{% block content %}
     <main class="main">
       <section class="banner">
-        <a class="banner__link" href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">
+        <a class="banner__link" href="{{ url_for('sobre') }}">
           <picture>
             <source
               media="(max-width: 750px)"
@@ -102,7 +46,7 @@
           <strong class="section__highlight">a verdade de Deus.</strong>
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/about.html') }}">Conheça nossa história</a>
+        href="{{ url_for('sobre') }}">Conheça nossa história</a>
       </section>
 
       <!-- Próximo Evento -->
@@ -118,7 +62,7 @@
           parte 2 na escola Fulano de Tal
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">Ver detalhes</a>
+        href="{{ url_for('eventos') }}">Ver detalhes</a>
       </section>
 
       <!-- Seja um sócio guardião -->
@@ -128,14 +72,12 @@
           O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/socio-guardiao.html') }}">Conhecer o Projeto</a>
+        href="{{ url_for('socioguardiao') }}">Conhecer o Projeto</a>
       </section>
     </main>
+{% endblock %}
 
-    <!--Footer-->
-    <div id="footer-placeholder">{% include '/includes/footer.html' %}</div>
-
-    <!--
+    <!-- TODO: Menu de navegação
     // SE for o header, ativa o menu hambúrguer
     if (placeholderId === "header-placeholder") {
       const toggle = document.querySelector(".nav__toggle");
@@ -148,7 +90,9 @@
           menu.classList.toggle("active"); // Corrected class name
         });
       }
-    } -->
-    <script src="/js/main.js" defer></script>
+      loadComponent("header-placeholder", "/includes/header.html");
+      loadComponent("footer-placeholder", "/includes/footer.html");
+    </script> -->
+    <!-- <script src="/js/main.js" defer></script> -->
   </body>
 </html>

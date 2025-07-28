@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>{% block title %} Sócio Guardião | Guardiões da Verdade {% endblock %}</title>
+
+    <meta
+    name="description"
+    content="{ % block description % }O projeto Sócio Guardião é a ponte entre a missão e a manutenção. Uma forma prática de contribuir com o presente e construir o futuro. Você escolhe o valor, nós transformamos em impacto.{ % endblock % }"
+    />
+    <meta name="keywords" content= "Desbravadores, Clube, Guardiões da Verdade" />
+
+    <link rel="canonical" href="https://www.guardioesverdade.com/" />
+
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.ico') }}" sizes="any" />
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.svg') }}" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{ url_for ('static', filename='/assets/img/favicon/apple-touch-icon.png') }}" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{ % block ogtitle % } Sócio Guardião | Guardiões da Verdade { % endblock % }" />
+    <meta
+    property="og:description"
+    content=" { % block ogdescription % } O projeto Sócio Guardião é a ponte entre a missão e a manutenção. Uma forma prática de contribuir com o presente e construir o futuro. Você escolhe o valor, nós transformamos em impacto. { % endblock % }"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.guardioesverdade.com/" />
+    <meta property="og:image" content="img/og-image.jpg" />
+    <meta property="og:image:alt" content="Brasão Guardiões da Verdade" />
+    <meta property="og:site_name" content="Guardiões da Verdade" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{ % block twittertitle % } Sócio Guardião | Guardiões da Verdade { % endblock % }" />
+    <meta name="twitter:description" content="Clube de Desbravadores Guardiões da Verdade" />
+    <meta name="twitter:image" content="img/twitter-image.jpg" />
+    <meta name="twitter:image:alt" content="Brasão Guardiões da Verdade" />
+
+    <!-- Structured Data (Schema.org - JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Guardiões da Verdade",
+        "url": "https://www.guardioesverdade.com/",
+        "logo": "https://www.guardioesverdade.com/img/og-image.jpg",
+        "sameAs": ["https://www.instagram.com/guardioesverdade/"],
+        "description": "Clube de Desbravadores Guardiões da Verdade"
+    }
+    </script>
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/variables.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/header.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/footer.css') }}" />
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <!--Header-->
+    <div id="header-placeholder">
+        {% include 'includes/header.html' %}
+    </div>
+
+        {% block content %}
+        <!-- Conteúdo principal da página -->
+        {% endblock %}
+        {% block scripts %}
+        <!-- Scripts específicos da página -->
+        {% endblock %}
+
+    <!--Footer-->
+    <div id="footer-placeholder">
+        {% include 'includes/footer.html' %}
+    </div>
+
+<script>
+    function loadComponent(placeholderId, filePath) {
+        const placeholder = document.getElementById(placeholderId);
+        if (placeholder) {
+        fetch(filePath)
+            .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+                return res.text();
+            })
+            .then((data) => {
+                placeholder.innerHTML = data;
+              // SE for o header, ativa o menu hambúrguer
+            if (placeholderId === "header-placeholder") {
+                const toggle = document.querySelector(".nav__toggle");
+                const menu = document.getElementById("nav__menu");
+
+                if (toggle && menu) {
+                    toggle.addEventListener("click", () => {
+                        const expanded = toggle.getAttribute("aria-expanded") === "true";
+                        toggle.setAttribute("aria-expanded", !expanded);
+                        menu.classList.toggle("active"); // Corrected class name
+                });
+                }
+            }
+            })
+            .catch((error) => console.error(`Erro ao carregar ${filePath}:`, error));
+        }
+    }
+    loadComponent("header-placeholder", "../includes/header.html");
+</script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
+
