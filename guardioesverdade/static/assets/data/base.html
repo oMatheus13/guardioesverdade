@@ -14,9 +14,9 @@
 
     <meta name="robots" content="index, follow" />
 
-    <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="any" />
-    <link rel="icon" href="/assets/img/favicon/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png" />
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.ico') }}" sizes="any" />
+    <link rel="icon" href="{{ url_for ('static', filename='/assets/img/favicon/favicon.svg') }}" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{ url_for ('static', filename='/assets/img/favicon/apple-touch-icon.png') }}" />
     <link rel="manifest" href="site.webmanifest" />
 
     <!-- Open Graph Meta Tags -->
@@ -52,57 +52,30 @@
       }
     </script>
 
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/variables.css" />
-    <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/components/header.css" />
-    <link rel="stylesheet" href="/css/components/footer.css" />
-    <link rel="stylesheet" href="/css/pages/index.css" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/variables.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/header.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/components/footer.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='/css/pages/index.css') }}" />
   </head>
 
   <body>
     <!--Header-->
-    <div id="header-placeholder"></div>
+    <div id="header-placeholder">
+      {% include '/includes/footer.html' %}
+    </div>
 
-    <main></main>
+    <main>
+
+    </main>
 
     <!--Footer-->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder">
+      {% include '/includes/footer.html' %}
+    </div>
 
-    <script>
-      function loadComponent(placeholderId, filePath) {
-        const placeholder = document.getElementById(placeholderId);
-        if (placeholder) {
-          fetch(filePath)
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-              }
-              return res.text();
-            })
-            .then((data) => {
-              placeholder.innerHTML = data;
-              // SE for o header, ativa o menu hambúrguer
-              if (placeholderId === "header-placeholder") {
-                const toggle = document.querySelector(".nav__toggle");
-                const menu = document.getElementById("nav__menu");
-
-                if (toggle && menu) {
-                  toggle.addEventListener("click", () => {
-                    const expanded = toggle.getAttribute("aria-expanded") === "true";
-                    toggle.setAttribute("aria-expanded", !expanded);
-                    menu.classList.toggle("active"); // Corrected class name
-                  });
-                }
-              }
-            })
-            .catch((error) => console.error(`Erro ao carregar ${filePath}:`, error));
-        }
-      }
-      loadComponent("header-placeholder", "/includes/header.html");
-      loadComponent("footer-placeholder", "/includes/footer.html");
-    </script>
     <script src="/js/main.js" defer></script>
   </body>
 </html>
