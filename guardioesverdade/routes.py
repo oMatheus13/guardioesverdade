@@ -50,9 +50,18 @@ def dracmas():
 def eventos():
     return render_template("pages/eventos.html")
 
-@app.route("/socioguardiao")
+@app.route("/socio-guardiao")
 def socioguardiao():
-    return render_template("pages/socioguardiao.html")
+    d_15 = gera_link_pagamento(15)
+    d_30 = gera_link_pagamento(30)
+    d_50 = gera_link_pagamento(50)
+    d_100 = gera_link_pagamento(100)
+    # d_livre = gerar_link_pagamento(donate_livre)
+    
+    return render_template(
+        "pages/socio-guardiao.html", d15 = d_15, d30 =d_30, d50 = d_50, d100 = d_100,
+        # dlivre = d_livre
+    )
 
 @app.route("/arearestrita")
 def arearestrita():
@@ -61,6 +70,4 @@ def arearestrita():
 @app.route("/unidades")
 def unidades():
     return render_template("pages/unidades.html")
-
-
 

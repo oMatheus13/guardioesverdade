@@ -15,7 +15,7 @@
 {% block content %}
     <main class="main">
       <section class="banner">
-        <a class="banner__link" href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">
+        <a class="banner__link" href="{{ url_for('sobre') }}">
           <picture>
             <source
               media="(max-width: 750px)"
@@ -46,7 +46,7 @@
           <strong class="section__highlight">a verdade de Deus.</strong>
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/about.html') }}">Conheça nossa história</a>
+        href="{{ url_for('sobre') }}">Conheça nossa história</a>
       </section>
 
       <!-- Próximo Evento -->
@@ -62,7 +62,7 @@
           parte 2 na escola Fulano de Tal
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/events.html') }}">Ver detalhes</a>
+        href="{{ url_for('eventos') }}">Ver detalhes</a>
       </section>
 
       <!-- Seja um sócio guardião -->
@@ -72,15 +72,12 @@
           O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
         </p>
         <a class="section__link"
-        href="{{ url_for('static', filename='/guardioesverdade/templates/pages/socio-guardiao.html') }}">Conhecer o Projeto</a>
+        href="{{ url_for('socioguardiao') }}">Conhecer o Projeto</a>
       </section>
     </main>
-
-
-    <a href="{{ url_for('donate') }}">doar</a>
 {% endblock %}
 
-    <!--
+    <!-- TODO: Menu de navegação
     // SE for o header, ativa o menu hambúrguer
     if (placeholderId === "header-placeholder") {
       const toggle = document.querySelector(".nav__toggle");
