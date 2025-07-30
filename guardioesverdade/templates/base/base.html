@@ -82,39 +82,6 @@
         {% include 'includes/footer.html' %}
     </div>
 
-<script>
-    function loadComponent(placeholderId, filePath) {
-        const placeholder = document.getElementById(placeholderId);
-        if (placeholder) {
-        fetch(filePath)
-            .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-                return res.text();
-            })
-            .then((data) => {
-                placeholder.innerHTML = data;
-              // SE for o header, ativa o menu hambúrguer
-            if (placeholderId === "header-placeholder") {
-                const toggle = document.querySelector(".nav__toggle");
-                const menu = document.getElementById("nav__menu");
-
-                if (toggle && menu) {
-                    toggle.addEventListener("click", () => {
-                        const expanded = toggle.getAttribute("aria-expanded") === "true";
-                        toggle.setAttribute("aria-expanded", !expanded);
-                        menu.classList.toggle("active"); // Corrected class name
-                });
-                }
-            }
-            })
-            .catch((error) => console.error(`Erro ao carregar ${filePath}:`, error));
-        }
-    }
-    loadComponent("header-placeholder", "../includes/header.html");
-</script>
-<script src="/js/main.js" defer></script>
 </body>
 </html>
 

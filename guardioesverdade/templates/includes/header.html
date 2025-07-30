@@ -28,3 +28,11 @@
     </nav>
   </div>
 </header>
+
+<script>
+  if (window.innerWidth < 768) {
+    const script = document.createElement('script');
+    script.src = "{{ url_for('static', filename='js/includes/menu-mobile.js') }}";
+    document.body.appendChild(script);
+  }
+</script>
