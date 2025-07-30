@@ -1,0 +1,57 @@
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.neon-box {
+  position: relative;
+  padding: 20px 40px;
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid #00fff0;
+  box-shadow: 0 0 15px #00fff0;
+  background: #111;
+  overflow: hidden;
+}
+
+.neon-box::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(90deg, transparent, #00fff0, transparent);
+  animation: animate-border 2s linear infinite;
+  z-index: 1;
+}
+
+.neon-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: 2;
+}
+
+.neon-box span {
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes animate-border {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
