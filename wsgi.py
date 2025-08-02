@@ -1,0 +1,1 @@
+from guardioesverdade import app

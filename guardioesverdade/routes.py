@@ -1,6 +1,7 @@
 from flask import render_template
 
-from guardioesverdade import app
+from guardioesverdade import app, db
+from guardioesverdade.models import User
 from guardioesverdade.mercadopago.api_mp import gera_link_pagamento
 
 
@@ -9,10 +10,14 @@ def homepage():
 
     return render_template("index.html")
 
-
 @app.route("/login")
 def login():
     return render_template("login/login.html")
+
+@app.route("/cadastro")
+def cadastro():
+    return render_template("login/cadastro.html")
+
 
 @app.route("/socio-guardiao")
 def socioguardiao():

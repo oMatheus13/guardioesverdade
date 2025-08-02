@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/login.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <main class="container">
+        <!-- Sessão de Login -->
+        <section  class="sessao-login">
+            <h1 class="login">
+                <span class="dleft"></span>
+                LOGIN
+                <span class="dright"></span>
+            </h1>
+
+            <form class="formulario-login">
+                <!-- Campo de E-mail -->
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+                
+                <!-- Campo de Senha -->
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <div class="senha-box">
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                    </div>
+                </div>
+                
+                <!-- Opções adicionais -->
+                <div class="opcoes">
+                    <label>
+                        <input type="checkbox" name="lembrar"> Lembrar
+                    </label>
+                    <a href="#">Esqueceu a senha?</a> 
+                </div>
+                
+                <!-- Botão de Login -->
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+        </section>
+
+        <!-- Sessão de Cadastro -->
+        <section class="sessao-cadastro">
+            <h2>Olá, Guardião!</h2>
+            <p>Não possui conta? <br> Preencha suas informações pessoais e <br>comece sua jornada conosco.</p>
+            <button type="button" class="btn-cadastro">Cadastrar</button>
+        </section>
+    </main>        
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    display: flex;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sessao-login {
+    width: 50%;
+    background-color: #ffffff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login {
+    font-size: 32px;
+    font-weight: 800;
+    color: #5b2aa5;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.dleft, .dright {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 40px;
+    background-color: #5b2aa5;
+    top: 50%;
+}
+
+.dleft {
+    left: 0;
+    transform: translate(-130%, -50%);
+}
+
+.dright {
+    right: 0;
+    transform: translate(130%, -50%);
+}
+
+
+.formulario-login .campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: none; /* escondido pois usamos placeholder */
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 2px solid #a47cd7;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+    color: #444;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #a4a4a4;
+    font-weight: 600;
+}
+
+.opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #5b2aa5;
+}
+
+.opcoes a {
+    color: #5b2aa5;
+    text-decoration: none;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #5b2aa5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #7d4dd5;
+}
+
+
+.sessao-cadastro {
+    width: 50%;
+    background-color: #8e5cc6;
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+}
+
+.sessao-cadastro h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.sessao-cadastro p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.sessao-cadastro a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.sessao-cadastro a:hover {
+    color: #d1c2e0;
+}
+
+.sessao-cadastro .btn-cadastro {
+    background-color: #ffffff;
+    color: #8e5cc6;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sessao-cadastro .btn-cadastro:hover {
+    background-color: #d1c2e0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .sessao-login, .sessao-cadastro {
+        width: 100%;
+        padding: 30px;
+    }
+    .sessao-login {
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .sessao-cadastro {
+        border-top: 1px solid #e0e0e0;
+    }
+}
