@@ -1,22 +1,45 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
+from flask_login import login_user, logout_user, current_user
 
 from guardioesverdade import app, db
-from guardioesverdade.models import User
+from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.mercadopago.api_mp import gera_link_pagamento
 
 
 @app.route("/")
 def homepage():
 
-    return render_template("index.html")
+    return render_template("index.html", user=current_user)
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login/login.html")
+    form = LoginForm()
 
-@app.route("/cadastro")
+    if form.validate_on_submit():
+        user = form.login()
+
+        if user:
+            login_user(user, remember=True)
+            return redirect(url_for("homepage"))
+    
+    return render_template("login/login.html", form=form)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("homepage"))
+
+@app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
-    return render_template("login/cadastro.html")
+    form = UserForm()
+
+    if form.validate_on_submit():
+        form.save()
+        return redirect(url_for("homepage"))
+    
+    return render_template("login/cadastro.html", form=form)
+
 
 
 @app.route("/socio-guardiao")

@@ -16,21 +16,36 @@
                 <span class="dright"></span>
             </h1>
 
-            <form class="formulario-login">
+            <form class="formulario-login", method="post">
                 <!-- Campo de E-mail -->
-                <div class="campo">
+                <!-- <div class="campo">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
                 </div>
-                
+                 -->
                 <!-- Campo de Senha -->
-                <div class="campo">
+                <!-- <div class="campo">
                     <label for="senha">Senha</label>
                     <div class="senha-box">
+                        
                         <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
                     </div>
+                </div> -->
+
+                {{ form.csrf_token }}
+
+                <div class="campo">
+                    {{ form.email(id="email", placeholder="Digite seu e-mail")}}
                 </div>
-                
+
+                <div class="campo">
+                    <div class="senha-box">
+                        {{ form.senha(placeholder="Digite sua senha")}}
+                    </div>
+                </div>
+                <div class="campo">
+                    {{ form.submit(class="btn-login", value="Entrar") }}
+                </div>
                 <!-- Opções adicionais -->
                 <div class="opcoes">
                     <label>

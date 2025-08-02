@@ -31,6 +31,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = (
     "homepage"  # Redireciona usuário para a homepage se não estiver logado
 )
+bcrypt = Bcrypt(app)
 
 
 from guardioesverdade.routes import homepage
