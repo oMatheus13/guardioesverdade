@@ -14,6 +14,7 @@ from guardioesverdade.models import User
 class UserForm(FlaskForm):
     nome = StringField("Nome", validators=[DataRequired()])
     sobrenome = StringField("Sobrenome", validators=[DataRequired()])
+    cpf = StringField("CPF", validators=[DataRequired()])
     data_nascimento = DateField("Data de Nascimento", format="%Y-%m-%d", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
     senha = PasswordField("Senha", validators=[DataRequired()])
@@ -40,12 +41,16 @@ class UserForm(FlaskForm):
         senha = bcrypt.generate_password_hash(self.senha.data).decode("utf-8")
         if not str(senha).startswith("$2b$"):
             raise ValidationError("Senha criptografada incorretamente.")
+        cpf = self.cpf.data.replace(".", "").replace("-", "")
+        if len(cpf) != 11 or not cpf.isdigit():
+            raise ValidationError("CPF inválido. Deve conter 11 dígitos numéricos.")
 
 
         try:
             user = User(
                 nome = self.nome.data,
                 sobrenome = self.sobrenome.data,
+                cpf = cpf,
                 data_nascimento = self.data_nascimento.data,
                 email = self.email.data,
                 senha = senha

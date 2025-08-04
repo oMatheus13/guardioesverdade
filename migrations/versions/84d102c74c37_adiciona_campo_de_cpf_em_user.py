@@ -1,8 +1,8 @@
-"""Cria Model de User
+"""Adiciona campo de CPF em User
 
-Revision ID: d481a01d4b97
+Revision ID: 84d102c74c37
 Revises: 
-Create Date: 2025-08-02 00:24:17.954693
+Create Date: 2025-08-04 19:45:34.510048
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd481a01d4b97'
+revision = '84d102c74c37'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nome', sa.String(length=50), nullable=False),
     sa.Column('sobrenome', sa.String(length=100), nullable=False),
+    sa.Column('cpf', sa.String(length=11), nullable=False),
     sa.Column('data_nascimento', sa.Date(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('senha', sa.String(length=200), nullable=False),
@@ -29,6 +30,7 @@ def upgrade():
     sa.Column('role', sa.String(length=20), nullable=False),
     sa.Column('data_criacao', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('cpf'),
     sa.UniqueConstraint('email')
     )
     # ### end Alembic commands ###
