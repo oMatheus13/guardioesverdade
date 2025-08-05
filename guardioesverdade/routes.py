@@ -1,26 +1,14 @@
 from flask import render_template
 
 from guardioesverdade import app
-from guardioesverdade.mercadopago.api_mp import gera_link_pagamento
+from guardioesverdade.api.mercadopago.api_mp import gera_link_pagamento
+from guardioesverdade.api.utils.links import gerar_link_whatsapp
+
 
 @app.route("/")
 def homepage():
 
     return render_template("index.html")
-
-
-@app.route("/doacoes")
-def donate():
-    d_1 = gera_link_pagamento(1)
-    d_15 = gera_link_pagamento(15)
-    d_30 = gera_link_pagamento(30)
-    d_50 = gera_link_pagamento(50)
-    # d_livre = gerar_link_pagamento(donate_livre)
-    
-    return render_template(
-        "mercado-pago/doacao.html", d1 = d_1, d15 = d_15, d30 =d_30, d50 = d_50,
-        # dlivre = d_livre
-    )
 
 
 @app.route("/sobre")
@@ -37,10 +25,19 @@ def album():
 def classes():
     return render_template("pages/classes.html")
 
-    
+
 @app.route("/contato")
 def contato():
-    return render_template("pages/contato.html")
+
+    # Mesclar com branch login
+    # if current_user.is_authenticated:
+    #     nome = current_user.nome
+    #     sobrenome = current_user.sobrenome
+    #     email = current_user.email
+
+    link_whatsapp = gerar_link_whatsapp()  # Parâmetros: Nome, Sobrenome, Email (quando der merge com login)
+
+    return render_template("pages/contato.html", link_whatsapp=link_whatsapp)
 
 @app.route("/dracmas")
 def dracmas():
@@ -71,3 +68,17 @@ def arearestrita():
 def unidades():
     return render_template("pages/unidades.html")
 
+
+
+@app.route("/doacoes")
+def donate():
+    d_1 = gera_link_pagamento(1)
+    d_15 = gera_link_pagamento(15)
+    d_30 = gera_link_pagamento(30)
+    d_50 = gera_link_pagamento(50)
+    # d_livre = gerar_link_pagamento(donate_livre)
+    
+    return render_template(
+        "mercado-pago/doacao.html", d1 = d_1, d15 = d_15, d30 =d_30, d50 = d_50,
+        # dlivre = d_livre
+    )
