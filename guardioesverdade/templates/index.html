@@ -32,7 +32,7 @@
       </section>
 
       <section class="section">
-        <h1>{{ user.nome if user.is_authenticated else "Visitante" }}</h1>
+        <h1>{{ (user.nome + " " + user.sobrenome) if user.is_authenticated else "Visitante" }}</h1>
         {% if user.is_authenticated %}<a href="{{ url_for('logout') }}">Sair</a>{% endif %}
         <a href="{{ url_for('login') }}"><h1>LINK PRO TESTE DE LOGIN, IGNORE</h1></a>
         <a href="{{ url_for('cadastro') }}"><h1>LINK PRO TESTE DE CADASTRO, IGNORE</h1></a>
