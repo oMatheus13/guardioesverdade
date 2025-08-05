@@ -1,9 +1,9 @@
 from flask import render_template, redirect, url_for
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_required, login_user, logout_user, current_user
 
-from guardioesverdade import app, db
+from guardioesverdade import app
 from guardioesverdade.forms import UserForm, LoginForm
-from guardioesverdade.mercadopago.api_mp import gera_link_pagamento
+from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
 
 
 @app.route("/")
@@ -41,7 +41,7 @@ def cadastro():
     return render_template("login/cadastro.html", form=form)
 
 
-
+@login_required
 @app.route("/socio-guardiao")
 def socioguardiao():
     d_15 = gera_link_pagamento(15)

@@ -29,7 +29,7 @@ migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)
 login_manager.login_view = (
-    "homepage"  # Redireciona usuário para a homepage se não estiver logado
+    "login"  # Redireciona usuário para a tela de login caso não esteja logado
 )
 bcrypt = Bcrypt(app)
 
