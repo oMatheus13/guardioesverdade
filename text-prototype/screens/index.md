@@ -5,8 +5,8 @@
 **Título:** Guardiões da Verdade | Clube de Desbravadores
 **Descrição:** Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.
 
-## Banner principal
-- Imagem responsiva com link para: `/sobre`
+## Banners
+- Imagem responsiva com link para: `/eventos`
 - Alt: "Banner O Retorno do Guardião"
 
 ## Saudações

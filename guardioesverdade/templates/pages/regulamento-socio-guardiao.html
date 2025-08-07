@@ -1,0 +1,138 @@
+{% extends "base/base.html" %}
+
+{% block title %}Regulamento Sócio Guardião | Guardiões da Verdade{% endblock %}
+{% block description %}Conheça as regras do programa Sócio Guardião. Saiba como participar, quais os benefícios, como realizar pagamentos e outras informações importantes para apoiar o Clube de Desbravadores Guardiões da Verdade.{% endblock %}
+{% block ogtitle %}Regulamento Sócio Guardião | Guardiões da Verdade{% endblock %}
+{% block ogdescription %}Conheça as regras do programa Sócio Guardião. Saiba como participar, quais os benefícios, como realizar pagamentos e outras informações importantes para apoiar o Clube de Desbravadores Guardiões da Verdade.{% endblock %}
+{% block twittertitle %}Regulamento Sócio Guardião | Guardiões da Verdade{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/regulamento-socio-guardiao.css') }}">
+{% endblock %}
+
+<!-- body -->
+<!-- main -->
+{% block content %}
+<main class="regulamento-socio">
+
+  <section class="regulamento-socio__section">
+    <h1 class="regulamento-socio__title">Regulamento Oficial - Programa Sócio Guardião</h1>
+    <p class="regulamento-socio__paragraph">
+      O programa Sócio Guardião é uma iniciativa vital para o sustento e o crescimento do Clube de Desbravadores Guardiões da Verdade. Ao aderir, você se torna um parceiro essencial em nossa missão, contribuindo diretamente para o desenvolvimento de nossos jovens e fortalecendo nossos projetos. Além do impacto positivo em nossa comunidade, você desfrutará de uma série de benefícios exclusivos. Este regulamento visa esclarecer os direitos e deveres de todos os participantes, garantindo a transparência e o bom funcionamento do programa.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">1. Adesão</h2>
+    <p class="regulamento-socio__paragraph">
+      1.1 Para se tornar um Sócio Guardião, o interessado deve preencher o formulário de cadastro em nosso site (<a href="#">[link para o formulário]</a>) com informações completas e precisas. É imprescindível fornecer dados verdadeiros e atualizados para garantir a comunicação eficiente e a entrega correta dos benefícios.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      1.2 A adesão ao programa é pessoal e intransferível. Os benefícios são exclusivos para o titular do plano e não podem ser transferidos a terceiros.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      1.3 Após a confirmação do primeiro pagamento, será gerado automaticamente um número de identificação (ex: SG-0001) que o identificará como Sócio Guardião. Este número deverá ser utilizado em todas as interações com o clube.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">2. Benefícios</h2>
+    <p class="regulamento-socio__paragraph">
+      2.1 Os benefícios do programa serão concedidos a partir da confirmação do pagamento da segunda mensalidade. Este período inicial é necessário para a organização interna e o preparo dos materiais.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      2.2 Os benefícios variam de acordo com o plano escolhido e podem incluir:
+    </p>
+    <ul class="regulamento-socio__list">
+      <li class="regulamento-socio__list-item">Certificado digital de Sócio Guardião</li>
+      <li class="regulamento-socio__list-item">Carteirinha de Sócio Guardião (física ou digital)</li>
+      <li class="regulamento-socio__list-item">Caneca exclusiva Sócio Guardião</li>
+      <li class="regulamento-socio__list-item">Camiseta exclusiva do clube (modelo Sócio Guardião)</li>
+      <li class="regulamento-socio__list-item">Moletom exclusivo Sócio Guardião</li>
+      <li class="regulamento-socio__list-item">Descontos em eventos e produtos do clube (conforme o plano)</li>
+      <li class="regulamento-socio__list-item">Participação em sorteios exclusivos</li>
+    </ul>
+    <p class="regulamento-socio__paragraph">
+      2.3 O clube se reserva o direito de alterar os benefícios oferecidos, mediante comunicação prévia aos Sócios Guardiões através dos canais oficiais (site, redes sociais, email).
+    </p>
+    <p class="regulamento-socio__paragraph">
+      2.4 Os brindes físicos serão entregues em datas e locais específicos, divulgados com antecedência. Em caso de impossibilidade de comparecer, o sócio poderá indicar um representante legal para realizar a retirada.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      2.5 Os descontos serão válidos apenas para o titular do plano, mediante a apresentação da Carteirinha de Sócio Guardião (física ou digital) no momento da compra ou inscrição no evento.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">3. Pagamento</h2>
+    <p class="regulamento-socio__paragraph">
+      3.1 O pagamento da mensalidade será realizado através das opções disponíveis em nosso site: cartão de crédito (com renovação automática) ou boleto bancário.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      3.2 É de responsabilidade do Sócio Guardião manter seus dados de pagamento atualizados em nossa plataforma.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      3.3 Caso o pagamento não seja efetuado dentro do prazo de vencimento, o status do sócio será automaticamente alterado para "inativo". A reativação poderá ser realizada mediante o pagamento da mensalidade em atraso.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      3.4 Planos pagos presencialmente (em casos excepcionais) deverão ser registrados manualmente por um administrador do clube. É fundamental guardar o comprovante de pagamento para evitar transtornos.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">4. Cancelamento e Inatividade</h2>
+    <p class="regulamento-socio__paragraph">
+      4.1 O Sócio Guardião tem o direito de cancelar sua assinatura a qualquer momento, sem ônus ou multas. O cancelamento deverá ser solicitado através do email <a href="#">[email do clube]</a> ou pelo telefone <a href="#">[telefone do clube]</a>.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      4.2 Após o cancelamento, os benefícios serão suspensos a partir do mês seguinte.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      4.3 Sócios inativos por um período superior a 60 dias perderão a prioridade em eventos, sorteios e resgate de brindes exclusivos.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      4.4 O clube se reserva o direito de remover do programa Sócio Guardião aqueles que apresentarem comportamento inadequado, contrário aos princípios e valores do Clube de Desbravadores Guardiões da Verdade. Nesses casos, a decisão será tomada pela liderança do clube e comunicada ao sócio em questão.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">5. Proteção de Dados</h2>
+    <p class="regulamento-socio__paragraph">
+      5.1 As informações fornecidas no cadastro são confidenciais e protegidas. Serão utilizadas exclusivamente para fins de identificação, comunicação e envio de benefícios relacionados ao programa Sócio Guardião.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      5.2 O Clube de Desbravadores Guardiões da Verdade se compromete a não compartilhar suas informações pessoais com terceiros, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">6. Entrega de Brindes</h2>
+    <p class="regulamento-socio__paragraph">
+      6.1 A entrega dos brindes físicos será realizada preferencialmente durante eventos do clube ou em locais previamente divulgados. É indispensável a apresentação de um documento de identificação com foto para a retirada.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      6.2 Para Sócios Guardiões que residem fora da cidade de Garanhuns, será possível solicitar o envio dos brindes pelos Correios, mediante o pagamento de uma taxa adicional referente ao frete.
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <h2 class="regulamento-socio__subtitle">7. Atualizações</h2>
+    <p class="regulamento-socio__paragraph">
+      7.1 Este regulamento poderá ser atualizado periodicamente para adequar-se às necessidades do programa Sócio Guardião. As alterações serão comunicadas com antecedência através dos canais oficiais do clube.
+    </p>
+    <p class="regulamento-socio__paragraph">
+      7.2 A versão mais recente deste regulamento estará sempre disponível em nosso site (<a href="#">[link para o site]</a>).
+    </p>
+  </section>
+
+  <section class="regulamento-socio__section">
+    <p class="regulamento-socio__paragraph">
+      <strong>Juntos, Somos Mais Fortes!</strong>
+    </p>
+    <p class="regulamento-socio__paragraph">
+      Ao se tornar um Sócio Guardião, você demonstra seu apoio à nossa missão e se junta a um exército de pessoas que acreditam no poder da verdade, da esperança e do serviço. Seja bem-vindo à família Guardiões da Verdade!
+    </p>
+  </section>
+
+</main>
+{% endblock %}

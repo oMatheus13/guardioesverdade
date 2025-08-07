@@ -1,0 +1,100 @@
+{% extends "base/base.html" %}
+
+{% block title %}Contato | Guardiões da Verdade{% endblock %}
+{% block description %}Entre em contato com o Clube de Desbravadores Guardiões da Verdade. Encontre nossos canais de comunicação, informações de contato e respostas para as perguntas mais frequentes.{% endblock %}
+{% block ogtitle %}Contato | Guardiões da Verdade{% endblock %}
+{% block ogdescription %}Entre em contato com o Clube de Desbravadores Guardiões da Verdade. Encontre nossos canais de comunicação, informações de contato e respostas para as perguntas mais frequentes.{% endblock %}
+{% block twittertitle %}Contato | Guardiões da Verdade{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/contato.css') }}">
+{% endblock %}
+
+<!-- body -->
+<!-- main -->
+{% block content %}
+<main class="contato">
+
+  <section class="contato__section">
+    <h1 class="contato__title">Informações de Contato</h1>
+
+    <ul class="contato__lista">
+      <li class="contato__lista-item">
+        <strong>Endereço:</strong> Rua Polidoro Alves Vanderley, 121 - Francisco Simão dos Santos Figueira, Garanhuns - PE, 55291-745
+      </li>
+      <li class="contato__lista-item">
+        <strong>Reuniões:</strong> Domingos, 08:30
+      </li>
+      <li class="contato__lista-item">
+        <strong>Telefone:</strong> (87) 99999-9999
+      </li>
+      <li class="contato__lista-item">
+        <strong>Email:</strong> contato@guardioesverdade.com (Não ta ativo ainda)
+      </li>
+      <li class="contato__lista-item">
+        <strong>Redes Sociais:</strong>
+        <ul class="contato__sublista">
+          <li class="contato__sublista-item">
+            <a href="instagram.com/guardioesverdade">Instagram</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="contato__section">
+    <h2 class="contato__title">Formulário de Contato</h2>
+    <p>[Implementar um formulário de contato aqui. Os campos devem incluir: Nome, Email, Assunto e Mensagem.]</p>
+  </section>
+
+  <section class="contato__section">
+    <h2 class="contato__title">Perguntas Frequentes (FAQ)</h2>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Como faço para me inscrever no Clube de Desbravadores Guardiões da Verdade?</h3>
+      <p class="contato__faq-resposta">Entre em contato conosco através dos canais acima ou compareça a uma de nossas reuniões para obter informações sobre o processo de inscrição.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Qual a idade mínima para participar do clube?</h3>
+      <p class="contato__faq-resposta">O Clube de Desbravadores é destinado a adolescentes de 10 a 15 anos.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Quais são os custos para participar do clube?</h3>
+      <p class="contato__faq-resposta">Entre em contato com a diretoria do clube para obter informações sobre taxas de inscrição, mensalidades e outros custos associados.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Quais são as atividades realizadas pelo clube?</h3>
+      <p class="contato__faq-resposta">Realizamos uma variedade de atividades, incluindo acampamentos, investiduras, projetos comunitários, estudos bíblicos, atividades recreativas e muito mais.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Como posso me tornar um Sócio Guardião?</h3>
+      <p class="contato__faq-resposta">Visite a página "<a href="#">Sócio Guardião</a>" para conhecer os planos de contribuição e os benefícios de se tornar um Sócio Guardião.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Como posso ajudar o clube?</h3>
+      <p class="contato__faq-resposta">Existem várias maneiras de ajudar o clube, incluindo se tornando um Sócio Guardião, voluntariando seu tempo e doando materiais ou recursos. Entre em contato conosco para saber mais.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">O clube é filiado a alguma organização?</h3>
+      <p class="contato__faq-resposta">Sim, o Clube de Desbravadores Guardiões da Verdade é um ministério da Igreja Adventista do Sétimo Dia.</p>
+    </div>
+
+    <div class="contato__faq">
+      <h3 class="contato__faq-pergunta">Onde posso encontrar mais informações sobre os Desbravadores?</h3>
+      <p class="contato__faq-resposta">Visite o site oficial dos Desbravadores da Divisão Sul-Americana: <a href="https://clubes.adventistas.org/br/about-pathfinder/">\[Link para o site oficial]</a></p>
+    </div>
+  </section>
+
+  <section class="contato__section">
+    <h2 class="contato__title">Tem mais perguntas?</h2>
+    <p class="contato__paragraph">Entre em contato conosco! Estamos à disposição para responder suas dúvidas e fornecer mais informações sobre o Clube de Desbravadores Guardiões da Verdade.</p>
+  </section>
+
+</main>
+{% endblock %}
