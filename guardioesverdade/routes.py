@@ -41,19 +41,21 @@ def cadastro():
     return render_template("login/cadastro.html", form=form)
 
 
-@login_required
 @app.route("/socio-guardiao")
 def socioguardiao():
-    d_15 = gera_link_pagamento(15)
-    d_30 = gera_link_pagamento(30)
-    d_50 = gera_link_pagamento(50)
-    d_100 = gera_link_pagamento(100)
-    # d_livre = gerar_link_pagamento(donate_livre)
     
     return render_template(
-        "pages/socio-guardiao.html", d15 = d_15, d30 =d_30, d50 = d_50, d100 = d_100,
-        # dlivre = d_livre
+        "pages/socio-guardiao.html"
     )
+@app.route("/socio-guardiao/<string:plano>/<int:price>")
+@login_required
+def assinar_plano(plano, price):
+    try:
+        link_pagamento = gera_link_pagamento(price)
+        return redirect(link_pagamento)
+    except ValueError as e:
+        # TODO: Mostrar mensagem de erro ao usuário e capturar log.
+        return str(e), 400
 
 @app.route("/sobre")
 def sobre():
