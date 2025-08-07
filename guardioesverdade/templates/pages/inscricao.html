@@ -1,0 +1,277 @@
+{% extends "base/base.html" %}
+
+{% block title %}Inscrição | Guardiões da Verdade{% endblock %}
+{% block description %}Inscreva-se no Clube de Desbravadores Guardiões da Verdade! Preencha o formulário de inscrição e junte-se à nossa família de aventureiros.{% endblock %}
+{% block ogtitle %}Inscrição | Guardiões da Verdade{% endblock %}
+{% block ogdescription %}Inscreva-se no Clube de Desbravadores Guardiões da Verdade! Preencha o formulário de inscrição e junte-se à nossa família de aventureiros.{% endblock %}
+{% block twittertitle %}Inscrição | Guardiões da Verdade{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/inscricao.css') }}">
+{% endblock %}
+
+<!-- body -->
+<!-- main -->
+{% block content %}
+<main class="inscricao">
+  <section class="inscricao__section">
+    <h1 class="inscricao__title">Formulário de Inscrição</h1>
+
+    <form class="inscricao__form">
+      <fieldset class="inscricao__fieldset">
+        <legend class="inscricao__legend">Informações Gerais</legend>
+
+        <div class="inscricao__form-group">
+          <label for="nome-clube" class="inscricao__label">Nome do Clube:</label>
+          <input type="text" id="nome-clube" class="inscricao__input" value="Guardiões da Verdade" readonly>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="igreja" class="inscricao__label">Igreja:</label>
+          <input type="text" id="igreja" class="inscricao__input" placeholder="Digite o nome da igreja" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="cidade" class="inscricao__label">Cidade:</label>
+          <input type="text" id="cidade" class="inscricao__input" value="Garanhuns" readonly>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="estado" class="inscricao__label">Estado:</label>
+          <input type="text" id="estado" class="inscricao__input" value="PE" readonly>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="data-cadastro" class="inscricao__label">Data do Cadastro:</label>
+          <input type="date" id="data-cadastro" class="inscricao__input" readonly>
+        </div>
+      </fieldset>
+
+      <fieldset class="inscricao__fieldset">
+        <legend class="inscricao__legend">Dados Pessoais do Desbravador(a)</legend>
+
+        <div class="inscricao__form-group">
+          <label for="nome-completo" class="inscricao__label">Nome Completo:</label>
+          <input type="text" id="nome-completo" class="inscricao__input" placeholder="Digite o nome completo" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label class="inscricao__label">Sexo:</label>
+          <div class="inscricao__radio-group">
+            <input type="radio" id="masculino" name="sexo" value="masculino">
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="feminino" name="sexo" value="feminino">
+            <label for="feminino">Feminino</label>
+          </div>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label class="inscricao__label">Batizado:</label>
+          <div class="inscricao__radio-group">
+            <input type="radio" id="batizado-sim" name="batizado" value="sim">
+            <label for="batizado-sim">Sim</label>
+            <input type="radio" id="batizado-nao" name="batizado" value="nao">
+            <label for="batizado-nao">Não</label>
+          </div>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="data-nascimento" class="inscricao__label">Data de Nascimento:</label>
+          <input type="date" id="data-nascimento" class="inscricao__input" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="funcao" class="inscricao__label">Função no Clube/Unidade:</label>
+          <input type="text" id="funcao" class="inscricao__input" placeholder="Digite a função">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="telefone" class="inscricao__label">Telefone:</label>
+          <input type="tel" id="telefone" class="inscricao__input" placeholder="(XX) XXXX-XXXX">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="celular" class="inscricao__label">Celular:</label>
+          <input type="tel" id="celular" class="inscricao__input" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="email" class="inscricao__label">Email:</label>
+          <input type="email" id="email" class="inscricao__input" placeholder="Digite o email" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="endereco" class="inscricao__label">Endereço:</label>
+          <input type="text" id="endereco" class="inscricao__input" placeholder="Digite o endereço" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="numero" class="inscricao__label">Número:</label>
+          <input type="number" id="numero" class="inscricao__input" placeholder="Digite o número" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="bairro" class="inscricao__label">Bairro:</label>
+          <input type="text" id="bairro" class="inscricao__input" placeholder="Digite o bairro" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="cep" class="inscricao__label">CEP:</label>
+          <input type="text" id="cep" class="inscricao__input" placeholder="Digite o CEP" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="certidao" class="inscricao__label">Certidão de Nascimento:</label>
+          <input type="text" id="certidao" class="inscricao__input" placeholder="Digite o número da certidão">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="rg" class="inscricao__label">RG:</label>
+          <input type="text" id="rg" class="inscricao__input" placeholder="Digite o número do RG">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="orgao-expedidor" class="inscricao__label">Órgão Expedidor:</label>
+          <input type="text" id="orgao-expedidor" class="inscricao__input" placeholder="Digite o órgão expedidor">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="cpf" class="inscricao__label">CPF:</label>
+          <input type="text" id="cpf" class="inscricao__input" placeholder="Digite o número do CPF">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="tamanho-camiseta" class="inscricao__label">Tamanho de Camiseta:</label>
+          <select id="tamanho-camiseta" class="inscricao__select">
+            <option value="">Selecione</option>
+            <option value="pp">PP</option>
+            <option value="p">P</option>
+            <option value="m">M</option>
+            <option value="g">G</option>
+            <option value="gg">GG</option>
+            <option value="xg">XG</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="inscricao__fieldset">
+        <legend class="inscricao__legend">Dados dos Pais/Responsáveis</legend>
+
+        <div class="inscricao__form-group">
+          <label for="nome-pai" class="inscricao__label">Nome do Pai:</label>
+          <input type="text" id="nome-pai" class="inscricao__input" placeholder="Digite o nome do pai" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="email-pai" class="inscricao__label">Email do Pai:</label>
+          <input type="email" id="email-pai" class="inscricao__input" placeholder="Digite o email do pai">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="telefone-pai" class="inscricao__label">Telefone do Pai:</label>
+          <input type="tel" id="telefone-pai" class="inscricao__input" placeholder="(XX) XXXX-XXXX">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="nome-mae" class="inscricao__label">Nome da Mãe:</label>
+          <input type="text" id="nome-mae" class="inscricao__input" placeholder="Digite o nome da mãe" required>
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="email-mae" class="inscricao__label">Email da Mãe:</label>
+          <input type="email" id="email-mae" class="inscricao__input" placeholder="Digite o email da mãe">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="telefone-mae" class="inscricao__label">Telefone da Mãe:</label>
+          <input type="tel" id="telefone-mae" class="inscricao__input" placeholder="(XX) XXXX-XXXX">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="nome-responsavel" class="inscricao__label">Nome do Responsável (se diferente dos pais):</label>
+          <input type="text" id="nome-responsavel" class="inscricao__input" placeholder="Digite o nome do responsável">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="grau-parentesco" class="inscricao__label">Grau de Parentesco:</label>
+          <input type="text" id="grau-parentesco" class="inscricao__input" placeholder="Digite o grau de parentesco">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="email-responsavel" class="inscricao__label">Email do Responsável:</label>
+          <input type="email" id="email-responsavel" class="inscricao__input" placeholder="Digite o email do responsável">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="telefone-responsavel" class="inscricao__label">Telefone do Responsável:</label>
+          <input type="tel" id="telefone-responsavel" class="inscricao__input" placeholder="(XX) XXXX-XXXX">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="cpf-responsavel" class="inscricao__label">CPF do Responsável:</label>
+          <input type="text" id="cpf-responsavel" class="inscricao__input" placeholder="Digite o CPF do responsável">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="estado-civil-responsavel" class="inscricao__label">Estado Civil do Responsável:</label>
+          <select id="estado-civil-responsavel" class="inscricao__select">
+            <option value="">Selecione</option>
+            <option value="casado">Casado</option>
+            <option value="divorciado">Divorciado</option>
+            <option value="solteiro">Solteiro</option>
+            <option value="viuvo">Viúvo</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="inscricao__fieldset">
+        <legend class="inscricao__legend">Ficha Médica</legend>
+
+        <div class="inscricao__form-group">
+          <label class="inscricao__label">Tem Plano de Saúde:</label>
+          <div class="inscricao__radio-group">
+            <input type="radio" id="plano-sim" name="plano-saude" value="sim">
+            <label for="plano-sim">Sim</label>
+            <input type="radio" id="plano-nao" name="plano-saude" value="nao">
+            <label for="plano-nao">Não</label>
+          </div>
+        </div>
+
+        <div class="inscricao__form-group" id="qual-plano-group" style="display: none;">
+          <label for="qual-plano" class="inscricao__label">Qual?</label>
+          <input type="text" id="qual-plano" class="inscricao__input" placeholder="Digite o nome do plano">
+        </div>
+
+        <div class="inscricao__form-group">
+          <label for="cns" class="inscricao__label">Carteira Nacional de Saúde (CNS):</label>
+          <input type="text" id="cns" class="inscricao__input" placeholder="Digite o número do CNS">
+        </div>
+
+        <div class="inscricao__form-group">
+          <p class="inscricao__label">Histórico de Doenças:</p>
+          <div class="inscricao__checkbox-group">
+            <input type="checkbox" id="catapora" name="doencas" value="catapora">
+            <label for="catapora">Catapora</label>
+            <input type="checkbox" id="meningite" name="doencas" value="meningite">
+            <label for="meningite">Meningite</label>
+            <input type="checkbox" id="hepatite" name="doencas" value="hepatite">
+            <label for="hepatite">Hepatite</label>
+            <input type="checkbox" id="dengue" name="doencas" value="dengue">
+            <label for="dengue">Dengue</label>
+            <input type="checkbox" id="pneumonia" name="doencas" value="pneumonia">
+            <label for="pneumonia">Pneumonia</label>
+            <input type="checkbox" id="malaria" name="doencas" value="malaria">
+            <label for="malaria">Malária</label>
+            <input type="checkbox" id="febre-amarela" name="doencas" value="febre-amarela">
+            <label for="febre-amarela">Febre Amarela</label>
+            <input type="checkbox" id="h1n1" name="doencas" value="h1n1">
+            <label for="h1n1">H1N1</label>
+            <input type="checkbox" id="colera" name="doencas" value="colera">
+            <label for="colera">Cólera</label>
+            <input type="checkbox" id="rubeola" name="doencas" value="rubeola">
+            <label for="rubeola">Rubéola</label>
+            <input type="checkbox" id="sarampo" name="doencas" value="sarampo">
+            <label for="sarampo">Sarampo</label>
+            <input type="checkbox" id="tetano" name="doencas" value="tetano">
+            <label for="tetano">Tétano</label>
+            <input type="checkbox" id="
