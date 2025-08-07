@@ -20,21 +20,28 @@ O programa Sócio Guardião é uma iniciativa vital para o sustento e o crescime
 
 2.1 Os benefícios do programa serão concedidos a partir da confirmação do pagamento da segunda mensalidade. Este período inicial é necessário para a organização interna e o preparo dos materiais.
 
-2.2 Os benefícios variam de acordo com o plano escolhido e podem incluir:
+2.2. Cada plano possui um conjunto exclusivo de benefícios físicos. Não há acúmulo entre planos.
 
-*   Certificado digital de Sócio Guardião
-*   Carteirinha de Sócio Guardião (física ou digital)
+2.3. O sócio só terá direito aos brindes físicos do plano vigente no segundo mês consecutivo ativo. Exemplo:
+
+Se assinar o plano Guardião Base no 1º mês e Guardião Fiel no 2º → Receberá os brindes do Guardião Base.
+
+Se assinar Guardião Fiel no 1º mês e Guardião Base no 2º → Não receberá nenhum brinde físico.
+
+2.4. Caso o sócio já tenha recebido os brindes de um determinado plano, não poderá recebê-los novamente em outro ciclo futuro, mesmo que volte a assinar o mesmo plano.
+
+2.5. Os benefícios podem incluir:
+*   Certificado de Sócio Guardião
+*   Cartão do Sócio Guardião (física ou digital)
 *   Caneca exclusiva Sócio Guardião
 *   Camiseta exclusiva do clube (modelo Sócio Guardião)
 *   Moletom exclusivo Sócio Guardião
 *   Descontos em eventos e produtos do clube (conforme o plano)
 *   Participação em sorteios exclusivos
 
-2.3 O clube se reserva o direito de alterar os benefícios oferecidos, mediante comunicação prévia aos Sócios Guardiões através dos canais oficiais (site, redes sociais, email).
+2.6. Os envios dos brindes físicos podem ser feitos em datas específicas e anunciadas previamente.
 
-2.4 Os brindes físicos serão entregues em datas e locais específicos, divulgados com antecedência. Em caso de impossibilidade de comparecer, o sócio poderá indicar um representante legal para realizar a retirada.
-
-2.5 Os descontos serão válidos apenas para o titular do plano, mediante a apresentação da Carteirinha de Sócio Guardião (física ou digital) no momento da compra ou inscrição no evento.
+2.7. Descontos serão válidos apenas para o titular do plano e mediante apresentação do Cartão do Sócio.
 
 ## 3. Pagamento
 
