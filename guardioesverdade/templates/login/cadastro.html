@@ -34,46 +34,30 @@
                 
     {{ form.csrf_token }}
 
-    {{ form.nome.label() }}
-    {{ form.nome() }}
+    {{ form.nome(placeholder="Digite seu nome") }}
 <br>
-    {{ form.sobrenome.label() }}
-    {{ form.sobrenome() }}
+    {{ form.sobrenome(placeholder="Digite seu sobrenome") }}
 <br>
-    {{ form.cpf.label() }}
     {{ form.cpf(placeholder="123.456.789-00") }}
 <br>
-    {{ form.data_nascimento.label() }}
     {{ form.data_nascimento() }}
 <br>
-    {{ form.email.label() }}
-    {{ form.email() }}
+    {{ form.email(placeholder="Digite seu e-mail") }}
 <br>
-    {{ form.senha.label() }}
-    {{ form.senha() }}
+    {{ form.senha(placeholder="Digite sua senha") }}
 <br>
-    {{ form.confirmar_senha.label() }}
-    {{ form.confirmar_senha() }}
+    {{ form.confirmar_senha(placeholder="Digite sua senha novamente") }}
 <br>
     {{ form.submit() }}
-                <!-- Opções adicionais -->
-                <div class="opcoes">
-                    <label>
-                        <input type="checkbox" name="lembrar"> Lembrar
-                    </label>
-                    <a href="#">Esqueceu a senha?</a> 
-                </div>
                 
-                <!-- Botão de Login -->
-                <button type="submit" class="btn-login">Entrar</button>
             </form>
         </section>
 
         <!-- Sessão de Cadastro -->
         <section class="sessao-cadastro">
             <h2>Olá, Guardião!</h2>
-            <p>Não possui conta? <br> Preencha suas informações pessoais e <br>comece sua jornada conosco.</p>
-            <button type="button" class="btn-cadastro">Cadastrar</button>
+            <p>Já possui conta? <br> Faça login e <br>continue sua jornada conosco.</p>
+            <a href="{{ url_for('login') }}" class="btn-cadastro">Login</a>
         </section>
     </main>        
 </body>

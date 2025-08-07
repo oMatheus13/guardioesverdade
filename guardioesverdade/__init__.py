@@ -34,4 +34,4 @@ login_manager.login_view = (
 bcrypt = Bcrypt(app)
 
 
-from guardioesverdade.routes import homepage
+from guardioesverdade.routes import homepage, login

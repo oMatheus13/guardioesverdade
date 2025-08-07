@@ -35,16 +35,15 @@
                 {{ form.csrf_token }}
 
                 <div class="campo">
-                    {{ form.email(id="email", placeholder="Digite seu e-mail")}}
+                    <div class="senha-box">
+                        {{ form.email(id="email", placeholder="Digite seu e-mail")}}
+                    </div>
                 </div>
 
                 <div class="campo">
                     <div class="senha-box">
                         {{ form.senha(placeholder="Digite sua senha")}}
                     </div>
-                </div>
-                <div class="campo">
-                    {{ form.submit(class="btn-login", value="Entrar") }}
                 </div>
                 <!-- Opções adicionais -->
                 <div class="opcoes">
@@ -55,7 +54,10 @@
                 </div>
                 
                 <!-- Botão de Login -->
-                <button type="submit" class="btn-login">Entrar</button>
+                <div class="campo">
+                    {{ form.submit(class="btn-login", value="Entrar") }}
+                </div>
+                
             </form>
         </section>
 
@@ -63,7 +65,7 @@
         <section class="sessao-cadastro">
             <h2>Olá, Guardião!</h2>
             <p>Não possui conta? <br> Preencha suas informações pessoais e <br>comece sua jornada conosco.</p>
-            <button type="button" class="btn-cadastro">Cadastrar</button>
+            <a href="{{ url_for('cadastro') }}" class="btn-cadastro">Cadastrar</a>
         </section>
     </main>        
 </body>

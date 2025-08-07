@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import (
     StringField,
+    EmailField,
     SubmitField,
     PasswordField,
     DateField
@@ -16,7 +17,7 @@ class UserForm(FlaskForm):
     sobrenome = StringField("Sobrenome", validators=[DataRequired()])
     cpf = StringField("CPF", validators=[DataRequired()])
     data_nascimento = DateField("Data de Nascimento", format="%Y-%m-%d", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired(), Email()])
+    email = EmailField("Email", validators=[DataRequired(), Email()])
     senha = PasswordField("Senha", validators=[DataRequired()])
     confirmar_senha = PasswordField(
         "Confirmar Senha",
@@ -66,7 +67,7 @@ class UserForm(FlaskForm):
         
 
 class LoginForm(FlaskForm):
-    email = StringField("Email", validators=[DataRequired(), Email()])
+    email = EmailField("Email", validators=[DataRequired(), Email()])
     senha = PasswordField("Senha", validators=[DataRequired()])
     submit = SubmitField("Entrar")
 
