@@ -9,18 +9,18 @@
     <h1>Página de doações</h1>
     <hr>
     <p>Doe R$1,00</p>
-    <a href="{{ d1 }}">Doar</a>
+    <a href="{{ url_for('assinar_plano', plano='doacao', price=1) }}">Doar</a>
     <hr>
     <p>Doe R$15,00</p>
-    <a href="{{ d15 }}">Doar</a>
+    <a href="{{ url_for('assinar_plano', plano='doacao', price=15) }}">Doar</a>
     <hr>
 
     <p>Doe R$30,00</p>
-    <a href="{{ d30 }}">Doar</a>
+    <a href="{{ url_for('assinar_plano', plano='doacao', price=30) }}">Doar</a>
     <hr>
 
     <p>Doe R$50,00</p>
-    <a href="{{ d50 }}">Doar</a>
+    <a href="{{ url_for('assinar_plano', plano='doacao', price=50) }}">Doar</a>
 
 </body>
 </html>
