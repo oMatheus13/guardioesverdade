@@ -7,7 +7,6 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
-from guardioesverdade.api.mercadopago.mp_webhook import mercadopago_webhook
 
 from supabase import create_client
 
@@ -35,6 +34,7 @@ login_manager.login_view = (
 )
 bcrypt = Bcrypt(app)
 
+from guardioesverdade.api.mercadopago.mp_webhook import mercadopago_webhook
 
 login_manager.exempt(mercadopago_webhook)  # Exclui o webhook do login_required
 
