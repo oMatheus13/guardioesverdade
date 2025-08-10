@@ -36,3 +36,6 @@ bcrypt = Bcrypt(app)
 
 
 from guardioesverdade.routes import login
+from guardioesverdade.api.mercadopago.mp_webhook import mercadopago_webhook
+from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
+from guardioesverdade.forms import UserForm, LoginForm
