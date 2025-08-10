@@ -12,7 +12,7 @@ TOKEN_MERCADOPAGO = os.getenv("TOKEN_MERCADOPAGO")
 mp = mercadopago.SDK(TOKEN_MERCADOPAGO)
 
 
-@app.route("/mercadopago/webhook", methods=["POST"])
+@app.route("/", methods=["POST"])
 def mercadopago_webhook():
     data = request.get_json()
 

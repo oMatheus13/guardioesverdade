@@ -6,10 +6,6 @@ from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
 
 
-@app.route("/")
-def homepage():
-
-    return render_template("index.html", user=current_user)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

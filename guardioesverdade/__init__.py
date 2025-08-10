@@ -34,8 +34,5 @@ login_manager.login_view = (
 )
 bcrypt = Bcrypt(app)
 
-from guardioesverdade.api.mercadopago.mp_webhook import mercadopago_webhook
-
-login_manager.exempt(mercadopago_webhook)  # Exclui o webhook do login_required
 
 from guardioesverdade.routes import homepage, login
