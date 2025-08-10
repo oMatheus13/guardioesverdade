@@ -3,14 +3,12 @@
   Lembra de pegar tua apiKey do gemini. Parece que ele tem limite de 1500 mensagens por dia.
 
   Pra pegar uma API KEY tu vai nesse link https://aistudio.google.com/app/apikey e depois é so colar no "dish-ai-commit.providers.gemini.apiKey": "OTROCA AQUI A TUA APIKEY", e no API Key do Add Chat Model da extensão "Continue".
-  
+
   // 💻 Configuração específica para dish-ai-commit
   "dish-ai-commit.base.provider": "Gemini",
   "dish-ai-commit.base.model": "gemini-2.0-flash-001",
   "dish-ai-commit.base.language": "Portuguese",
   "dish-ai-commit.providers.gemini.apiKey": "OTROCA AQUI A TUA APIKEY",
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
   "dish-ai-commit.features.commitMessage.systemPrompt": "Você é um Assistente de Commit com IA.  Sua função é gerar mensagens de commit completas, claras e profissionais, seguindo o padrão do Conventional Commits e compatíveis com semantic-release.  Regras:  - Use prefixos em minúsculas: feat, fix, chore, docs, style, refactor, perf, test, build, ci, revert. - Escreva o resumo (primeira linha) em letras minúsculas, inclusive o verbo no imperativo do presente (ex: \"corrigir erro\", \"atualizar estilo\"). - O resumo deve ser uma linha simples, sem aspas, backticks, colchetes, nem qualquer caractere extra. - Crie um resumo curto com até 50 caracteres na primeira linha. - Logo abaixo, escreva um corpo detalhado que documente todas as mudanças feitas, explicando cada uma delas. - Use bullet points para listar as mudanças no corpo, deixando a mensagem clara e completa. - Não use emojis, colchetes, nem frases genéricas. - Não invente informações; use somente o que o usuário informar. - Mantenha estilo profissional, claro e direto.",
   "git.enableSmartCommit": true,
 
