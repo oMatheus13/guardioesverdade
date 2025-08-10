@@ -1,5 +1,4 @@
 from flask_login import UserMixin
-
 from guardioesverdade import db, login_manager
 
 
@@ -19,29 +18,34 @@ class User(db.Model, UserMixin):
 
     plano = db.Column(db.String(50), nullable=False, default='gratuito')
     maior_plano = db.Column(db.String(50), nullable=False, default='gratuito')
+    
     # Chave estrangeira que aponta para o id da assinatura ativa. Pode ser nula.
     id_assinatura_ativa = db.Column(db.Integer, db.ForeignKey('assinaturas.id'), nullable=True)
-
 
     role = db.Column(db.String(20), nullable=False, default='user')
     data_criacao = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
 
-    assinaturas = db.relationship('Assinatura', back_populates='user')
-
+    # Relação para todas as assinaturas do usuário.
+    # Usamos o `foreign_keys` para indicar qual coluna usar na tabela Assinatura.
+    assinaturas = db.relationship(
+        'Assinatura', back_populates='user', foreign_keys='Assinatura.id_user'
+    )
+    
+    # Adicionamos uma nova relação para a assinatura ativa, usando a coluna id_assinatura_ativa.
+    assinatura_ativa = db.relationship(
+        'Assinatura', foreign_keys=[id_assinatura_ativa]
+    )
 
     def get_cpf(self):
         cpf = self.cpf
         if cpf and len(cpf) == 11:
             return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
-        else:
-            return None
-        
+        return None
     
     def get_plano(self):
         if self.id_assinatura_ativa:
-            return Assinatura.query.get(self.id_assinatura_ativa)
+            return self.assinatura_ativa
         return None
-
 
 
 class Assinatura(db.Model):
@@ -56,11 +60,11 @@ class Assinatura(db.Model):
     # Chave estrangeira que aponta para o id do usuário
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='assinaturas')
+    user = db.relationship('User', back_populates='assinaturas', foreign_keys=[id_user])
 
 
     def __repr__(self):
-        return  f'<Assinatura: {self.nome_plano},  User ID: {self.id_user}, ' \
-                f'Data de Assinatura: {self.data_assinatura}, ' \
-                f'Estado: {self.estado}, Expira em: {self.data_expiracao}>'
+        return (f'<Assinatura: {self.nome_plano}, User ID: {self.id_user}, '
+                f'Data de Assinatura: {self.data_assinatura}, '
+                f'Estado: {self.estado}, Expira em: {self.data_expiracao}>')
 
