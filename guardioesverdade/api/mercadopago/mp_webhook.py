@@ -1,4 +1,3 @@
-
 import os
 from flask import request
 import mercadopago
@@ -12,7 +11,7 @@ TOKEN_MERCADOPAGO = os.getenv("TOKEN_MERCADOPAGO")
 mp = mercadopago.SDK(TOKEN_MERCADOPAGO)
 
 
-@app.route("/", methods=["POST"])
+@app.route("/mercadopago/webhook", methods=["POST"])
 def mercadopago_webhook():
     data = request.get_json()
 
