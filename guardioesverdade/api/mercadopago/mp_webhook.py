@@ -45,7 +45,7 @@ def before_request_hook():
             token = parts.get('v1', [''])[0]
 
 
-            body = request.get.data().decode('utf-8')
+            body = request.get_data().decode('utf-8')
             data_to_sign = f"id:{client_id_assinatura};ts:{timestamp};{body}"
 
 
@@ -101,12 +101,27 @@ def mercadopago_webhook():
                     data_assinatura = datetime.now()
                     data_expiracao = data_assinatura + timedelta(days=33)
 
+                    meses_consecutivos = 1
+
+                    ultima_assinatura = Assinatura.query.filter(
+                        Assinatura.id_user == user.id,
+                        Assinatura.id != user.id_assinatura_ativa
+                    ).order_by(Assinatura.data_assinatura.desc()).first()
+
+                    if ultima_assinatura:
+                        # TODO: Confirmar tempo para se considerar consecutivo
+                        data_limite_renovacao = ultima_assinatura.data_expiracao + timedelta(days=7)
+
+                        if data_assinatura < data_limite_renovacao:
+                            meses_consecutivos = ultima_assinatura.meses_consecutivos + 1
+
                     nova_assinatura = Assinatura(
                         nome_plano=plano_nome,
                         data_assinatura=data_assinatura,
                         data_expiracao=data_expiracao,
                         estado='ativo',
-                        id_user=user.id
+                        id_user=user.id,
+                        meses_consecutivos=meses_consecutivos
                     )
                     db.session.add(nova_assinatura)
                     db.session.commit()
