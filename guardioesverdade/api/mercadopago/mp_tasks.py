@@ -65,8 +65,7 @@ def verifica_assinaturas_expiradas():
 
         # 3. TODO: Implementar lógica para verificar planos consecutivos
 
-        app.logger.info(f"Verificação de {datetime.now().day}/{datetime.now().month}/{datetime.now().year} 
-                        de assinaturas encerrada!")
+        app.logger.info(f"Verificação de {datetime.now()} de assinaturas encerrada!")
 
 
 
