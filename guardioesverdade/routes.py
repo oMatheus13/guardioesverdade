@@ -4,6 +4,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from guardioesverdade import app
 from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
+from guardioesverdade.api.utils.links import gerar_link_whatsapp
 
 
 @app.route("/")
@@ -73,10 +74,19 @@ def album():
 def classes():
     return render_template("pages/classes.html")
 
-    
+
 @app.route("/contato")
 def contato():
-    return render_template("pages/contato.html")
+
+    # Mesclar com branch login
+    if current_user.is_authenticated:
+        nome = current_user.nome
+        sobrenome = current_user.sobrenome
+        email = current_user.email
+
+    link_whatsapp = gerar_link_whatsapp(nome, sobrenome, email)  # Parâmetros: Nome, Sobrenome, Email (quando der merge com login)
+
+    return render_template("pages/contato.html", link_whatsapp=link_whatsapp)
 
 @app.route("/dracmas")
 def dracmas():
