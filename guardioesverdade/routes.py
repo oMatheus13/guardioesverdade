@@ -35,9 +35,11 @@ def cadastro():
     form = UserForm()
 
     if form.validate_on_submit():
-        form.save()
-        return redirect(url_for("homepage"))
-    
+        user = form.save()
+        if user:
+            login_user(user, remember=True)
+            return redirect(url_for("homepage"))
+
     return render_template("login/cadastro.html", form=form)
 
 
