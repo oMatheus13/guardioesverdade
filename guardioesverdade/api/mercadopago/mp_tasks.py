@@ -1,19 +1,12 @@
+import os
 from datetime import datetime, timedelta
+
+from flask import request
 
 from guardioesverdade import app, db
 from guardioesverdade.models import User, Assinatura
 
 
-
-
-@app.route("/api/cron/verifica-assinaturas")
-def cron_verifica_assinaturas():
-    """
-    Endpoint para verificação de assinaturas expiradas.
-    Será chamado por um cron job.
-    """
-    verifica_assinaturas_expiradas()
-    return "OK", 200
 
 
 
@@ -74,3 +67,21 @@ def verifica_assinaturas_expiradas():
 
         app.logger.info(f"Verificação de {datetime.now().day}/{datetime.now().month}/{datetime.now().year} 
                         de assinaturas encerrada!")
+
+
+
+@app.route("/api/cron/verifica-assinaturas")
+def cron_verifica_assinaturas():
+    """
+    Endpoint chamado por Cron Job para verificação de assinaturas expiradas.
+    Verifica se o token de autorização está presente na requisição.
+    """
+
+    token = request.headers.get("Authorization")
+    cron_secret = os.getenv("CRON_SECRET")
+
+    if not token or token != f"Bearer {cron_secret}":
+        return "Unauthorized", 401
+
+    verifica_assinaturas_expiradas()
+    return "OK", 200
