@@ -2,21 +2,18 @@ import os
 
 from flask_login import current_user
 
+from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP, BACK_URLS_MAP
+
 import mercadopago
 
 
 TOKEN_MERCADOPAGO = os.getenv("TOKEN_MERCADOPAGO")
 
 
-PLANO_MAP = {
-    15: "Guardião Base",
-    30: "Guardião Fiel",
-    50: "Guardião De Elite",
-    100: "Guardião Da Aliança"
-}
-
 def gera_link_pagamento(price):
-
+    """
+    Gera um link de pagamento para o plano selecionado.
+    """
     if price not in PLANO_MAP:
         raise ValueError("Plano inválido. Escolha entre 15, 30, 50 ou 100.")
 
@@ -36,9 +33,9 @@ def gera_link_pagamento(price):
         ],
         # TODO: ATUALIZAR BACK_URLS
         "back_urls": {
-            "success": "https://guardioesverdade.vercel.app",
-            "pending": "https://guardioesverdade.vercel.app/events",
-            "failure": "https://guardioesverdade.vercel.app/events" 
+            "success": BACK_URLS_MAP["success"],
+            "pending": BACK_URLS_MAP["pending"],
+            "failure": BACK_URLS_MAP["failure"]  
         },
         "auto_return": "approved",
         "external_reference": f"user_{current_user.id}_plano_{plano_nome.replace(' ', '_')}",

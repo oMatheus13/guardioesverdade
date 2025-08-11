@@ -3,12 +3,14 @@ from flask import request
 import mercadopago
 from guardioesverdade import db, app
 from guardioesverdade.models import User, Assinatura
-from guardioesverdade.api.mercadopago.mp_api import PLANO_MAP
+from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP
 from datetime import datetime, timedelta
 
 
 TOKEN_MERCADOPAGO = os.getenv("TOKEN_MERCADOPAGO")
 mp = mercadopago.SDK(TOKEN_MERCADOPAGO)
+
+
 
 
 @app.route("/mercadopago/webhook", methods=["POST"])

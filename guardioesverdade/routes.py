@@ -53,6 +53,10 @@ def socioguardiao():
 @app.route("/socio-guardiao/<string:plano>/<int:price>")
 @login_required
 def assinar_plano(plano, price):
+    """
+    Garante que o link de pagamento para o plano selecionado
+    só seja gerado se o usuário estiver autenticado.
+    """
     try:
         link_pagamento = gera_link_pagamento(price)
         return redirect(link_pagamento)
@@ -77,14 +81,15 @@ def classes():
 
 @app.route("/contato")
 def contato():
-
-    # Mesclar com branch login
+    """
+    Rota para contato e lógica para envio de mensagem dinâmica via api do whatsapp.
+    """
     if current_user.is_authenticated:
         nome = current_user.nome
         sobrenome = current_user.sobrenome
         email = current_user.email
 
-    link_whatsapp = gerar_link_whatsapp(nome, sobrenome, email)  # Parâmetros: Nome, Sobrenome, Email (quando der merge com login)
+    link_whatsapp = gerar_link_whatsapp(nome, sobrenome, email)
 
     return render_template("pages/contato.html", link_whatsapp=link_whatsapp)
 

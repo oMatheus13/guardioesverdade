@@ -5,5 +5,12 @@
     ],
     "routes": [
         { "src": "/(.*)", "dest": "main.py" }
+    ],
+
+    "crons": [
+        {
+            "path": "/api/cron/verifica-assinaturas",
+            "schedule": "0 0 * * *"
+        }
     ]
 }
