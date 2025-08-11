@@ -59,6 +59,7 @@ class Assinatura(db.Model):
 
     # Chave estrangeira que aponta para o id do usuário
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    meses_consecutivos = db.Column(db.Integer, nullable=False, default=1)
 
     user = db.relationship('User', back_populates='assinaturas', foreign_keys=[id_user])
 
