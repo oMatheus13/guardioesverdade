@@ -1,20 +1,80 @@
 import os
+import hmac
+import hashlib
+from base64 import urlsafe_b64decode
+from urllib.parse import parse_qs
+
 from flask import request
-import mercadopago
+
 from guardioesverdade import db, app
 from guardioesverdade.models import User, Assinatura
 from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP
 from datetime import datetime, timedelta
 
+import mercadopago
+
 
 TOKEN_MERCADOPAGO = os.getenv("TOKEN_MERCADOPAGO")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 mp = mercadopago.SDK(TOKEN_MERCADOPAGO)
+
+
+
+@app.before_request
+def before_request_hook():
+    """
+    Hook executado antes de cada requisição.
+    Verifica se a requisição é para o webhook do Mercado Pago e registra a tentativa de acesso.
+    """
+    if request.path == "/mercadopago/webhook":
+        app.logger.info("Tentativa de acesso ao webhook do Mercado Pago.")
+
+
+        # Lógica para recuperar o token de assinatura
+        x_signature = request.headers.get("x-signature")
+
+        if not x_signature:
+            app.logger.warning("Acesso não autorizado ao webhook: 'x-signature' ausente.")
+            return "Unauthorized", 401
+
+        
+        try:
+            parts = parse_qs(x_signature.replace(',', '&'))
+            client_id_assinatura = parts.get('id', [''])[0]
+            timestamp = parts.get('ts', [''])[0]
+            token = parts.get('v1', [''])[0]
+
+
+            body = request.get.data().decode('utf-8')
+            data_to_sign = f"id:{client_id_assinatura};ts:{timestamp};{body}"
+
+
+            hmac_signature = hmac.new(
+                CLIENT_SECRET.encode('utf-8'), 
+                data_to_sign.encode('utf-8'),
+                hashlib.sha256
+            ).digest()
+
+            # Compara a assinatura recebida com a assinatura gerada
+            if not hmac.compare_digest(urlsafe_b64decode(token), hmac_signature):
+                app.logger.error("Assinatura do webhook inválida. Possível tentativa de falsificação.")
+                return "Invalid Signature", 403
+            
+            
+            app.logger.info("Assinatura de webhook validada com sucesso.")
+        
+        except Exception as e:
+            app.logger.error(f"Erro na validação da assinatura: {e}")
+            return "Internal Server Error during signature validation", 500
 
 
 
 
 @app.route("/mercadopago/webhook", methods=["POST"])
 def mercadopago_webhook():
+
+
+    app.logger.info("Webhook do Mercado Pago recebido.")
     data = request.get_json()
 
     if not data or "data" not in data:
@@ -64,10 +124,10 @@ def mercadopago_webhook():
                         user.maior_plano = plano_nome
 
                     db.session.commit()
-                    print(f"Plano do usuário {user.id} atualizado para {plano_nome}.")
+                    app.logger.info(f"Plano do usuário {user.id} atualizado para {plano_nome}.")
                 else:
-                    print(f"Usuário com ID {user_id} não encontrado.")
+                    app.logger.warning(f"Usuário com ID {user_id} não encontrado.")
             else:
-                print(f"Formato de external_reference inválido: {external_reference}")
-    
+                app.logger.warning(f"Formato de external_reference inválido: {external_reference}")
+
     return "Webhook recebido", 200
