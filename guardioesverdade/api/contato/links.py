@@ -1,7 +1,7 @@
 # Criptografia de URL
 from urllib.parse import quote
 
-def gerar_link_whatsapp(nome="", sobrenome="", email=""):
+def gerar_link_whatsapp(nome=None, sobrenome=None, email=None):
     if nome and sobrenome and email:
         msg_inicial = f"Olá, meu nome é {nome} {sobrenome}, meu email é {email}. Gostaria de saber mais sobre o Clube de Desbravadores Guardiões da Verdade."
     else:
