@@ -17,6 +17,7 @@ class UserForm(FlaskForm):
     sobrenome = StringField("Sobrenome", validators=[DataRequired()])
     cpf = StringField("CPF", validators=[DataRequired()])
     data_nascimento = DateField("Data de Nascimento", format="%Y-%m-%d", validators=[DataRequired()])
+    telefone = StringField("Telefone", validators=[DataRequired()])
     email = EmailField("Email", validators=[DataRequired(), Email()])
     senha = PasswordField("Senha", validators=[DataRequired()])
     confirmar_senha = PasswordField(
@@ -42,9 +43,21 @@ class UserForm(FlaskForm):
         senha = bcrypt.generate_password_hash(self.senha.data).decode("utf-8")
         if not str(senha).startswith("$2b$"):
             raise ValidationError("Senha criptografada incorretamente.")
+        
         cpf = self.cpf.data.replace(".", "").replace("-", "")
         if len(cpf) != 11 or not cpf.isdigit():
             raise ValidationError("CPF inválido. Deve conter 11 dígitos numéricos.")
+        
+        telefone = self.telefone.data.replace(
+            "+", "").replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
+        if len(telefone) == 11 and telefone[2] == '9':
+            telefone = f"+55{telefone}"
+        elif len(telefone) == 12 and telefone[2] == '9':
+            # Formato com DDI e 11 dígitos (ex: 5511987654321)
+            telefone = f"+{telefone}"
+        else:
+            # Se não corresponder a um formato válido, levanta um erro
+            raise ValidationError("Telefone inválido. Formato esperado: (DDD) 9XXXX-XXXX ou 9XXXXXXXXX")
 
 
         try:
@@ -53,6 +66,7 @@ class UserForm(FlaskForm):
                 sobrenome = self.sobrenome.data,
                 cpf = cpf,
                 data_nascimento = self.data_nascimento.data,
+                telefone = telefone,
                 email = self.email.data,
                 senha = senha
             )
