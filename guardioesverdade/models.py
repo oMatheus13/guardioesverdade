@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
     sobrenome = db.Column(db.String(100), nullable=False)
+    telefone = db.Column(db.String(15), nullable=True)  # TODO: Tornar False ao resetar banco de dados
     cpf = db.Column(db.String(11), unique=True, nullable=False)
     data_nascimento = db.Column(db.Date, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -33,7 +34,7 @@ class User(db.Model, UserMixin):
     
     # Adicionamos uma nova relação para a assinatura ativa, usando a coluna id_assinatura_ativa.
     assinatura_ativa = db.relationship(
-        'Assinatura', foreign_keys=[id_assinatura_ativa]
+        'Assinatura', foreign_keys=[id_assinatura_ativa], post_update=True
     )
 
     def get_cpf(self):
