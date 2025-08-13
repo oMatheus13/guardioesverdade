@@ -40,25 +40,40 @@ class UserForm(FlaskForm):
         
     
     def save(self):
+        # Criptografa senhas
         senha = bcrypt.generate_password_hash(self.senha.data).decode("utf-8")
         if not str(senha).startswith("$2b$"):
             raise ValidationError("Senha criptografada incorretamente.")
         
+        # Sanitiza CPF
         cpf = self.cpf.data.replace(".", "").replace("-", "")
         if len(cpf) != 11 or not cpf.isdigit():
             raise ValidationError("CPF inválido. Deve conter 11 dígitos numéricos.")
         
-        telefone = self.telefone.data.replace(
-            "+", "").replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
-        if len(telefone) == 11 and telefone[2] == '9':
-            telefone = f"+55{telefone}"
-        elif len(telefone) == 12 and telefone[2] == '9':
-            # Formato com DDI e 11 dígitos (ex: 5511987654321)
-            telefone = f"+{telefone}"
-        else:
-            # Se não corresponder a um formato válido, levanta um erro
-            raise ValidationError("Telefone inválido. Formato esperado: (DDD) 9XXXX-XXXX ou 9XXXXXXXXX")
+        # Lógica para padronizar numeros de telefone no modelo (5587987654321)
+        telefone = "".join(filter(str.isdigit, self.telefone.data))
 
+        # Remove o DDI se ele já estiver presente
+        if telefone.startswith("55"):
+            telefone = telefone[2:]
+            
+        # Remove o 0 se ele for o primeiro dígito de um DDD
+        if len(telefone) >= 11 and telefone[0] == '0' and telefone[1:3].isdigit():
+            telefone = telefone[1:]
+
+        # Verifica o tamanho do número (apenas DDD e número)
+        if len(telefone) == 10:  # Ex: 1187654321
+            # Adiciona nono dígito
+            telefone = f"{telefone[:1]}9{telefone[1:]}"
+        elif len(telefone) == 11 and telefone[2] == '9':  # Ex: 11987654321
+            # É um número de celular de 9 dígitos
+            pass
+        else:
+            raise ValidationError("Telefone inválido. Formato esperado: (DDD) 9XXXX-XXXX ou (DDD) XXXX-XXXX.")
+
+        # Adiciona o DDI +55 padronizado
+        telefone = f"+55{telefone}"
+        
 
         try:
             user = User(
