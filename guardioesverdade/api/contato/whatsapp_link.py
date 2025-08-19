@@ -10,3 +10,14 @@ def gerar_link_whatsapp(nome=None, sobrenome=None, email=None):
     msg_codificada = quote(msg_inicial)
     link_whatsapp = f"https://wa.me/5587981366161?text={msg_codificada}"
     return link_whatsapp
+
+def link_whatsapp_usuario(usuario):
+    nome = usuario.nome
+    sobrenome = usuario.sobrenome
+    telefone = usuario.telefone
+
+    msg_inicial = f"Olá, {nome} {sobrenome}, somos do Clube de Desbravadores Guardiões da Verdade. Tem um momento?"
+    msg_codificada = quote(msg_inicial)
+    link_whatsapp = f"https://wa.me/{telefone}?text={msg_codificada}"
+
+    return link_whatsapp

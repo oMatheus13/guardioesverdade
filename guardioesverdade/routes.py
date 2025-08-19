@@ -2,9 +2,10 @@ from flask import render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 
 from guardioesverdade import app
+from guardioesverdade.models import User
 from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
-from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp
+from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
 
 @app.route("/")
@@ -122,9 +123,10 @@ def dracmas():
 def eventos():
     return render_template("pages/eventos.html")
 
-@app.route("/arearestrita")
-def arearestrita():
-    return render_template("pages/arearestrita.html")
+@app.route("/area-restrita")
+def area_restrita():
+    users =  User.query.all()
+    return render_template("pages/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
 
 @app.route("/unidades")
 def unidades():
