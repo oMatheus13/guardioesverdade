@@ -10,7 +10,7 @@ def enviar_email(assunto:str, destinatarios, template:str, **kwargs):
 
     with app.app_context():
         try:
-            html_body = render_template(f'email/{template}', **kwargs)
+            html_body = render_template(f'pages/email/{template}', **kwargs)
 
             msg = Message(
                 subject=assunto,

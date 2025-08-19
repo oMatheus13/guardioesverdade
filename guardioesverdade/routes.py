@@ -23,7 +23,7 @@ def login():
             login_user(user, remember=True)
             return redirect(url_for("homepage"))
     
-    return render_template("login/login.html", form=form)
+    return render_template("pages/login/login.html", form=form)
 
 
 @app.route("/logout")
@@ -41,7 +41,7 @@ def cadastro():
             login_user(user, remember=True)
             return redirect(url_for("homepage"))
 
-    return render_template("login/cadastro.html", form=form)
+    return render_template("pages/login/cadastro.html", form=form)
 
 
 @app.route("/socio-guardiao")
@@ -79,7 +79,7 @@ def pagamento_aprovado():
     session.pop('assinatura_confirmada', None)  # Limpa os dados da sessão após uso
 
     return render_template(
-        "pages/pagamento_aprovado.html",
+        "pages/email/payment/aprovado.html",
         assinatura=assinatura_confirmada
     )
 

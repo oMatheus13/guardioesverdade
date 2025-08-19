@@ -9,6 +9,7 @@ from flask import request, session
 from guardioesverdade import db, app
 from guardioesverdade.models import User, Assinatura
 from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP
+from guardioesverdade.api.contato.flask_mail import enviar_email
 from datetime import datetime, timedelta
 
 import mercadopago
@@ -148,6 +149,18 @@ def mercadopago_webhook():
 
                     db.session.commit()
                     app.logger.info(f"Plano do usuário {user.id} atualizado para {plano_nome}.")
+
+
+                    # Lógica para enviar e-mail de confirmação
+                    enviar_email(
+                        assunto="Assinatura confirmada!",
+                        destinatarios=[user.email],
+                        template="payment/aprovado.html",
+                        user=user,
+                        plano_nome=plano_nome,
+                        data_assinatura=data_assinatura,
+                        data_expiracao=data_expiracao
+                    )
                 else:
                     app.logger.warning(f"Usuário com ID {user_id} não encontrado.")
             else:
