@@ -1,0 +1,60 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #111;
+}
+
+  /* Seção */
+.titulo {
+    text-align: left;
+    padding: 60px 20px;
+}
+
+.titulo h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.titulo h2 span {
+    color: #7d4acb; /* Roxo igual à imagem */
+}
+
+  /* Grid dos cards */
+.titulo .cards {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+  /* Cada card */
+.titulo .card {
+    max-width: 200px;
+    text-align: center;
+}
+
+.titulo .card img {
+    width: 100px; /* Ícones menores */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.titulo .card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.titulo .card p {
+    font-size: 0.9rem;
+    color: #666;
+}

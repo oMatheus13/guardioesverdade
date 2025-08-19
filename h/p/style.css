@@ -1,0 +1,81 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+  /* Seção */
+.guardioes .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    padding: 20px;
+}
+
+  /* Imagem */
+.guardioes .imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.guardioes .imagem img {
+    width: 300px;
+    height: auto;
+}
+
+  /* Texto */
+.guardioes .text {
+    max-width: 500px;
+    text-align: center; 
+    margin: 0 auto; 
+}
+
+.guardioes .text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.guardioes .text h1 span {
+    color: #7d4acb;
+}
+
+.guardioes .text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+  /* Botão */
+.guardioes .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: #111;
+    background-color: #7d4acb;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 0 auto;
+}
+
+.guardioes .btn:hover {
+    background: #7d4a;
+    color: white;
+}
