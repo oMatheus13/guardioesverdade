@@ -1,10 +1,10 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 
 from guardioesverdade import app
 from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
-from guardioesverdade.api.contato.links import gerar_link_whatsapp
+from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp
 
 
 @app.route("/")
@@ -63,6 +63,27 @@ def assinar_plano(plano, price):
     except ValueError as e:
         # TODO: Mostrar mensagem de erro ao usuário e capturar log.
         return str(e), 400
+
+
+@app.route("/pagamento/aprovado")
+def pagamento_aprovado():
+    """
+    Rota para exibir a página de pagamento aprovado.
+    Lê os dados da sessão e renderiza a página de confirmação.
+    """
+
+    assinatura_confirmada = session.get('assinatura_confirmada')
+    if not assinatura_confirmada:
+        return redirect(url_for("homepage"))
+
+    session.pop('assinatura_confirmada', None)  # Limpa os dados da sessão após uso
+
+    return render_template(
+        "pages/pagamento_aprovado.html",
+        assinatura=assinatura_confirmada
+    )
+
+
 
 @app.route("/sobre")
 def sobre():

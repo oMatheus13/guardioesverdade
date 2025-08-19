@@ -4,7 +4,7 @@ import hashlib
 from base64 import urlsafe_b64decode
 from urllib.parse import parse_qs
 
-from flask import request
+from flask import request, session
 
 from guardioesverdade import db, app
 from guardioesverdade.models import User, Assinatura
@@ -125,6 +125,14 @@ def mercadopago_webhook():
                     )
                     db.session.add(nova_assinatura)
                     db.session.commit()
+
+
+                    # Salva dados em sessão para recuperar em outras telas
+                    session['assinatura_confirmada'] = {
+                        'plano_nome': plano_nome,
+                        'data_assinatura': data_assinatura.strftime('%Y-%m-%d %H:%M:%S'),
+                        'data_expiracao': data_expiracao.strftime('%Y-%m-%d %H:%M:%S'),
+                    }
 
                     # Atualiza o usuário com os dados da nova assinatura
                     user.plano = plano_nome
