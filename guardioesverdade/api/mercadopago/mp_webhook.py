@@ -21,52 +21,52 @@ mp = mercadopago.SDK(TOKEN_MERCADOPAGO)
 
 
 
-@app.before_request
-def before_request_hook():
-    """
-    Hook executado antes de cada requisição.
-    Verifica se a requisição é para o webhook do Mercado Pago e registra a tentativa de acesso.
-    """
-    if request.path == "/mercadopago/webhook":
-        app.logger.info("Tentativa de acesso ao webhook do Mercado Pago.")
+# @app.before_request
+# def before_request_hook():
+#     """
+#     Hook executado antes de cada requisição.
+#     Verifica se a requisição é para o webhook do Mercado Pago e registra a tentativa de acesso.
+#     """
+#     if request.path == "/mercadopago/webhook":
+#         app.logger.info("Tentativa de acesso ao webhook do Mercado Pago.")
 
 
-        # Lógica para recuperar o token de assinatura
-        x_signature = request.headers.get("x-signature")
+#         # Lógica para recuperar o token de assinatura
+#         x_signature = request.headers.get("x-signature")
 
-        if not x_signature:
-            app.logger.warning("Acesso não autorizado ao webhook: 'x-signature' ausente.")
-            return "Unauthorized", 401
+#         if not x_signature:
+#             app.logger.warning("Acesso não autorizado ao webhook: 'x-signature' ausente.")
+#             return "Unauthorized", 401
 
         
-        try:
-            parts = parse_qs(x_signature.replace(',', '&'))
-            client_id_assinatura = parts.get('id', [''])[0]
-            timestamp = parts.get('ts', [''])[0]
-            token = parts.get('v1', [''])[0]
+#         try:
+#             parts = parse_qs(x_signature.replace(',', '&'))
+#             client_id_assinatura = parts.get('id', [''])[0]
+#             timestamp = parts.get('ts', [''])[0]
+#             token = parts.get('v1', [''])[0]
 
 
-            body = request.get_data().decode('utf-8')
-            data_to_sign = f"id:{client_id_assinatura};ts:{timestamp};{body}"
+#             body = request.get_data().decode('utf-8')
+#             data_to_sign = f"id:{client_id_assinatura};ts:{timestamp};{body}"
 
 
-            hmac_signature = hmac.new(
-                CLIENT_SECRET.encode('utf-8'), 
-                data_to_sign.encode('utf-8'),
-                hashlib.sha256
-            ).digest()
+#             hmac_signature = hmac.new(
+#                 CLIENT_SECRET.encode('utf-8'), 
+#                 data_to_sign.encode('utf-8'),
+#                 hashlib.sha256
+#             ).digest()
 
-            # Compara a assinatura recebida com a assinatura gerada
-            if not hmac.compare_digest(urlsafe_b64decode(token), hmac_signature):
-                app.logger.error("Assinatura do webhook inválida. Possível tentativa de falsificação.")
-                return "Invalid Signature", 403
+#             # Compara a assinatura recebida com a assinatura gerada
+#             if not hmac.compare_digest(urlsafe_b64decode(token), hmac_signature):
+#                 app.logger.error("Assinatura do webhook inválida. Possível tentativa de falsificação.")
+#                 return "Invalid Signature", 403
             
             
-            app.logger.info("Assinatura de webhook validada com sucesso.")
+#             app.logger.info("Assinatura de webhook validada com sucesso.")
         
-        except Exception as e:
-            app.logger.error(f"Erro na validação da assinatura: {e}")
-            return "Internal Server Error during signature validation", 500
+#         except Exception as e:
+#             app.logger.error(f"Erro na validação da assinatura: {e}")
+#             return "Internal Server Error during signature validation", 500
 
 
 
