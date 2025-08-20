@@ -22,14 +22,19 @@ body {
     position: relative;
     height: 90vh;
     overflow: hidden;
-    background: linear-gradient(45deg, #000 50%, #fff 50%);
+    background: linear-gradient(
+        45deg,
+        var(--color-black) 50%,
+        var(--color-white) 50%
+    );
 }
 
 /* guardioes*/
 .gesquerdo,
 .gdireito {
-    width: 30%;
+    width: 28%;
     height: 100%;
+    position: absolute;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -37,6 +42,7 @@ body {
 
 .gesquerdo {
     display: flex;
+    left: 0vw;
     align-items: center;
     justify-content: flex-start;
 }
@@ -45,28 +51,43 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* position: relative;
-    bottom: -20px; */
+    right: 0vw;
     background-size: 115%;
     background-position-y: 0px;
 }
 
 /* Conteúdo central */
-.conteudo {
-    text-align: center;
-    z-index: 2;
-    width: 40%;
+.content {
+    position: relative;
+    width: 590px;
+    height: 90vh;
 }
 
-.conteudo h1 {
+.content__left, .content__right {
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+}
+.content__left {
+    z-index: 3;
+    color: var(--color-white);
+    clip-path: polygon(1% 0, 99% 100%, 1% 100%);
+}
+.content__right {
+    z-index: 2;
+    color: var(--color-black);
+}
+
+.content h1 {
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: 3px;
     line-height: 1.2;
-}
 
-.conteudo h1 span {
-    color: black;
 }
 
 .subtexto {
@@ -74,19 +95,16 @@ body {
     margin-top: 20px;
     font-weight: 500;
     letter-spacing: 1px;
-    color: white; 
 }
 
-.subtexto span {
-    color: #000000;
-}
 
-.subtexto span .purple {
+.purple {
     color: var(--color-white-purple);
+    font-weight: 500;
 }
 
 .botao {
-    margin-top: 20px;
+    margin-top: 40px;
     display: inline-block;
     padding: 12px 24px;
     font-size: 1rem;
