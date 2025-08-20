@@ -1,9 +1,11 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 
 from guardioesverdade import app
+from guardioesverdade.models import User
 from guardioesverdade.forms import UserForm, LoginForm
 from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
+from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
 
 @app.route("/")
@@ -22,7 +24,7 @@ def login():
             login_user(user, remember=True)
             return redirect(url_for("homepage"))
     
-    return render_template("login/login.html", form=form)
+    return render_template("pages/login/login.html", form=form)
 
 
 @app.route("/logout")
@@ -35,10 +37,12 @@ def cadastro():
     form = UserForm()
 
     if form.validate_on_submit():
-        form.save()
-        return redirect(url_for("homepage"))
-    
-    return render_template("login/cadastro.html", form=form)
+        user = form.save()
+        if user:
+            login_user(user, remember=True)
+            return redirect(url_for("homepage"))
+
+    return render_template("pages/login/cadastro.html", form=form)
 
 
 @app.route("/socio-guardiao")
@@ -50,12 +54,37 @@ def socioguardiao():
 @app.route("/socio-guardiao/<string:plano>/<int:price>")
 @login_required
 def assinar_plano(plano, price):
+    """
+    Garante que o link de pagamento para o plano selecionado
+    só seja gerado se o usuário estiver autenticado.
+    """
     try:
         link_pagamento = gera_link_pagamento(price)
         return redirect(link_pagamento)
     except ValueError as e:
         # TODO: Mostrar mensagem de erro ao usuário e capturar log.
         return str(e), 400
+
+
+@app.route("/pagamento/aprovado")
+def pagamento_aprovado():
+    """
+    Rota para exibir a página de pagamento aprovado.
+    Lê os dados da sessão e renderiza a página de confirmação.
+    """
+
+    assinatura_confirmada = session.get('assinatura_confirmada')
+    if not assinatura_confirmada:
+        return redirect(url_for("homepage"))
+
+    session.pop('assinatura_confirmada', None)  # Limpa os dados da sessão após uso
+
+    return render_template(
+        "pages/email/payment/aprovado.html",
+        assinatura=assinatura_confirmada
+    )
+
+
 
 @app.route("/sobre")
 def sobre():
@@ -71,10 +100,20 @@ def album():
 def classes():
     return render_template("pages/classes.html")
 
-    
+
 @app.route("/contato")
 def contato():
-    return render_template("pages/contato.html")
+    """
+    Rota para contato e lógica para envio de mensagem dinâmica via api do whatsapp.
+    """
+    
+    nome = current_user.nome if current_user.is_authenticated else None
+    sobrenome = current_user.sobrenome if current_user.is_authenticated else None
+    email = current_user.email if current_user.is_authenticated else None
+
+    link_whatsapp = gerar_link_whatsapp(nome, sobrenome, email)
+
+    return render_template("pages/contato.html", link_whatsapp=link_whatsapp)
 
 @app.route("/dracmas")
 def dracmas():
@@ -84,9 +123,10 @@ def dracmas():
 def eventos():
     return render_template("pages/eventos.html")
 
-@app.route("/arearestrita")
-def arearestrita():
-    return render_template("pages/arearestrita.html")
+@app.route("/area-restrita")
+def area_restrita():
+    users =  User.query.all()
+    return render_template("pages/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
 
 @app.route("/unidades")
 def unidades():

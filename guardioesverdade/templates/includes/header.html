@@ -24,9 +24,18 @@
         <li class="nav__item">
           <a href="{{ url_for('contato') }}" class="nav__link">Contato</a>
         </li>
+        {% if not current_user.is_authenticated %}
         <li class="nav__item">
           <a href="{{ url_for('login') }}" class="nav__link">Login</a>
         </li>
+        {% else %}
+        <li class="nav__item">
+          <a href="{{ url_for('homepage') }}" class="nav__link">{{ current_user.nome }}</a>
+        </li>
+        <li class="nav__item">
+          <a href="{{ url_for('logout') }}" class="nav__link">Sair</a>
+        </li>
+        {% endif %}
       </ul>
     </nav>
   </div>

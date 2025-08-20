@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+
+{% block title %}Area Restrita{% endblock %}
+{% block description %}Área restrita para usuários autenticados.{% endblock %}
+{% block ogtitle %}Área Restrita{% endblock %}
+{% block ogdescription %}Área restrita para usuários autenticados.{% endblock %}
+{% block twittertitle %}Área Restrita{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+<!-- body -->
+    <!-- main -->
+{% block content %}
+<table>
+    
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Plano</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.nome }}</td>
+            <td>{{ user.sobrenome }}</td>
+            <td><a href="mailto:{{ user.email }}" target="_blank">{{ user.email }}</a></td>
+            <td><a href="{{ link_whatsapp_usuario(user) }}" target="_blank">{{ user.telefone }}</a></td>
+            <td>{{ user.plano }}</td>
+            <td>
+                <a href="#">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
