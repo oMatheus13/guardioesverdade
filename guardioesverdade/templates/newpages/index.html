@@ -1,0 +1,63 @@
+{% extends "base/base.html" %}
+
+{% block title %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block description %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block ogtitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block ogdescription %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block twittertitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/newpages/index.css') }}">
+{% endblock %}
+
+<!-- body -->
+    <!-- main -->
+{% block content %}
+
+    <!--guardião esquerdo-->
+    <section class="guardiao">
+        <!--gesquerdo-->
+        <div class="gesquerdo"
+            style="background-image: url('{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-masculina.png') }}')">
+        </div>
+
+        <!--centro-->
+        <div class="conteudo">
+            <h1>O <span>RETORNO DO</span><br/><span>GUARDIÃO</span></h1>
+            <p class="subtexto">NÃO VO<span>LTAMOS PARA BRINCAR</span><br/>
+                VOLT<span>AMOS PARA <span class="purple">MARCAR</span></span>
+            </p>
+            <a href="#" class="botao">SABER MAIS</a>
+        </div>
+
+        <!--guardião direito-->
+        <div class="gdireito"
+            style="background-image: url('{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-feminina.png') }}');">
+        </div>
+    </section>
+
+    <section class="sobre">
+    <div class="content">
+        <!-- Imagem  -->
+        <div class="imagem">
+        <img src="{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-social.png') }}" alt="Guardiões">
+        </div>
+
+        <!-- Texto ao lado -->
+        <div class="text">
+        <h1>QUEM SÃO OS <span>GUARDIÕES</span>?</h1>
+        <p>
+            Somos mais do que um clube.
+            Somos uma missão viva.
+
+            Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
+
+            Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno: a verdade de Deus.
+
+            
+        </p>
+        <a href="#" class="btn">Conheça nossa história</a>
+        </div>
+    </div>
+    </section>
+{% endblock %}

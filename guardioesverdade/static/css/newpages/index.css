@@ -1,0 +1,232 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+/* Seção principal */
+.guardiao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    background: linear-gradient(45deg, #000 50%, #fff 50%);
+}
+
+/* guardioes*/
+.gesquerdo,
+.gdireito {
+    width: 30%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.gesquerdo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gdireito {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* position: relative;
+    bottom: -20px; */
+    background-size: 115%;
+    background-position-y: 0px;
+}
+
+/* Conteúdo central */
+.conteudo {
+    text-align: center;
+    z-index: 2;
+    width: 40%;
+}
+
+.conteudo h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1.2;
+}
+
+.conteudo h1 span {
+    color: black;
+}
+
+.subtexto {
+    font-size: 1rem;
+    margin-top: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: white; 
+}
+
+.subtexto span {
+    color: #000000;
+}
+
+.subtexto span .purple {
+    color: #5700a8;
+}
+
+.botao {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    background: #000;
+    border: 2px solid #7ac223;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.botao:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid #5700a8;
+}
+
+
+.sobre {
+    background: linear-gradient(45deg, #000 70%, rgba(190, 190, 190, 0.253) 100%);
+}
+
+  /* Media query for mobile devices */
+@media (max-width: 768px) {
+
+    .guardiao {
+        flex-direction: column;
+        height: 50vh;
+    }
+
+    .gesquerdo, .gdireito {
+        position: absolute;
+        width: 100%;
+        height: 50vh;
+        background-size: 90%;
+    }
+    .gesquerdo{
+        background-position-x: -49vw;
+        background-position-y: 0vh;
+    }
+    .gdireito {
+        display: none;
+        background-size: 105%;
+        background-position-x: 41.5vw;
+        background-position-y: 0vh;
+    }
+
+    .conteudo {
+        width: 90%;
+        text-align: end;
+        margin: -2.5vh 8vw 0 10vw;
+    }
+
+    .conteudo h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtexto {
+        font-size: 0.9rem;
+    }
+    
+    .botao {
+        margin-top: 40px;
+    }
+
+
+    .sobre {
+        background: #000;
+    }
+    
+
+}
+
+
+/* Seção Sobre*/
+
+.sobre .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    padding: 20px;
+}
+
+  /* Imagem */
+.sobre .imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10vw;
+}
+
+.sobre .imagem img {
+    width: 300px;
+    height: auto;
+}
+
+  /* Texto */
+.sobre .text {
+    max-width: 500px;
+    text-align: center; 
+    margin: 0 auto; 
+}
+
+.sobre .text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.sobre .text h1 span {
+    color: #7d4acb;
+}
+
+.sobre .text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+  /* Botão */
+.sobre .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: #111;
+    background-color: #7d4acb;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 0 auto;
+}
+
+.sobre .btn:hover {
+    background: #7d4a;
+    color: white;
+}

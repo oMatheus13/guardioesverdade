@@ -8,6 +8,11 @@ from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
 from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
 
+@app.route("/new/")
+def new_homepage():
+
+    return render_template("newpages/index.html", user=current_user)
+
 @app.route("/")
 def homepage():
 
