@@ -82,7 +82,7 @@ body {
 }
 
 .subtexto span .purple {
-    color: #5700a8;
+    color: var(--color-white-purple);
 }
 
 .botao {

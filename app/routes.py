@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 
-from guardioesverdade import app
-from guardioesverdade.models import User
-from guardioesverdade.forms import UserForm, LoginForm
-from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
-from guardioesverdade.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
+from app import app
+from app.models import User
+from app.forms import UserForm, LoginForm
+from app.api.mercadopago.mp_api import gera_link_pagamento
+from app.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
 
 @app.route("/new/")

@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 from flask import request
 
-from guardioesverdade import app, db
-from guardioesverdade.models import User, Assinatura
+from app import app, db
+from app.models import User, Assinatura
 
 
 

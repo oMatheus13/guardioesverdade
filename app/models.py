@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from guardioesverdade import db, login_manager
+from app import db, login_manager
 
 
 @login_manager.user_loader

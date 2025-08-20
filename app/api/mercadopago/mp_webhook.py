@@ -6,10 +6,10 @@ from urllib.parse import parse_qs
 
 from flask import request, session
 
-from guardioesverdade import db, app
-from guardioesverdade.models import User, Assinatura
-from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP
-from guardioesverdade.api.contato.flask_mail import enviar_email
+from app import db, app
+from app.models import User, Assinatura
+from app.api.mercadopago.mp_config import PLANO_MAP
+from app.api.contato.flask_mail import enviar_email
 from datetime import datetime, timedelta
 
 import mercadopago

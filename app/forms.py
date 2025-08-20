@@ -8,8 +8,8 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
-from guardioesverdade import db, bcrypt
-from guardioesverdade.models import User
+from app import db, bcrypt
+from app.models import User
 
 
 class UserForm(FlaskForm):

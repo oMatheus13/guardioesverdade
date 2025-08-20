@@ -44,9 +44,9 @@ bcrypt = Bcrypt(app)
 mail = Mail(app)
 
 
-from guardioesverdade.routes import homepage, login
-from guardioesverdade.api.mercadopago.mp_webhook import mercadopago_webhook
-from guardioesverdade.api.mercadopago.mp_tasks import cron_verifica_assinaturas
-from guardioesverdade.api.mercadopago.mp_api import gera_link_pagamento
-from guardioesverdade.api.contato.flask_mail import enviar_email
-from guardioesverdade.forms import UserForm, LoginForm
+from app.routes import homepage, login
+from app.api.mercadopago.mp_webhook import mercadopago_webhook
+from app.api.mercadopago.mp_tasks import cron_verifica_assinaturas
+from app.api.mercadopago.mp_api import gera_link_pagamento
+from app.api.contato.flask_mail import enviar_email
+from app.forms import UserForm, LoginForm

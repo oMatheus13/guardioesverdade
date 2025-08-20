@@ -1,1 +1,1 @@
-from guardioesverdade import app
+from app import app

@@ -2,7 +2,7 @@ import os
 
 from flask_login import current_user
 
-from guardioesverdade.api.mercadopago.mp_config import PLANO_MAP, BACK_URLS_MAP
+from app.api.mercadopago.mp_config import PLANO_MAP, BACK_URLS_MAP
 
 import mercadopago
 

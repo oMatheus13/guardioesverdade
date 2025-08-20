@@ -1,6 +1,6 @@
 from flask import render_template
 from flask_mail import Message
-from guardioesverdade import app, mail
+from app import app, mail
 
 
 def enviar_email(assunto:str, destinatarios, template:str, **kwargs):
