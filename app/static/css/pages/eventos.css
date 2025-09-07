@@ -1,0 +1,62 @@
+/* static/css/pages/eventos.css */
+
+/* Customização do cabeçalho da página */
+.eventos-header h1 {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black-purple);
+    font-size: var(--font-size-h2);
+}
+
+.eventos-header .lead {
+    font-family: var(--font-family-secondary);
+}
+
+
+/* Estilização dos cards de evento */
+.evento-card {
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--border-radius-lg);
+    transition: transform var(--transition-duration-default) var(--transition-timing-function-default),
+                box-shadow var(--transition-duration-default) var(--transition-timing-function-default);
+}
+
+.evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.evento-card .card-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.evento-card .card-text {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
+}
+
+/* Customização do botão (apenas um exemplo) */
+.evento-card .btn-outline-primary {
+    --bs-btn-color: var(--color-white-purple);
+    --bs-btn-border-color: var(--color-white-purple);
+    --bs-btn-hover-color: var(--color-text-light);
+    --bs-btn-hover-bg: var(--color-white-purple);
+    --bs-btn-hover-border-color: var(--color-white-purple);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* Customização da "badge" (etiqueta) de data */
+.badge-evento {
+    background-color: var(--color-black-purple);
+    color: var(--color-text-light);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+}

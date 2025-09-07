@@ -2,10 +2,12 @@ from flask import render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 
 from app import app
-from app.models import User
+from app.models import User, Evento
 from app.forms import UserForm, LoginForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
 from app.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
+
+import datetime
 
 
 @app.route("/new/")
@@ -30,7 +32,6 @@ def login():
             return redirect(url_for("homepage"))
     
     return render_template("pages/login/login.html", form=form)
-
 
 @app.route("/logout")
 def logout():
@@ -69,7 +70,6 @@ def assinar_plano(plano, price):
     except ValueError as e:
         # TODO: Mostrar mensagem de erro ao usuário e capturar log.
         return str(e), 400
-
 
 @app.route("/pagamento/aprovado")
 def pagamento_aprovado():
@@ -126,7 +126,14 @@ def dracmas():
 
 @app.route("/eventos")
 def eventos():
-    return render_template("pages/eventos.html")
+    agora = datetime.datetime.now()
+
+    proximos_eventos = Evento.query.filter(
+        Evento.is_publico == True,
+        Evento.data_evento >= agora
+    ).order_by(Evento.data_evento.asc()).limit(3).all()
+
+    return render_template("pages/eventos.html", proximos_eventos=proximos_eventos)
 
 @app.route("/area-restrita")
 def area_restrita():

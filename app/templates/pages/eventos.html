@@ -2,87 +2,80 @@
 
 {% block title %}Eventos | Guardiões da Verdade{% endblock %}
 {% block description %}Fique por dentro dos próximos eventos, atividades e calendários do Clube de Desbravadores Guardiões da Verdade. Acompanhe nossa agenda e participe!{% endblock %}
-{% block ogtitle %}Eventos | Guardiões da Verdade{% endblock %}
-{% block ogdescription %}Fique por dentro dos próximos eventos, atividades e calendários do Clube de Desbravadores Guardiões da Verdade. Acompanhe nossa agenda e participe!{% endblock %}
-{% block twittertitle %}Eventos | Guardiões da Verdade{% endblock %}
-
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/eventos.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/eventos.css') }}">
 {% endblock %}
 
-<!-- body -->
-<!-- main -->
 {% block content %}
-<main class="eventos">
+<main class="container my-5">
+    <div class="row">
 
-  <section class="eventos__section">
-    <h1 class="eventos__title">Próximos Eventos</h1>
+        <div class="col-12">
+            <section>
+                <div class="text-center mb-5 eventos-header">
+                    <h1>Nossos Próximos Eventos</h1>
+                    <p class="lead text-secondary">Fique por dentro da nossa agenda e participe!</p>
+                </div>
 
-    <div class="eventos__proximo">
-      <h2 class="eventos__proximo-titulo">O Retorno do Guardião</h2>
-      <p class="eventos__proximo-data"><strong>Data:</strong> 16 de agosto</p>
-      <p class="eventos__proximo-horario"><strong>Horário:</strong> A partir das 15h30</p>
-      <p class="eventos__proximo-local">
-        <strong>Local:</strong>
-        Parte 1: Igreja Adventista – Loteamento<br>
-        Parte 2: Escola Fulano de Tal
-      </p>
-      <p class="eventos__proximo-descricao"><strong>Descrição:</strong> Um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.</p>
-      <a href="#" class="eventos__proximo-detalhes">[Link para página de detalhes do evento, se existir]</a>
-    </div>
-  </section>
+                <div class="row">
+                    {% if proximos_eventos %}
+                        {% for evento in proximos_eventos %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 shadow-sm evento-card">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ evento.titulo }}</h5>
+                                    <div class="mb-3">
+                                        <span class="badge badge-evento">
+                                            {{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}
+                                        </span>
+                                    </div>
+                                    <p class="card-text text-secondary">
+                                        <strong class="text-primary">Local:</strong> {{ evento.local }}
+                                    </p>
+                                    <p class="card-text flex-grow-1">{{ evento.descricao | truncate(120) }}</p>
+                                    <a href="#" class="btn btn-outline-primary mt-auto disabled">Ver Detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert" style="--bs-alert-bg: var(--color-background-secondary); --bs-alert-border-color: var(--color-border-default);">
+                                Nenhum evento programado no momento. Fique de olho para futuras atualizações!
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        </div>
 
-  <section class="eventos__section">
-    <h2 class="eventos__title">Eventos Futuros (Aguarde Mais Informações)</h2>
+        <div class="col-12">
+            <hr class="my-5">
+        </div>
 
-    <div class="eventos__futuro">
-      <h3 class="eventos__futuro-titulo">Acampamento de Primavera (É um Lorem ipsum)</h3>
-      <p class="eventos__futuro-data"><strong>Data:</strong> [A ser definida</p>
-      <p class="eventos__futuro-descricao"><strong>Descrição:</strong> Desfrute da natureza, aprenda novas habilidades e fortaleça os laços com seus amigos desbravadores.</p>
-      <a href="#" class="eventos__futuro-detalhes">Mais informações em breve!</a>
-    </div>
+        <div class="col-12">
+            <section>
+                <h2 class="section-title">Eventos Regulares</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item fs-5"><strong>Reuniões Semanais:</strong> Domingos às 08:30</li>
+                    <li class="list-group-item fs-5"><strong>Encontros de Unidade:</strong> Consulte o líder da sua unidade.</li>
+                </ul>
+            </section>
+        </div>
+        
+        <div class="col-12">
+            <hr class="my-5">
+        </div>
 
-    <div class="eventos__futuro">
-      <h3 class="eventos__futuro-titulo">Investidura de Outono (É um Lorem ipsum)</h3>
-      <p class="eventos__futuro-data"><strong>Data:</strong> [A ser definida]</p>
-      <p class="eventos__futuro-descricao"><strong>Descrição:</strong> Celebre as conquistas dos nossos desbravadores e seus progressos nas classes e especialidades.</p>
-      <a href="#" class="eventos__futuro-detalhes">Mais informações em breve!</a>
-    </div>
-  </section>
+        <div class="col-12">
+            <section>
+                <h2 class="section-title">Outras Informações</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">A programação de eventos está sujeita a alterações. Fique atento aos comunicados oficiais.</li>
+                    <li class="list-group-item">Para dúvidas ou mais detalhes, entre em contato com a diretoria do clube.</li>
+                </ul>
+            </section>
+        </div>
 
-  <section class="eventos__section">
-    <h2 class="eventos__title">Eventos Regulares</h2>
-    <ul class="eventos__lista">
-      <li class="eventos__lista-item"><strong>Reuniões Semanais:</strong> Domingos às 08:30 (Endereço: Rua Polidoro Alves Vanderley, 121)</li>
-      <li class="eventos__lista-item"><strong>Encontros de Unidade:</strong> [Horários e locais variam. Consulte o líder da sua unidade.]</li>
-    </ul>
-  </section>
-
-  <section class="eventos__section">
-    <h2 class="eventos__title">Outras Informações</h2>
-    <ul class="eventos__lista">
-      <li class="eventos__lista-item"><strong>Feriados:</strong> Consulte o calendário escolar local para feriados e recessos.</li>
-      <li class="eventos__lista-item"><strong>Alterações:</strong> A programação de eventos está sujeita a alterações. Fique atento aos comunicados oficiais do clube.</li>
-      <li class="eventos__lista-item"><strong>Contato:</strong> Para dúvidas ou informações adicionais, entre em contato com a diretoria do clube.</li>
-    </ul>
-  </section>
-
-  <section class="eventos__section">
-    <h2 class="eventos__title">Calendário de Eventos (Pra depois do mais importante)</h2>
-    <p class="eventos__paragraph">[Implementar um componente de calendário visual mensal ou semanal aqui, mostrando os dias com eventos/feriados destacados. Idealmente, os dias clicáveis levariam a detalhes sobre o evento. (Ele pode ficar abaixo dos 3 próximos eventos)</p>
-
-    <h3 class="eventos__legenda-titulo">Legenda do Calendário:</h3>
-    <ul class="eventos__legenda-lista">
-      <li class="eventos__legenda-item">🔵 Evento do Clube</li>
-      <li class="eventos__legenda-item">🔴 Feriado</li>
-      <li class="eventos__legenda-item">🟢 Reunião Regular</li>
-    </ul>
-  </section>
-
-  <section class="eventos__section">
-    <h2 class="eventos__title">Arquivo de Eventos Passados</h2>
-    <p class="eventos__paragraph">[Opcional: Adicionar uma seção com links ou resumos de eventos passados, talvez com fotos e vídeos.]</p>
-  </section>
-
-</main>
+    </div> </main>
 {% endblock %}
