@@ -1,12 +1,15 @@
 from flask_wtf import FlaskForm
 from wtforms import (
     StringField,
+    TextAreaField,
     EmailField,
-    SubmitField,
     PasswordField,
-    DateField
+    BooleanField,
+    DateField,
+    DateTimeField,
+    SubmitField,
 )
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 
 from app import db, bcrypt
 from app.models import User
@@ -106,3 +109,14 @@ class LoginForm(FlaskForm):
             return user
         else:
             raise ValidationError("Email ou senha inválidos.")
+
+
+
+class EventoForm(FlaskForm):
+    titulo = StringField("Título do Evento", validators=[DataRequired(), Length(min=3, max=120)])
+    descricao = TextAreaField("Descrição do Evento", validators=[DataRequired()])
+    data_evento = DateTimeField("Data do Evento", format="%Y-%m-%dT%H:%M", validators=[DataRequired()])
+    local = StringField("Local do Evento", validators=[DataRequired(), Length(min=3, max=200)])
+    is_publico = BooleanField("Evento público (Visível para todos)", default=True)
+
+    submit = SubmitField("Criar Evento")

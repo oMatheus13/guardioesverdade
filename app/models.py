@@ -8,6 +8,8 @@ def load_user(user_id):
 
 
 class User(db.Model, UserMixin):
+    """ Modelo para Usuários """
+
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
     sobrenome = db.Column(db.String(100), nullable=False)
@@ -27,15 +29,25 @@ class User(db.Model, UserMixin):
     data_criacao = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
 
     # Relação para todas as assinaturas do usuário.
-    # Usamos o `foreign_keys` para indicar qual coluna usar na tabela Assinatura.
+    # Usa o `foreign_keys` para indicar qual coluna usar na tabela Assinatura.
     assinaturas = db.relationship(
         'Assinatura', back_populates='user', foreign_keys='Assinatura.id_user'
     )
     
-    # Adicionamos uma nova relação para a assinatura ativa, usando a coluna id_assinatura_ativa.
+    # Adiciona uma nova relação para a assinatura ativa, usando a coluna id_assinatura_ativa.
     assinatura_ativa = db.relationship(
         'Assinatura', foreign_keys=[id_assinatura_ativa], post_update=True
     )
+
+
+    # Coluna para guardar eventos criados por Admins
+    eventos_criados = db.relationship(
+        'Evento',
+        back_populates='admin',
+        lazy=True,
+        cascade='all, delete-orphan'  # Garante que eventos sejam deletados se o admin for deletado
+    )
+
 
     def get_cpf(self):
         cpf = self.cpf
@@ -70,3 +82,21 @@ class Assinatura(db.Model):
                 f'Data de Assinatura: {self.data_assinatura}, '
                 f'Estado: {self.estado}, Expira em: {self.data_expiracao}>')
 
+
+class Evento(db.Model):
+    __tablename__ = 'eventos'
+
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(120), nullable=False)
+    descricao = db.Column(db.Text, nullable=False)
+    data_evento = db.Column(db.DateTime, nullable=False)
+    local = db.Column(db.String(200), nullable=False)
+    is_publico = db.Column(db.Boolean, default=True, nullable=False)
+
+    id_admin = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    admin = db.relationship('User', back_populates='eventos_criados')
+
+
+    def __repr__(self):
+        return f'<Evento: {self.titulo} em {self.data_evento} por Admin: {self.admin.nome}>'
