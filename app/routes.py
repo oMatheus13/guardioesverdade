@@ -1,7 +1,10 @@
-from flask import render_template, redirect, url_for, session
+from flask import (
+    render_template, redirect, url_for, session, flash
+)
 from flask_login import login_required, login_user, logout_user, current_user
+from functools import wraps
 
-from app import app
+from app import app, db
 from app.models import User, Evento
 from app.forms import UserForm, LoginForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
@@ -10,6 +13,22 @@ from app.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usu
 import datetime
 
 
+def admin_required(f):
+    """
+    Decorator para garantir que apenas usuários com papel de 'admin' possam acessar certas rotas.
+    Redireciona para a homepage com uma mensagem flash se o usuário não for admin.
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated or current_user.role != 'admin':
+            flash('Acesso negado. É necessário ser admin para obter acesso.')
+            return redirect(url_for("homepage"))
+        return f(*args, **kwargs)
+    return decorated_function
+        
+
+
+# Rotas públicas
 @app.route("/new/")
 def new_homepage():
 
@@ -51,6 +70,7 @@ def cadastro():
     return render_template("pages/login/cadastro.html", form=form)
 
 
+# Rotas para Sócio Guardião
 @app.route("/socio-guardiao")
 def socioguardiao():
     
@@ -90,7 +110,7 @@ def pagamento_aprovado():
     )
 
 
-
+# Outras rotas
 @app.route("/sobre")
 def sobre():
     return render_template("pages/sobre.html")
@@ -135,15 +155,40 @@ def eventos():
 
     return render_template("pages/eventos.html", proximos_eventos=proximos_eventos)
 
-@app.route("/area-restrita")
-def area_restrita():
-    users =  User.query.all()
-    return render_template("pages/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
 
 @app.route("/unidades")
 def unidades():
     return render_template("pages/unidades.html")
 
+
+# Rotas administrativas
+    
+@app.route("/admin/eventos")
+@login_required
+@admin_required
+def admin_eventos_dashboard():
+    return render_template("pages/admin/eventos_dashboard.html")
+@app.route("/area-restrita")
+def area_restrita():
+    users =  User.query.all()
+    return render_template("pages/admin/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
+
+
+# Rotas para testes
+@app.route("/admin/new-admin/<int:user_id>")
+@login_required
+@admin_required
+def tornar_admin(user_id):
+    user = User.query.get(user_id)
+    if user:
+        user.role = 'admin'
+        db.session.commit()
+        return redirect(url_for('area_restrita'))
+    else:
+        return "Usuário não encontrado", 404
+
+
+# Rotas para Doações - desativadas temporariamente
 
 # @app.route("/doacoes")
 # def donate():

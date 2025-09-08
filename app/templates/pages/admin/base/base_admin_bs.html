@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block admin_title %}Painel Admin{% endblock %} | Guardiões da Verdade</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/admin/base/base_admin_bs.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/admin/base/notif_flash.css') }}">
+    {% block admin_styles %}{% endblock %}
+</head>
+<body>
+    <div class="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="toast show border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex rounded-3 text-white 
+                            {% if category == 'success' %} bg-success
+                            {% elif category == 'danger' %} bg-danger
+                            {% elif category == 'warning' %} bg-warning
+                            {% elif category == 'info' %} bg-info
+                            {% else %} bg-secondary
+                            {% endif %}">
+                            <div class="toast-body">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="admin-wrapper">
+        <nav id="admin-sidebar" class="d-flex flex-column flex-shrink-0 p-3">
+            <a href="{{ url_for('homepage') }}" class="navbar__link__logo d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <i class="sidebar__logo fa-solid fa-shield-halved fa-2x me-2"></i>
+                <span class="fs-4 sidebar-text">GV Admin</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <i class="fa-solid fa-gauge me-2"></i><span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <i class="fa-solid fa-calendar-days me-2"></i><span class="sidebar-text">Eventos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <i class="fa-solid fa-users me-2"></i><span class="sidebar-text">Sócios</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-sliders me-2"></i>
+                    <strong class="sidebar-text">Exibição</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#" id="sidebar-behavior" data-behavior="hover">Expandir ao passar o mouse</a></li>
+                    <li><a class="dropdown-item" href="#" id="sidebar-behavior" data-behavior="expanded">Sempre expandido</a></li>
+                    <li><a class="dropdown-item" href="#" id="sidebar-behavior" data-behavior="collapsed">Sempre colapsado</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="admin-content p-4">
+            {% block admin_content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/admin/base/notif_flash.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin/base/sidebar.js') }}"></script>
+    {% block admin_scripts %}{% endblock %}
+</body>
+</html>
