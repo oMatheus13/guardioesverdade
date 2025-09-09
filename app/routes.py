@@ -6,7 +6,7 @@ from functools import wraps
 
 from app import app, db
 from app.models import User, Evento
-from app.forms import UserForm, LoginForm
+from app.forms import UserForm, LoginForm, EventoForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
 from app.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
@@ -148,6 +148,7 @@ def dracmas():
 def eventos():
     agora = datetime.datetime.now()
 
+    # Lista os 3 proximos eventos marcados como publicos
     proximos_eventos = Evento.query.filter(
         Evento.is_publico == True,
         Evento.data_evento >= agora
@@ -167,7 +168,61 @@ def unidades():
 @login_required
 @admin_required
 def admin_eventos_dashboard():
-    return render_template("pages/admin/eventos_dashboard.html")
+    # Todos os eventos ordenados pela data mais recente
+    eventos = Evento.query.order_by(Evento.data_evento.desc()).all()
+
+    return render_template("pages/admin/eventos/eventos_dashboard.html", eventos=eventos)
+
+@app.route("/admin/eventos/novo", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_eventos_create():
+    form = EventoForm()
+    admin = current_user
+
+    if form.validate_on_submit():
+        evento = form.save(admin)
+        if evento:
+            return redirect(url_for('admin_eventos_dashboard'))
+
+    return render_template("pages/admin/eventos/eventos_novo.html", form=form)
+
+@app.route("/admin/eventos/edit/<int:evento_id>", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_eventos_edit(evento_id):
+    evento = Evento.query.get(evento_id)
+    if not evento:
+        flash("Evento não encontrado.", "danger")
+        return redirect(url_for('admin_eventos_dashboard'))
+    
+    admin = current_user
+    form = EventoForm(obj=evento)
+
+    if form.validate_on_submit():
+        form.update(evento, admin)
+        return redirect(url_for('admin_eventos_dashboard'))
+
+
+    return render_template("pages/admin/eventos/eventos_edit.html", form=form, evento=evento)
+
+
+@app.route("/admin/eventos/excluir/<int:evento_id>", methods=["POST"])
+@login_required
+@admin_required
+def admin_eventos_delete(evento_id):
+    evento = Evento.query.get(evento_id)
+    if not evento:
+        flash("Evento não encontrado.", "danger")
+        return redirect(url_for('admin_eventos_dashboard'))
+
+    admin = current_user
+    form = EventoForm(obj=evento)
+    form.delete(evento, admin)
+    
+    return redirect(url_for('admin_eventos_dashboard'))
+
+
 @app.route("/area-restrita")
 def area_restrita():
     users =  User.query.all()

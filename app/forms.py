@@ -1,3 +1,4 @@
+from flask import flash
 from flask_wtf import FlaskForm
 from wtforms import (
     StringField,
@@ -11,8 +12,8 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 
-from app import db, bcrypt
-from app.models import User
+from app import app, db, bcrypt
+from app.models import User, Evento
 
 
 class UserForm(FlaskForm):
@@ -120,3 +121,60 @@ class EventoForm(FlaskForm):
     is_publico = BooleanField("Evento público (Visível para todos)", default=True)
 
     submit = SubmitField("Criar Evento")
+
+
+    def save(self, admin):
+        try:
+            evento = Evento(
+                id_admin = admin.id,
+                titulo = self.titulo.data,
+                descricao = self.descricao.data,
+                data_evento = self.data_evento.data,
+                local = self.local.data,
+                is_publico = self.is_publico.data
+            )
+
+            db.session.add(evento)
+            db.session.commit()
+            flash(f"Evento criado com sucesso!", "success")
+            app.logger.info(
+                f"Evento '{evento.titulo}' criado por Admin ID: {admin.id}, Nome: {admin.nome}"
+            )
+            return evento
+        except Exception as e:
+            db.session.rollback()
+            flash("Erro ao salvar o evento. Verifique os dados e tente novamente.", "danger")
+            app.logger.error(f"Erro ao salvar evento: {e}")
+            raise ValidationError("Erro ao salvar o evento. Verifique os dados e tente novamente.")
+    
+    
+    def update(self, evento, admin):
+        try:
+            evento.titulo = self.titulo.data
+            evento.descricao = self.descricao.data
+            evento.data_evento = self.data_evento.data
+            evento.local = self.local.data
+            evento.is_publico = self.is_publico.data
+
+            db.session.commit()
+            flash(f"Evento atualizado com sucesso!", "success")
+            app.logger.info(f"Evento '{evento.titulo}' atualizado por Admin ID: {admin.id}, Nome: {admin.nome}")
+            return evento
+        except Exception as e:
+            db.session.rollback()
+            flash("Erro ao atualizar o evento. Verifique os dados e tente novamente.", "danger")
+            app.logger.error(f"Erro ao atualizar evento: {e}")
+            raise ValidationError("Erro ao atualizar o evento. Verifique os dados e tente novamente.")
+        
+        
+    def delete(self, evento, admin):
+        try:
+            db.session.delete(evento)
+            db.session.commit()
+            flash(f"Evento excluído com sucesso!", "success")
+            app.logger.info(f"Evento '{evento.titulo}' excluído por Admin ID: {admin.id}, Nome: {admin.nome}")
+        except Exception as e:
+            db.session.rollback()
+            flash("Erro ao excluir o evento. Tente novamente.", "danger")
+            app.logger.error(f"Erro ao excluir evento: {e}")
+            raise ValidationError("Erro ao excluir o evento. Tente novamente.")

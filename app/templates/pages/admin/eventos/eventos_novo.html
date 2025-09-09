@@ -1,0 +1,57 @@
+{% extends "pages/admin/base/base_admin_bs.html" %}
+
+{% block admin_title %}Criar Novo Evento{% endblock %}
+
+{% block admin_content %}
+<h1 class="mb-4">Criar Novo Evento</h1>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('admin_eventos_create') }}" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.titulo.label(class="form-label") }}
+                {{ form.titulo(class="form-control is-invalid" if form.titulo.errors else "form-control", placeholder="Ex: Acampamento de Verão") }}
+                {% for error in form.titulo.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.local.label(class="form-label") }}
+                {{ form.local(class="form-control is-invalid" if form.local.errors else "form-control", placeholder="Ex: Parque Estadual da Cantareira") }}
+                {% for error in form.local.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.data_evento.label(class="form-label") }}
+                {{ form.data_evento(class="form-control is-invalid" if form.data_evento.errors else "form-control") }}
+                {% for error in form.data_evento.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.descricao.label(class="form-label") }}
+                {{ form.descricao(class="form-control is-invalid" if form.descricao.errors else "form-control", rows="5", placeholder="Descreva os detalhes do evento...") }}
+                {% for error in form.descricao.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-check mb-4">
+                {{ form.is_publico(class="form-check-input") }}
+                {{ form.is_publico.label(class="form-check-label") }}
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <a href="{{ url_for('admin_eventos_dashboard') }}" class="btn btn-secondary me-2">Cancelar</a>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "pages/admin/base/base_admin_bs.html" %}
+{% from 'components/macros/modals.html' import delete_modal_label, delete_modal_button%}
+
+{% block admin_title %}Dashboard de Eventos{% endblock %}
+
+{% block admin_content %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Gerenciamento de Eventos</h1>
+        <a href="{{ url_for('admin_eventos_create') }}" class="btn btn-primary">
+            <i class="fa-solid fa-plus me-2"></i>Criar Novo Evento
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Título</th>
+                            <th scope="col">Data do Evento</th>
+                            <th scope="col">Local</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if eventos %}
+                            {% for evento in eventos %}
+                            <tr>
+                                <td>{{ evento.titulo }}</td>
+                                <td>{{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}</td>
+                                <td>{{ evento.local }}</td>
+                                <td>
+                                    {% if evento.is_publico %}
+                                        <span class="badge bg-success">Público</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Oculto</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end">
+                                    <a href="{{ url_for('admin_eventos_edit', evento_id=evento.id) }}" class="btn btn-sm btn-outline-secondary me-2">
+                                        <i class="fa-solid fa-pencil me-1"></i> Editar
+                                    </a>
+                                    <!-- Botão de exclusão por modal -->
+                                    {{ delete_modal_button(
+                                        action_url=url_for('admin_eventos_delete', evento_id=evento.id),
+                                        item_tipo="evento",
+                                        item_nome=evento.titulo
+                                        )
+                                    }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center py-4">Nenhum evento encontrado.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal de Confirmação de Exclusão -->
+    {{ delete_modal_label() }}
+{% endblock %}
