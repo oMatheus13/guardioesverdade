@@ -1,5 +1,6 @@
 from flask import flash
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import (
     StringField,
     TextAreaField,
@@ -12,7 +13,7 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 
-from app import app, db, bcrypt
+from app import app, db, bcrypt, eventos_storage
 from app.models import User, Evento
 
 
@@ -114,21 +115,35 @@ class LoginForm(FlaskForm):
 
 
 class EventoForm(FlaskForm):
-    titulo = StringField("Título do Evento", validators=[DataRequired(), Length(min=3, max=120)])
-    descricao = TextAreaField("Descrição do Evento", validators=[DataRequired()])
-    data_evento = DateTimeField("Data do Evento", format="%Y-%m-%dT%H:%M", validators=[DataRequired()])
-    local = StringField("Local do Evento", validators=[DataRequired(), Length(min=3, max=200)])
+    titulo = StringField("Título do Evento*", validators=[DataRequired(), Length(min=3, max=120)])
+    imagem_capa = FileField("Imagem de Capa (Banner)",
+                            validators=[FileAllowed(['jpg', 'jpeg', 'png'],
+                                                    'Apenas imagens .jpg, .jpeg ou .png são permitidas!'
+    )])
+
+    descricao_breve = TextAreaField("Descrição Breve* (Cards)", validators=[DataRequired(), Length(max=255)])
+    roteiro_publico = TextAreaField("Roteiro Público*", validators=[DataRequired()])
+    roteiro_privado = TextAreaField("Roteiro Privado (Opcional)")
+
+    data_evento = DateTimeField("Data e Hora do Evento*", format="%Y-%m-%dT%H:%M", validators=[DataRequired()])
+    local = StringField("Local do Evento*", validators=[DataRequired(), Length(min=3, max=200)])
     is_publico = BooleanField("Evento público (Visível para todos)", default=True)
 
-    submit = SubmitField("Criar Evento")
+    submit = SubmitField("Salvar Evento")
 
 
     def save(self, admin):
+        # Faz upload da imagem e obtém a URL
+        imagem_url = eventos_storage.upload(self.imagem_capa.data)
+
         try:
             evento = Evento(
                 id_admin = admin.id,
                 titulo = self.titulo.data,
-                descricao = self.descricao.data,
+                imagem_capa_url = imagem_url,
+                descricao_breve = self.descricao_breve.data,
+                roteiro_publico = self.roteiro_publico.data,
+                roteiro_privado = self.roteiro_privado.data or None,
                 data_evento = self.data_evento.data,
                 local = self.local.data,
                 is_publico = self.is_publico.data
@@ -143,18 +158,28 @@ class EventoForm(FlaskForm):
             return evento
         except Exception as e:
             db.session.rollback()
+            # Se o save falhar, deleta a imagem que já foi enviada
+            if imagem_url:
+                eventos_storage.delete(imagem_url)
             flash("Erro ao salvar o evento. Verifique os dados e tente novamente.", "danger")
             app.logger.error(f"Erro ao salvar evento: {e}")
-            raise ValidationError("Erro ao salvar o evento. Verifique os dados e tente novamente.")
+            return None  # Retorna None em caso de falha
     
     
     def update(self, evento, admin):
+        # Atualiza a imagem (deleta a antiga, envia a nova)
+        nova_imagem_url = eventos_storage.update(evento.imagem_capa_url, self.imagem_capa.data)
+
         try:
             evento.titulo = self.titulo.data
-            evento.descricao = self.descricao.data
+            evento.imagem_capa_url = nova_imagem_url # Atualiza a URL da imagem
+            evento.descricao_breve = self.descricao_breve.data
+            evento.roteiro_publico = self.roteiro_publico.data
+            evento.roteiro_privado = self.roteiro_privado.data or None
             evento.data_evento = self.data_evento.data
             evento.local = self.local.data
             evento.is_publico = self.is_publico.data
+
 
             db.session.commit()
             flash(f"Evento atualizado com sucesso!", "success")
@@ -164,13 +189,20 @@ class EventoForm(FlaskForm):
             db.session.rollback()
             flash("Erro ao atualizar o evento. Verifique os dados e tente novamente.", "danger")
             app.logger.error(f"Erro ao atualizar evento: {e}")
-            raise ValidationError("Erro ao atualizar o evento. Verifique os dados e tente novamente.")
+            return None
         
         
     def delete(self, evento, admin):
+        imagem_url = evento.imagem_capa_url
+
         try:
             db.session.delete(evento)
             db.session.commit()
+
+            if imagem_url:
+                eventos_storage.delete(imagem_url)
+
+            
             flash(f"Evento excluído com sucesso!", "success")
             app.logger.info(f"Evento '{evento.titulo}' excluído por Admin ID: {admin.id}, Nome: {admin.nome}")
         except Exception as e:

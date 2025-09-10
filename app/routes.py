@@ -1,10 +1,10 @@
 from flask import (
-    render_template, redirect, url_for, session, flash
+    render_template, redirect, url_for, session, flash, request, jsonify
 )
 from flask_login import login_required, login_user, logout_user, current_user
 from functools import wraps
 
-from app import app, db
+from app import app, db, eventos_storage
 from app.models import User, Evento
 from app.forms import UserForm, LoginForm, EventoForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
@@ -227,6 +227,31 @@ def admin_eventos_delete(evento_id):
 def area_restrita():
     users =  User.query.all()
     return render_template("pages/admin/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
+
+
+
+
+# ------ Rota para a API
+
+@app.route("/api/upload-image-ckeditor", methods=["POST"])
+@login_required
+@admin_required
+def upload_image_ckeditor():
+    """
+    Endpoint de API para o CKEditor fazer upload de imagens.
+    """
+    
+    file = request.files.get("upload")
+
+    if not file:
+        return jsonify({"error": "Nenhum ficheiro enviado."}), 400
+    
+    image_url = eventos_storage.upload(file)
+
+    if image_url:
+        return jsonify({"url": image_url})
+    else:
+        return jsonify({"error": "Ocorreu um erro durante o upload"}), 500
 
 
 # Rotas para testes
