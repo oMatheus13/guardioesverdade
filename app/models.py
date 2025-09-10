@@ -88,11 +88,17 @@ class Evento(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(120), nullable=False)
-    descricao = db.Column(db.Text, nullable=False)
     data_evento = db.Column(db.DateTime, nullable=False)
     local = db.Column(db.String(200), nullable=False)
     is_publico = db.Column(db.Boolean, default=True, nullable=False)
+    
+    imagem_capa_url = db.Column(db.String(512), nullable=True)
 
+    descricao_breve = db.Column(db.String(255), nullable=False)
+    roteiro_publico = db.Column(db.Text, nullable=False)
+    roteiro_privado = db.Column(db.Text, nullable=True)
+    
+    # Chave estrangeira que aponta para o id do usuário que é o admin (criador) do evento
     id_admin = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     admin = db.relationship('User', back_populates='eventos_criados')
