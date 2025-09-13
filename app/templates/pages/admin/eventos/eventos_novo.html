@@ -1,0 +1,90 @@
+{% extends "pages/admin/base/base_admin_bs.html" %}
+
+{% block admin_title %}Criar Novo Evento{% endblock %}
+
+{% block admin_content %}
+<h1 class="mb-4">Criar Novo Evento</h1>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('admin_eventos_create') }}" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        {{ form.titulo.label(class="form-label") }}
+                        {{ form.titulo(class="form-control form-control-lg is-invalid" if form.titulo.errors else "form-control form-control-lg", placeholder="Ex: Acampamento de Verão") }}
+                        {% for error in form.titulo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.descricao_breve.label(class="form-label") }}
+                        {{ form.descricao_breve(class="form-control is-invalid" if form.descricao_breve.errors else "form-control", rows="3", placeholder="Um resumo atrativo que aparecerá nos cards da página de eventos...") }}
+                        {% for error in form.descricao_breve.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        {{ form.imagem_capa.label(class="form-label") }}
+                        {{ form.imagem_capa(class="form-control is-invalid" if form.imagem_capa.errors else "form-control") }}
+                        <small class="form-text text-muted">Imagem que será o banner e a capa do card.</small>
+                        {% for error in form.imagem_capa.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.local.label(class="form-label") }}
+                    {{ form.local(class="form-control is-invalid" if form.local.errors else "form-control", placeholder="Ex: Parque Estadual da Cantareira") }}
+                    {% for error in form.local.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.data_evento.label(class="form-label") }}
+                    {# Forçando o type para ativar o seletor de data/hora nativo do navegador #}
+                    {{ form.data_evento(class="form-control is-invalid" if form.data_evento.errors else "form-control", type='datetime-local') }}
+                    {% for error in form.data_evento.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                {{ form.roteiro_publico.label(class="form-label") }}
+                {# O id="roteiro_publico" será usado pelo JavaScript para ativar o CKEditor #}
+                {{ form.roteiro_publico(class="form-control", id="roteiro_publico") }}
+                {% for error in form.roteiro_publico.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.roteiro_privado.label(class="form-label") }}
+                {# O id="roteiro_privado" também será usado pelo JavaScript #}
+                {{ form.roteiro_privado(class="form-control", id="roteiro_privado") }}
+                {% for error in form.roteiro_privado.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}
+            </div>
+
+            <div class="form-check mb-4">
+                {{ form.is_publico(class="form-check-input") }}
+                {{ form.is_publico.label(class="form-check-label") }}
+            </div>
+
+            <div class="d-flex justify-content-end border-top pt-3">
+                <a href="{{ url_for('admin_eventos_dashboard') }}" class="btn btn-secondary me-2">Cancelar</a>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block admin_scripts %}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+
+<script src="{{ url_for('static', filename='js/admin/ckeditor_config.js') }}"></script>
+<script>
+    // Inicializa os editores
+    initializeCKEditor('#roteiro_publico');
+    initializeCKEditor('#roteiro_privado');
+</script>
+{% endblock %}

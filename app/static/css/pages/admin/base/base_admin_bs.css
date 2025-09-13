@@ -1,0 +1,127 @@
+/* static/css/pages/admin/base/base_admin_bs.css */
+
+:root {
+    --sidebar-width-expanded: 200px;
+    --sidebar-width-collapsed: 80px;
+}
+
+body {
+    background-color: var(--color-background-secondary);
+}
+
+.admin-wrapper {
+    display: flex;
+}
+
+/* --- LOGICA PRINCIPAL DA SIDEBAR --- */
+#admin-sidebar {
+    height: 100vh; /* Ocupa a altura toda */
+    position: fixed; /* Fica fixa na tela */
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: var(--color-text-primary); /* Cor de fundo principal */
+    transition: width var(--transition-duration-default) ease-in-out;
+}
+
+.admin-content {
+    flex-grow: 1;
+    /* A transição na margem cria o efeito de "empurrar" */
+    transition: margin-left var(--transition-duration-default) ease-in-out;
+}
+
+/* --- COMPORTAMENTOS --- */
+
+/* 1. MODO: SEMPRE EXPANDIDO */
+body.sidebar-expanded #admin-sidebar {
+    width: var(--sidebar-width-expanded);
+}
+body.sidebar-expanded .admin-content {
+    margin-left: var(--sidebar-width-expanded);
+}
+
+/* 2. MODO: SEMPRE COLAPSADO */
+body.sidebar-collapsed #admin-sidebar {
+    width: var(--sidebar-width-collapsed);
+}
+body.sidebar-collapsed .admin-content {
+    margin-left: var(--sidebar-width-collapsed);
+}
+body.sidebar-collapsed .sidebar-text,
+body.sidebar-collapsed #admin-sidebar hr {
+    display: none;
+}
+
+/* 3. MODO: HOVER (Expandir ao passar o mouse) */
+body.sidebar-hoverable .admin-content {
+    /* O conteúdo SEMPRE fica afastado pela largura da sidebar colapsada */
+    margin-left: var(--sidebar-width-collapsed);
+}
+body.sidebar-hoverable #admin-sidebar {
+    /* Por padrão, fica colapsada */
+    width: var(--sidebar-width-collapsed);
+}
+body.sidebar-hoverable #admin-sidebar:hover {
+    /* Ao passar o mouse, expande */
+    width: var(--sidebar-width-expanded);
+}
+body.sidebar-hoverable #admin-sidebar .sidebar-text,
+body.sidebar-hoverable #admin-sidebar hr {
+    /* Esconde o texto por padrão */
+    display: none;
+}
+body.sidebar-hoverable #admin-sidebar:hover .sidebar-text,
+body.sidebar-hoverable #admin-sidebar:hover hr {
+    /* Mostra o texto ao passar o mouse */
+    display: block;
+}
+
+/* --- IDENTIDADE VISUAL E AJUSTES FINOS --- */
+
+/* Alinhamento e espaçamento dos itens da nav */
+#admin-sidebar .nav-pills .nav-link {
+    color: #adb5bd; /* Cor secundária para texto de link */
+    border-radius: var(--border-radius-md);
+}
+#admin-sidebar .nav-pills .nav-link i {
+    width: 100%; /* Garante alinhamento dos ícones */
+    text-align: center;
+}
+body.sidebar-hoverable #admin-sidebar:hover .nav-pills .nav-link i,
+body.sidebar-expanded #admin-sidebar .nav-pills .nav-link i {
+    width: 26px; /* Garante alinhamento dos ícones */
+    text-align: center;
+}
+#admin-sidebar .navbar__link__logo .sidebar__logo {
+    margin-left: 10px;
+    width: 100%; /* Garante alinhamento dos ícones */
+    text-align: center;
+}
+#admin-sidebar:hover .navbar__link__logo .sidebar__logo,
+body.sidebar-expanded #admin-sidebar .navbar__link__logo .sidebar__logo {
+    text-align: left;
+    width: auto;
+}
+#admin-sidebar .nav-pills .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+}
+/* Cor do link ativo */
+#admin-sidebar .nav-pills .nav-link.active {
+    background-color: var(--color-white-purple);
+    color: var(--color-white);
+}
+
+/* FIX: Margem vertical quando colapsado */
+#admin-sidebar .nav-pills {
+    padding-top: var(--spacing-md);
+}
+#admin-sidebar hr {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Conteúdo principal com espaçamento padronizado */
+.admin-content {
+    /* Distância padrão entre o conteúdo e a sidebar */
+    padding: var(--spacing-xl); 
+}

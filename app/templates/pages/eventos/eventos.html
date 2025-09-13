@@ -1,0 +1,91 @@
+{% extends "base/base.html" %}
+
+{% block title %}Eventos | Guardiões da Verdade{% endblock %}
+{% block description %}Fique por dentro dos próximos eventos, atividades e calendários do Clube de Desbravadores Guardiões da Verdade. Acompanhe nossa agenda e participe!{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/eventos.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <section>
+                <div class="text-center mb-5 eventos-header">
+                    <h1>Nossos Próximos Eventos</h1>
+                    <p class="lead text-secondary">Fique por dentro da nossa agenda e participe!</p>
+                </div>
+
+                <div class="row">
+                    {% if proximos_eventos %}
+                        {% for evento in proximos_eventos %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            {# O card inteiro agora é um link para a página de detalhes #}
+                            <a href="{{ url_for('eventos_detalhe', evento_id=evento.id) }}" class="card-link">
+                                <div class="card h-100 shadow-sm evento-card">
+                                    {# Imagem de Capa com fallback para a imagem template #}
+                                    <img src="{{ evento.imagem_capa_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}" class="card-img-top" alt="Capa do evento {{ evento.titulo }}">
+                                    
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">{{ evento.titulo }}</h5>
+                                        <div class="mb-3">
+                                            <span class="badge badge-evento">
+                                                {{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}
+                                            </span>
+                                        </div>
+                                        <p class="card-text text-secondary">
+                                            <strong class="text-primary">Local:</strong> {{ evento.local }}
+                                        </p>
+                                        {# descricao_breve #}
+                                        <p class="card-text flex-grow-1">{{ evento.descricao_breve }}</p>
+                                        <div class="mt-auto text-end">
+                                            <span class="btn btn-outline-primary btn-sm">Ver Detalhes <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert" style="--bs-alert-bg: var(--color-background-secondary); --bs-alert-border-color: var(--color-border-default);">
+                                Nenhum evento programado no momento. Fique de olho para futuras atualizações!
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Divisão entre os conteúdos -->
+        <div class="col-12">
+            <hr class="my-5">
+        </div>
+
+        <div class="col-12">
+            <section>
+                <h2 class="section-title">Eventos Regulares</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item fs-5"><strong>Reuniões Semanais:</strong> Domingos às 08:30</li>
+                    <li class="list-group-item fs-5"><strong>Encontros de Unidade:</strong> Consulte o líder da sua unidade.</li>
+                </ul>
+            </section>
+        </div>
+        
+        <div class="col-12">
+            <hr class="my-5">
+        </div>
+
+        <div class="col-12">
+            <section>
+                <h2 class="section-title">Outras Informações</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">A programação de eventos está sujeita a alterações. Fique atento aos comunicados oficiais.</li>
+                    <li class="list-group-item">Para dúvidas ou mais detalhes, entre em contato com a diretoria do clube.</li>
+                </ul>
+            </section>
+        </div>
+
+    </div> 
+</main>
+{% endblock %}

@@ -1,0 +1,46 @@
+{## Modo de uso:
+    1. '{% from 'components/macros/modals.html' import delete_modal_label, delete_modal_button%}'
+    2. '<!-- Botão de exclusão por modal -->
+        {{ delete_modal_button(
+            action_url=url_for('admin_eventos_delete', evento_id=evento.id),
+            item_tipo="evento",
+            item_nome=evento.titulo
+            )
+        }}'
+    
+##}
+
+{% macro delete_modal_label() %}
+<!-- Modal de Confirmação de Exclusão -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza de que deseja excluir o <span id="itemTipo"></span> <span id="itemNome"></span>? Esta ação não pode ser desfeita.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" method="POST" action="">
+                    <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro delete_modal_button(action_url, item_tipo, item_nome) %}
+    <button type="button" class="btn btn-sm btn-outline-danger" 
+        data-bs-toggle="modal" 
+        data-bs-target="#confirmDeleteModal"
+        data-bs-action="{{ action_url }}"
+        item-tipo="{{ item_tipo }}"
+        item-nome="{{ item_nome }}">
+    <i class="fa-solid fa-trash me-1"></i> Excluir
+    </button>
+{% endmacro %}

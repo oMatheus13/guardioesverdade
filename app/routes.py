@@ -1,13 +1,34 @@
-from flask import render_template, redirect, url_for, session
+from flask import (
+    render_template, redirect, url_for, session, flash, request, jsonify
+)
 from flask_login import login_required, login_user, logout_user, current_user
+from functools import wraps
 
-from app import app
-from app.models import User
-from app.forms import UserForm, LoginForm
+from app import app, db, eventos_storage, EVENTOS_TOKEN
+from app.models import User, Evento
+from app.forms import UserForm, LoginForm, EventoForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
 from app.api.contato.whatsapp_link import gerar_link_whatsapp, link_whatsapp_usuario
 
+import datetime
 
+
+def admin_required(f):
+    """
+    Decorator para garantir que apenas usuários com papel de 'admin' possam acessar certas rotas.
+    Redireciona para a homepage com uma mensagem flash se o usuário não for admin.
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated or current_user.role != 'admin':
+            flash('Acesso negado. É necessário ser admin para obter acesso.')
+            return redirect(url_for("homepage"))
+        return f(*args, **kwargs)
+    return decorated_function
+        
+
+
+# Rotas públicas
 @app.route("/new/")
 def new_homepage():
 
@@ -31,7 +52,6 @@ def login():
     
     return render_template("pages/login/login.html", form=form)
 
-
 @app.route("/logout")
 def logout():
     logout_user()
@@ -50,6 +70,7 @@ def cadastro():
     return render_template("pages/login/cadastro.html", form=form)
 
 
+# Rotas para Sócio Guardião
 @app.route("/socio-guardiao")
 def socioguardiao():
     
@@ -70,7 +91,6 @@ def assinar_plano(plano, price):
         # TODO: Mostrar mensagem de erro ao usuário e capturar log.
         return str(e), 400
 
-
 @app.route("/pagamento/aprovado")
 def pagamento_aprovado():
     """
@@ -90,7 +110,7 @@ def pagamento_aprovado():
     )
 
 
-
+# Outras rotas
 @app.route("/sobre")
 def sobre():
     return render_template("pages/sobre.html")
@@ -126,17 +146,144 @@ def dracmas():
 
 @app.route("/eventos")
 def eventos():
-    return render_template("pages/eventos.html")
+    agora = datetime.datetime.now()
 
-@app.route("/area-restrita")
-def area_restrita():
-    users =  User.query.all()
-    return render_template("pages/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
+    # Lista os 3 proximos eventos marcados como publicos
+    proximos_eventos = Evento.query.filter(
+        Evento.is_publico == True,
+        Evento.data_evento >= agora
+    ).order_by(Evento.data_evento.asc()).limit(3).all()
+
+    return render_template("pages/eventos/eventos.html", proximos_eventos=proximos_eventos)
+
+@app.route("/eventos/<int:evento_id>")
+def eventos_detalhe(evento_id):
+    """ Exibe a página de detalhes de um evento específico """
+    evento = Evento.query.get_or_404(evento_id)
+    if not evento.is_publico and (not current_user.is_authenticated or current_user.role != 'admin'):
+        flash("Evento não disponível para visualização.", "warning")
+        return redirect(url_for('eventos'))
+    
+    token_acesso = request.args.get('eventos_token')
+    acesso_privado = False
+    if token_acesso == EVENTOS_TOKEN:
+        acesso_privado = True
+
+    return render_template("pages/eventos/eventos_detalhe.html", evento=evento, acesso_privado=acesso_privado)
+
 
 @app.route("/unidades")
 def unidades():
     return render_template("pages/unidades.html")
 
+
+# Rotas administrativas
+    
+@app.route("/admin/eventos")
+@login_required
+@admin_required
+def admin_eventos_dashboard():
+    # Todos os eventos ordenados pela data mais recente
+    eventos = Evento.query.order_by(Evento.data_evento.desc()).all()
+
+    return render_template("pages/admin/eventos/eventos_dashboard.html", eventos=eventos)
+
+@app.route("/admin/eventos/novo", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_eventos_create():
+    form = EventoForm()
+    admin = current_user
+
+    if form.validate_on_submit():
+        evento = form.save(admin)
+        if evento:
+            return redirect(url_for('admin_eventos_dashboard'))
+
+    return render_template("pages/admin/eventos/eventos_novo.html", form=form)
+
+@app.route("/admin/eventos/edit/<int:evento_id>", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_eventos_edit(evento_id):
+    evento = Evento.query.get(evento_id)
+    if not evento:
+        flash("Evento não encontrado.", "danger")
+        return redirect(url_for('admin_eventos_dashboard'))
+    
+    admin = current_user
+    form = EventoForm(obj=evento)
+
+    if form.validate_on_submit():
+        form.update(evento, admin)
+        return redirect(url_for('admin_eventos_dashboard'))
+
+
+    return render_template("pages/admin/eventos/eventos_edit.html", form=form, evento=evento)
+
+
+@app.route("/admin/eventos/excluir/<int:evento_id>", methods=["POST"])
+@login_required
+@admin_required
+def admin_eventos_delete(evento_id):
+    evento = Evento.query.get(evento_id)
+    if not evento:
+        flash("Evento não encontrado.", "danger")
+        return redirect(url_for('admin_eventos_dashboard'))
+
+    admin = current_user
+    form = EventoForm(obj=evento)
+    form.delete(evento, admin)
+    
+    return redirect(url_for('admin_eventos_dashboard'))
+
+
+@app.route("/area-restrita")
+def area_restrita():
+    users =  User.query.all()
+    return render_template("pages/admin/area-restrita.html", users=users, link_whatsapp_usuario=link_whatsapp_usuario)
+
+
+
+
+# ------ Rota para a API
+
+@app.route("/api/upload-image-ckeditor", methods=["POST"])
+@login_required
+@admin_required
+def upload_image_ckeditor():
+    """
+    Endpoint de API para o CKEditor fazer upload de imagens.
+    """
+    
+    file = request.files.get("upload")
+
+    if not file:
+        return jsonify({"error": "Nenhum ficheiro enviado."}), 400
+    
+    image_url = eventos_storage.upload(file)
+
+    if image_url:
+        return jsonify({"url": image_url})
+    else:
+        return jsonify({"error": "Ocorreu um erro durante o upload"}), 500
+
+
+# Rotas para testes
+@app.route("/admin/new-admin/<int:user_id>")
+@login_required
+@admin_required
+def tornar_admin(user_id):
+    user = User.query.get(user_id)
+    if user:
+        user.role = 'admin'
+        db.session.commit()
+        return redirect(url_for('area_restrita'))
+    else:
+        return "Usuário não encontrado", 404
+
+
+# Rotas para Doações - desativadas temporariamente
 
 # @app.route("/doacoes")
 # def donate():
