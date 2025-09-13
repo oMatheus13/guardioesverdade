@@ -19,12 +19,29 @@
     border-radius: var(--border-radius-lg);
     transition: transform var(--transition-duration-default) var(--transition-timing-function-default),
                 box-shadow var(--transition-duration-default) var(--transition-timing-function-default);
+    overflow: hidden; /* Garante que a imagem não vaze das bordas arredondadas */
+}
+
+
+.evento-card .card-img-top {
+    height: 200px; /* Altura fixa para todos os cards */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
 }
 
 .evento-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--box-shadow-lg);
 }
+
+
+.card-link {
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    color: inherit; /* Faz o texto dentro do link herdar a cor do card */
+}
+.card-link:hover {
+    color: inherit; /* Mantém a cor herdada mesmo no hover */
+}
+
 
 .evento-card .card-title {
     font-family: var(--font-family-primary);
