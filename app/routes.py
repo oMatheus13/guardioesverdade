@@ -4,7 +4,7 @@ from flask import (
 from flask_login import login_required, login_user, logout_user, current_user
 from functools import wraps
 
-from app import app, db, eventos_storage
+from app import app, db, eventos_storage, EVENTOS_TOKEN
 from app.models import User, Evento
 from app.forms import UserForm, LoginForm, EventoForm
 from app.api.mercadopago.mp_api import gera_link_pagamento
@@ -154,7 +154,22 @@ def eventos():
         Evento.data_evento >= agora
     ).order_by(Evento.data_evento.asc()).limit(3).all()
 
-    return render_template("pages/eventos.html", proximos_eventos=proximos_eventos)
+    return render_template("pages/eventos/eventos.html", proximos_eventos=proximos_eventos)
+
+@app.route("/eventos/<int:evento_id>")
+def eventos_detalhe(evento_id):
+    """ Exibe a página de detalhes de um evento específico """
+    evento = Evento.query.get_or_404(evento_id)
+    if not evento.is_publico and (not current_user.is_authenticated or current_user.role != 'admin'):
+        flash("Evento não disponível para visualização.", "warning")
+        return redirect(url_for('eventos'))
+    
+    token_acesso = request.args.get('eventos_token')
+    acesso_privado = False
+    if token_acesso == EVENTOS_TOKEN:
+        acesso_privado = True
+
+    return render_template("pages/eventos/eventos_detalhe.html", evento=evento, acesso_privado=acesso_privado)
 
 
 @app.route("/unidades")

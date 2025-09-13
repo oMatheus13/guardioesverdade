@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-from flask_mail import Mail, Message
+from flask_mail import Mail
 
 
 from supabase import create_client
@@ -45,6 +45,10 @@ login_manager.login_view = (
 )
 bcrypt = Bcrypt(app)
 mail = Mail(app)
+
+
+# Outras variáveis secretas
+EVENTOS_TOKEN = os.getenv('EVENTOS_TOKEN')
 
 
 # Importações relacionadas à API

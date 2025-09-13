@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ evento.titulo }} | Eventos{% endblock %}
+{% block description %}{{ evento.descricao_breve }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/evento_detalhe.css') }}">
+{% endblock %}
+
+{% block content %}
+<article class="evento-detalhe">
+    <!-- Banner com a Imagem de Capa -->
+    <header class="evento-banner" style="background-image: url('{{ evento.imagem_capa_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');">
+        <div class="banner-overlay">
+            <div class="container">
+                <h1 class="evento-titulo">{{ evento.titulo }}</h1>
+                <div class="evento-meta">
+                    <!-- TODO: Tentar corrigir mês para pt-br e colocar local acima da data -->
+                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d de %M de %Y às %H:%M') }}</span>
+                    <span><i class="fa-solid fa-location-dot me-2"></i>{{ evento.local }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo do Evento -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Roteiro Público -->
+                <section class="evento-conteudo mb-5">
+                    <h2 class="section-title">Sobre o Evento</h2>
+                    {# O filtro |safe é ESSENCIAL para renderizar o HTML do CKEditor #}
+                    {{ evento.roteiro_publico | safe }}
+                </section>
+
+                <!-- Roteiro Privado (Condicional) -->
+                {% if acesso_privado and evento.roteiro_privado %}
+                <section class="evento-conteudo-privado mb-5">
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="fa-solid fa-lock fa-2x me-3"></i>
+                        <div>
+                            <h4 class="alert-heading">Conteúdo Privado</h4>
+                            <p class="mb-0">Esta é uma seção com informações exclusivas para participantes.</p>
+                        </div>
+                    </div>
+                    {{ evento.roteiro_privado | safe }}
+                </section>
+                {% endif %}
+
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('eventos') }}" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar para todos os eventos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
