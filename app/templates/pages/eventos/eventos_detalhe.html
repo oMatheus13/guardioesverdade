@@ -4,7 +4,7 @@
 {% block description %}{{ evento.descricao_breve }}{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/evento_detalhe.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/eventos/eventos_detalhe.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -14,10 +14,10 @@
         <div class="banner-overlay">
             <div class="container">
                 <h1 class="evento-titulo">{{ evento.titulo }}</h1>
+                
                 <div class="evento-meta">
-                    <!-- TODO: Tentar corrigir mês para pt-br e colocar local acima da data -->
-                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}</span>
                     <span><i class="fa-solid fa-location-dot me-2"></i>{{ evento.local }}</span>
+                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d de %B de %Y às %H:%M') }}</span>
                 </div>
             </div>
         </div>
@@ -30,7 +30,6 @@
                 <!-- Roteiro Público -->
                 <section class="evento-conteudo mb-5">
                     <h2 class="section-title">Sobre o Evento</h2>
-                    {# O filtro |safe é ESSENCIAL para renderizar o HTML do CKEditor #}
                     {{ evento.roteiro_publico | safe }}
                 </section>
 
@@ -58,3 +57,4 @@
     </div>
 </article>
 {% endblock %}
+

@@ -1,0 +1,112 @@
+.evento-banner {
+    height: 60vh;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* PARA LEITURA NA PARTE DE BAIXO DO BANNER */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 60%);
+    padding: var(--spacing-xl) 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Controla o layout lado a lado do título e dos metadados */
+.banner-overlay > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    gap: var(--spacing-xl); /* Espaço entre título e metadados */
+}
+
+.evento-titulo {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Define a largura aproximada, permitindo que o texto quebre a linha */
+    flex-basis: 50%;
+}
+
+.evento-meta {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    /* Define a largura e alinha o conteúdo à direita */
+    flex-basis: 40%;
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* --- CONTEÚDO DA PÁGINA --- */
+.evento-conteudo {
+    font-family: var(--font-family-secondary);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.evento-conteudo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.section-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: var(--border-width-default) solid var(--color-black-purple);
+    display: inline-block;
+}
+
+.evento-conteudo-privado {
+    border: 1px solid var(--color-support-info);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    background-color: var(--color-background-default);
+}
+
+/* --- AJUSTES PARA DISPOSITIVOS MÓVEIS --- */
+@media (max-width: 768px) {
+    /* Faz o layout voltar a ser vertical em telas menores */
+    .banner-overlay > .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .evento-banner {
+        height: 50vh; /* Diminui a altura do banner */
+    }
+
+    .evento-titulo {
+        /* Reduz drasticamente o tamanho do título */
+        font-size: var(--font-size-h3);
+        margin-bottom: var(--spacing-md);
+        width: 100%; /* Garante que ocupe a largura toda */
+    }
+
+    .evento-meta {
+        /* Reduz o tamanho da fonte e alinha à esquerda para legibilidade */
+        font-size: var(--font-size-sm);
+        gap: var(--spacing-xxs);
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+}
+

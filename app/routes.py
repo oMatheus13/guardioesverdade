@@ -149,9 +149,12 @@ def eventos():
     agora = datetime.datetime.now()
 
     # Lista os 3 proximos eventos marcados como publicos
+    # TODO: Implementar uma solução robusta com timezones (ex: pytz ou dateutil).
+    #       Esta solução paliativa evita que eventos desapareçam antes da hora
+    #       em servidores com fuso horário diferente (ex: UTC).
     proximos_eventos = Evento.query.filter(
         Evento.is_publico == True,
-        Evento.data_evento >= agora
+        Evento.data_evento >= agora - datetime.timedelta(hours=12)
     ).order_by(Evento.data_evento.asc()).limit(3).all()
 
     return render_template("pages/eventos/eventos.html", proximos_eventos=proximos_eventos)
