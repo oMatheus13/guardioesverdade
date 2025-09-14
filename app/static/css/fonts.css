@@ -7,76 +7,76 @@
 * URL: https://www.fontshare.com/fonts/panchang
 * © 2025 Indian Type Foundry
 *
-* Panchang Extralight 
-* Panchang Light 
-* Panchang Regular 
-* Panchang Medium 
-* Panchang Semibold 
-* Panchang Bold 
-* Panchang Extrabold 
+* Panchang Extralight
+* Panchang Light
+* Panchang Regular
+* Panchang Medium
+* Panchang Semibold
+* Panchang Bold
+* Panchang Extrabold
 * Panchang Variable (Variable font)
 
 *
 */
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Extralight.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Extralight.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Extralight.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Extralight.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Extralight.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Extralight.ttf') format('truetype');
   font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Light.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Light.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Light.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Light.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Light.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Light.ttf') format('truetype');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Regular.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Regular.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Regular.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Regular.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Medium.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Medium.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Medium.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Medium.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Medium.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Medium.ttf') format('truetype');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Semibold.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Semibold.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Semibold.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Semibold.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Semibold.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Bold.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Bold.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Bold.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Bold.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Panchang';
-  src: url('/assets/fonts/panchang/Panchang-Extrabold.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Extrabold.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Extrabold.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Extrabold.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Extrabold.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Extrabold.ttf') format('truetype');
   font-weight: 800;
   font-display: swap;
   font-style: normal;
@@ -91,9 +91,9 @@
 */
 @font-face {
   font-family: 'Panchang-Variable';
-  src: url('/assets/fonts/panchang/Panchang-Variable.woff2') format('woff2'),
-       url('/assets/fonts/panchang/Panchang-Variable.woff') format('woff'),
-       url('/assets/fonts/panchang/Panchang-Variable.ttf') format('truetype');
+  src: url('../assets/fonts/panchang/Panchang-Variable.woff2') format('woff2'),
+       url('../assets/fonts/panchang/Panchang-Variable.woff') format('woff'),
+       url('../assets/fonts/panchang/Panchang-Variable.ttf') format('truetype');
   font-weight: 200 800;
   font-display: swap;
   font-style: normal;
@@ -105,9 +105,9 @@
 /* Work Sans */
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Thin.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Thin.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Thin.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Thin.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Thin.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Thin.ttf') format('truetype');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -115,9 +115,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-ThinItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-ThinItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-ThinItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-ThinItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-ThinItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-ThinItalic.ttf') format('truetype');
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -125,9 +125,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-ExtraLight.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraLight.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraLight.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-ExtraLight.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraLight.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraLight.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
     font-display: swap;
@@ -135,9 +135,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-ExtraLightItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraLightItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraLightItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-ExtraLightItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraLightItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraLightItalic.ttf') format('truetype');
     font-weight: 200;
     font-style: italic;
     font-display: swap;
@@ -145,9 +145,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Light.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Light.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Light.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Light.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Light.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -155,9 +155,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-LightItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-LightItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-LightItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-LightItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-LightItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -165,9 +165,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Regular.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Regular.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Regular.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Regular.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -175,9 +175,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Italic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Italic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Italic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Italic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Italic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -185,9 +185,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Medium.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Medium.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Medium.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Medium.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Medium.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -195,9 +195,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-MediumItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-MediumItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-MediumItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-MediumItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-MediumItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-MediumItalic.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
     font-display: swap;
@@ -205,9 +205,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-SemiBold.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-SemiBold.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-SemiBold.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-SemiBold.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-SemiBold.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -215,9 +215,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-SemiBoldItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-SemiBoldItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-SemiBoldItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-SemiBoldItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-SemiBoldItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-SemiBoldItalic.ttf') format('truetype');
     font-weight: 600;
     font-style: italic;
     font-display: swap;
@@ -225,9 +225,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Bold.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Bold.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Bold.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Bold.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Bold.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -235,9 +235,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-ExtraBold.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraBold.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraBold.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-ExtraBold.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraBold.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraBold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -245,9 +245,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-BoldItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-BoldItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-BoldItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-BoldItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-BoldItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-BoldItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -255,9 +255,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-ExtraBoldItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraBoldItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-ExtraBoldItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-ExtraBoldItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraBoldItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-ExtraBoldItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -265,9 +265,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-Black.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-Black.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-Black.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-Black.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-Black.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -275,9 +275,9 @@
 
 @font-face {
     font-family: 'Work Sans';
-    src: url('/assets/fonts/work-sans/WorkSans-BlackItalic.woff2') format('woff2'),
-        url('/assets/fonts/work-sans/WorkSans-BlackItalic.woff') format('woff'),
-        url('/assets/fonts/work-sans/WorkSans-BlackItalic.ttf') format('truetype');
+    src: url('../assets/fonts/work-sans/WorkSans-BlackItalic.woff2') format('woff2'),
+        url('../assets/fonts/work-sans/WorkSans-BlackItalic.woff') format('woff'),
+        url('../assets/fonts/work-sans/WorkSans-BlackItalic.ttf') format('truetype');
     font-weight: 900;
     font-style: italic;
     font-display: swap;
