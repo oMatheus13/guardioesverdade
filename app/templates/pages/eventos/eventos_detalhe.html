@@ -16,7 +16,7 @@
                 <h1 class="evento-titulo">{{ evento.titulo }}</h1>
                 <div class="evento-meta">
                     <!-- TODO: Tentar corrigir mês para pt-br e colocar local acima da data -->
-                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d de %M de %Y às %H:%M') }}</span>
+                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}</span>
                     <span><i class="fa-solid fa-location-dot me-2"></i>{{ evento.local }}</span>
                 </div>
             </div>
