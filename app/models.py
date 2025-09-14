@@ -92,7 +92,8 @@ class Evento(db.Model):
     local = db.Column(db.String(200), nullable=False)
     is_publico = db.Column(db.Boolean, default=True, nullable=False)
     
-    imagem_capa_url = db.Column(db.String(512), nullable=True)
+    imagem_banner_desktop_url = db.Column(db.String(512), nullable=True)
+    imagem_banner_mobile_url = db.Column(db.String(512), nullable=True)
 
     descricao_breve = db.Column(db.String(255), nullable=False)
     roteiro_publico = db.Column(db.Text, nullable=False)

@@ -12,19 +12,20 @@
 {% block content %}
 <article class="evento-detalhe">
     <!-- Banner com a Imagem de Capa -->
-    <header class="evento-banner" style="background-image: url('{{ evento.imagem_capa_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');">
-        <div class="banner-overlay">
-            <div class="container">
-                <h1 class="evento-titulo">{{ evento.titulo }}</h1>
-                
-                <div class="evento-meta">
-                    <span><i class="fa-solid fa-location-dot me-2"></i>{{ evento.local }}</span>
-                    <!-- TODO: Alterar para abreviação pt-BR do mês -->
-                    <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d/%m/%Y às %H:%M') }}</span>
-                </div>
+    <!-- Banner com a Imagem de Capa -->
+<header class="evento-banner" 
+        style=" --banner-desktop: url('{{ evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');
+                --banner-mobile: url('{{ evento.imagem_banner_mobile_url or evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');">
+    <div class="banner-overlay">
+        <div class="container">
+            <h1 class="evento-titulo">{{ evento.titulo }}</h1>
+            <div class="evento-meta">
+                <span><i class="fa-solid fa-location-dot me-2"></i>{{ evento.local }}</span>
+                <span><i class="fa-solid fa-calendar-day me-2"></i>{{ evento.data_evento.strftime('%d de %B de %Y às %H:%M') }}</span>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Conteúdo do Evento -->
     <div class="container mt-5">

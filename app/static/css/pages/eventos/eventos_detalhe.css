@@ -1,3 +1,4 @@
+
 .evento-banner {
     height: 60vh;
     min-height: 400px;
@@ -5,6 +6,9 @@
     background-position: center;
     position: relative;
     color: var(--color-white);
+
+    /* Define o banner de desktop como padrão */
+    background-image: var(--banner-desktop);
 }
 
 /* PARA LEITURA NA PARTE DE BAIXO DO BANNER */
@@ -91,6 +95,7 @@
 
     .evento-banner {
         height: 50vh; /* Diminui a altura do banner */
+        background-image: var(--banner-mobile);
     }
 
     .evento-titulo {

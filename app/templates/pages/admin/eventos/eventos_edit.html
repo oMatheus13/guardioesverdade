@@ -11,7 +11,7 @@
             {{ form.hidden_tag() }}
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="mb-3">
                         {{ form.titulo.label(class="form-label") }}
                         {{ form.titulo(class="form-control form-control-lg is-invalid" if form.titulo.errors else "form-control form-control-lg") }}
@@ -24,15 +24,28 @@
                         {% for error in form.descricao_breve.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="mb-3">
-                        {{ form.imagem_capa.label(class="form-label") }}
-                        {% if evento.imagem_capa_url %}
-                            <img src="{{ evento.imagem_capa_url }}" alt="Imagem de capa atual" class="img-fluid rounded mb-2" style="max-height: 150px;">
+                        {{ form.imagem_banner_desktop.label(class="form-label") }}
+                        <br>
+                        {% if evento.imagem_banner_desktop_url %}
+                            <img src="{{ evento.imagem_banner_desktop_url }}" alt="Imagem de banner para Desktop atual" class="img-fluid rounded mb-2" style="max-height: 150px;">
                         {% endif %}
-                        {{ form.imagem_capa(class="form-control is-invalid" if form.imagem_capa.errors else "form-control") }}
+                        {{ form.imagem_banner_desktop(class="form-control is-invalid" if form.imagem_banner_desktop.errors else "form-control") }}
                         <small class="form-text text-muted">Envie uma nova imagem para substituir a atual.</small>
-                        {% for error in form.imagem_capa.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                        {% for error in form.imagem_banner_desktop.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{ form.imagem_banner_mobile.label(class="form-label") }}
+                        <br>
+                        {% if evento.imagem_banner_mobile_url %}
+                            <img src="{{ evento.imagem_banner_mobile_url }}" alt="Imagem de banner para Mobile atual" class="img-fluid rounded mb-2" style="max-height: 150px;">
+                        {% endif %}
+                        {{ form.imagem_banner_mobile(class="form-control is-invalid" if form.imagem_banner_mobile.errors else "form-control") }}
+                        <small class="form-text text-muted">Envie uma nova imagem para substituir a atual.</small>
+                        {% for error in form.imagem_banner_mobile.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
                     </div>
                 </div>
             </div>

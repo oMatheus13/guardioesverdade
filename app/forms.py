@@ -118,7 +118,11 @@ class LoginForm(FlaskForm):
 
 class EventoForm(FlaskForm):
     titulo = StringField("Título do Evento*", validators=[DataRequired(), Length(min=3, max=120)])
-    imagem_capa = FileField("Imagem de Capa (Banner)",
+    imagem_banner_desktop = FileField("Banner Desktop (Recomendado: 1920x1080)",
+                            validators=[FileAllowed(['jpg', 'jpeg', 'png'],
+                                                    'Apenas imagens .jpg, .jpeg ou .png são permitidas!'
+    )])
+    imagem_banner_mobile = FileField("Banner Mobile (Recomendado: 1080x1350)",
                             validators=[FileAllowed(['jpg', 'jpeg', 'png'],
                                                     'Apenas imagens .jpg, .jpeg ou .png são permitidas!'
     )])
@@ -155,13 +159,15 @@ class EventoForm(FlaskForm):
 
     def save(self, admin):
         # Faz upload da imagem e obtém a URL
-        imagem_url = eventos_storage.upload(self.imagem_capa.data)
+        imagem_banner_desktop_url = eventos_storage.upload(self.imagem_banner_desktop.data)
+        imagem_banner_mobile_url = eventos_storage.upload(self.imagem_banner_mobile.data)
 
         try:
             evento = Evento(
                 id_admin = admin.id,
                 titulo = self.titulo.data,
-                imagem_capa_url = imagem_url,
+                imagem_banner_desktop_url = imagem_banner_desktop_url,
+                imagem_banner_mobile_url = imagem_banner_mobile_url,
                 descricao_breve = self.descricao_breve.data,
                 roteiro_publico = self.roteiro_publico.data,
                 roteiro_privado = self.roteiro_privado.data or None,
@@ -179,9 +185,11 @@ class EventoForm(FlaskForm):
             return evento
         except Exception as e:
             db.session.rollback()
-            # Se o save falhar, deleta a imagem que já foi enviada
-            if imagem_url:
-                eventos_storage.delete(imagem_url)
+            # Se o save falhar, deleta as imagems que já foram enviadas
+            if imagem_banner_desktop_url:
+                eventos_storage.delete(imagem_banner_desktop_url)
+            if imagem_banner_mobile_url:
+                eventos_storage.delete(imagem_banner_mobile_url)
             flash("Erro ao salvar o evento. Verifique os dados e tente novamente.", "danger")
             app.logger.error(f"Erro ao salvar evento: {e}")
             return None  # Retorna None em caso de falha
@@ -189,11 +197,18 @@ class EventoForm(FlaskForm):
     
     def update(self, evento, admin):
         # Atualiza a imagem (deleta a antiga, envia a nova)
-        nova_imagem_url = eventos_storage.update(evento.imagem_capa_url, self.imagem_capa.data)
+        new_imagem_banner_desktop_url = eventos_storage.update(
+            evento.imagem_banner_desktop_url, self.imagem_banner_desktop.data
+        )
+        new_imagem_banner_mobile_url = eventos_storage.update(
+            evento.imagem_banner_mobile_url, self.imagem_banner_mobile.data
+        )
 
         try:
             evento.titulo = self.titulo.data
-            evento.imagem_capa_url = nova_imagem_url # Atualiza a URL da imagem
+            # Atualiza a URL das imagens
+            evento.imagem_banner_desktop_url = new_imagem_banner_desktop_url
+            evento.imagem_banner_mobile_url = new_imagem_banner_mobile_url
             evento.descricao_breve = self.descricao_breve.data
             evento.roteiro_publico = self.roteiro_publico.data
             evento.roteiro_privado = self.roteiro_privado.data or None
@@ -214,14 +229,18 @@ class EventoForm(FlaskForm):
         
         
     def delete(self, evento, admin):
-        imagem_url = evento.imagem_capa_url
+        imagem_banner_desktop_url = evento.imagem_banner_desktop_url
+        imagem_banner_mobile_url = evento.imagem_banner_mobile_url
 
         try:
             db.session.delete(evento)
             db.session.commit()
 
-            if imagem_url:
-                eventos_storage.delete(imagem_url)
+            if imagem_banner_desktop_url:
+                eventos_storage.delete(imagem_banner_desktop_url)
+            
+            if imagem_banner_mobile_url:
+                eventos_storage.delete(imagem_banner_mobile_url)
 
             
             flash(f"Evento excluído com sucesso!", "success")

@@ -24,7 +24,7 @@
                             <a href="{{ url_for('eventos_detalhe', evento_id=evento.id) }}" class="card-link">
                                 <div class="card h-100 shadow-sm evento-card">
                                     {# Imagem de Capa com fallback para a imagem template #}
-                                    <img src="{{ evento.imagem_capa_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}" class="card-img-top" alt="Capa do evento {{ evento.titulo }}">
+                                    <img src="{{ evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}" class="card-img-top" alt="Capa do evento {{ evento.titulo }}">
                                     
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title">{{ evento.titulo }}</h5>
