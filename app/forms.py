@@ -16,6 +16,8 @@ from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Le
 from app import app, db, bcrypt, eventos_storage
 from app.models import User, Evento
 
+import datetime
+
 
 class UserForm(FlaskForm):
     nome = StringField("Nome", validators=[DataRequired()])
@@ -130,6 +132,25 @@ class EventoForm(FlaskForm):
     is_publico = BooleanField("Evento público (Visível para todos)", default=True)
 
     submit = SubmitField("Salvar Evento")
+
+
+    def __init__(self, *args, **kwargs):
+        """ Guarda o objeto original (se estiver editando) para validações posteriores. """
+        self.obj = kwargs.get('obj')
+        super(EventoForm, self).__init__(*args, **kwargs)
+
+
+    def validate_data_evento(self, field):
+        """
+        Validador customizado para o campo 'data_evento'
+        Só executa a validação na criação do evento ou caso o campo seja alterado.
+        """
+        is_new_evento = self.obj is None
+        data_has_changed = not is_new_evento and field.data != self.obj.data_evento
+
+        if (is_new_evento or data_has_changed) and (field.data < datetime.datetime.now()):
+            raise ValidationError("A data do evento não pode ser no passado.")
+
 
 
     def save(self, admin):
