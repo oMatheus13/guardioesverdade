@@ -96,7 +96,7 @@
     .evento-titulo {
         /* Reduz drasticamente o tamanho do título */
         font-size: var(--font-size-h3);
-        margin-bottom: var(--spacing-md);
+        margin-bottom: -1.5rem;  /* Aproxima titulo dos outros dados */
         width: 100%; /* Garante que ocupe a largura toda */
     }
 
@@ -107,6 +107,7 @@
         align-items: flex-start;
         text-align: left;
         width: 100%;
+        margin-bottom: -1rem;
     }
 }
 
