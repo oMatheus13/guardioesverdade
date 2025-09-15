@@ -75,7 +75,7 @@ def cadastro():
 def socioguardiao():
     
     return render_template(
-        "pages/socio-guardiao.html"
+        "pages/socio-guardiao/socio-guardiao.html"
     )
 
 @app.route("/socio-guardiao/<string:plano>/<int:price>")
