@@ -77,6 +77,7 @@ def socioguardiao():
     return render_template(
         "pages/socio-guardiao.html"
     )
+
 @app.route("/socio-guardiao/<string:plano>/<int:price>")
 @login_required
 def assinar_plano(plano, price):
@@ -88,10 +89,10 @@ def assinar_plano(plano, price):
         link_pagamento = gera_link_pagamento(price)
         return redirect(link_pagamento)
     except ValueError as e:
-        # TODO: Mostrar mensagem de erro ao usuário e capturar log.
+        app.logger.error(f"Erro ao redirecionar para o pagamento: {e}")
         return str(e), 400
 
-@app.route("/pagamento/aprovado")
+@app.route("/socio-guardiao/pagamento/aprovado")
 def pagamento_aprovado():
     """
     Rota para exibir a página de pagamento aprovado.
@@ -107,6 +108,20 @@ def pagamento_aprovado():
     return render_template(
         "pages/email/payment/aprovado.html",
         assinatura=assinatura_confirmada
+    )
+
+@app.route("/socio-guardiao/pagamento/pendente")
+def pagamento_pendente():
+    
+    return render_template(
+        "pages/email/payment/pendente.html"
+    )
+
+@app.route("/socio-guardiao/pagamento/recusado")
+def pagamento_recusado():
+
+    return render_template(
+        "pages/email/payment/recusado.html"
     )
 
 

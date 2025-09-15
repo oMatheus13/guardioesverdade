@@ -7,8 +7,7 @@ PLANO_MAP = {
 }
 
 BACK_URLS_MAP = {
-    # TODO: Atualizar urls
-    "success": "https://guardioesverdade.vercel.app/pagamento/aprovado",
-    "pending": "https://guardioesverdade.vercel.app/",
-    "failure": "https://guardioesverdade.vercel.app/"
+    "success": "https://guardioesverdade.com/socio-guardiao/pagamento/aprovado",
+    "pending": "https://guardioesverdade.com/socio-guardiao/pagamento/pendente",
+    "failure": "https://guardioesverdade.com/socio-guardiao/pagamento/recusado"
 }

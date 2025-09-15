@@ -155,6 +155,7 @@ def mercadopago_webhook():
                     enviar_email(
                         assunto="Assinatura confirmada!",
                         destinatarios=[user.email],
+                        path="pages/socio-guardiao",
                         template="payment/aprovado.html",
                         user=user,
                         plano_nome=plano_nome,

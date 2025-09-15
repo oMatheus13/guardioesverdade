@@ -3,14 +3,14 @@ from flask_mail import Message
 from app import app, mail
 
 
-def enviar_email(assunto:str, destinatarios, template:str, **kwargs):
+def enviar_email(assunto:str, destinatarios, path:str, template:str, **kwargs):
     """
     Função para enviar e-mails com templates HTML.
     """
 
     with app.app_context():
         try:
-            html_body = render_template(f'pages/email/{template}', **kwargs)
+            html_body = render_template(f'{path}/{template}', **kwargs)
 
             msg = Message(
                 subject=assunto,
