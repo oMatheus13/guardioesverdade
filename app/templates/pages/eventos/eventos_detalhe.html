@@ -12,7 +12,6 @@
 {% block content %}
 <article class="evento-detalhe">
     <!-- Banner com a Imagem de Capa -->
-    <!-- Banner com a Imagem de Capa -->
 <header class="evento-banner" 
         style=" --banner-desktop: url('{{ evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');
                 --banner-mobile: url('{{ evento.imagem_banner_mobile_url or evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}');">
@@ -47,7 +46,10 @@
                             <p class="mb-0">Esta é uma seção com informações exclusivas para participantes.</p>
                         </div>
                     </div>
-                    {{ evento.roteiro_privado | safe }}
+
+                    <div class="evento-conteudo">
+                        {{ evento.roteiro_privado | safe }}
+                    </div>
                 </section>
                 {% endif %}
 
