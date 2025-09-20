@@ -3,7 +3,7 @@
 .contato-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/assets/templates/event-banner-base-desktop.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     min-height: 40vh;
     padding: var(--spacing-xxl) 0;
 }
