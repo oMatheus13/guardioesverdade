@@ -1,0 +1,175 @@
+/* app/static/css/pages/contato.css */
+
+.contato-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/assets/templates/event-banner-base-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 40vh;
+    padding: var(--spacing-xxl) 0;
+}
+
+.hero-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-h1);
+}
+
+.hero-subtitle {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+/* Esconde o subtítulo de fora do banner por padrão (em telas grandes) */
+.container-subtitle {
+    display: none;
+}
+
+.section-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-card {
+    background-color: var(--color-background-default);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    height: 100%;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-family-secondary);
+}
+
+.info-item .icon {
+    font-size: 1.5rem;
+    color: var(--color-black-purple);
+    margin-top: 5px;
+}
+
+.info-item strong {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.info-item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+.social-title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-semibold);
+}
+
+.social-icons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--color-text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--color-black-purple);
+    transform: translateY(-3px);
+}
+
+.cta-button {
+    background-color: var(--color-black-green);
+    border-color: var(--color-black-green);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+.cta-button:hover {
+    background-color: var(--color-white-green);
+    border-color: var(--color-white-green);
+}
+
+/* Estilização do Acordeão (FAQ) */
+.accordion-item {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border-default);
+    border-radius: 0 !important;
+}
+
+.accordion-button {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--color-black-purple);
+    background-color: transparent;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237423c1'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-body {
+    font-family: var(--font-family-secondary);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+.accordion-body a {
+    color: var(--color-white-purple);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* --- AJUSTES PARA DISPOSITIVOS MÓVEIS --- */
+@media (max-width: 991.98px) {
+    .contato-hero {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/assets/templates/event-banner-base-mobile.jpg');
+        min-height: 30vh;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-title {
+        font-size: var(--font-size-h2);
+    }
+
+    /* Esconde o subtítulo de DENTRO do banner no mobile */
+    .hero-subtitle {
+        display: none;
+    }
+
+    /* Mostra o subtítulo de FORA do banner no mobile */
+    .container-subtitle {
+        display: block;
+        font-size: var(--font-size-base);
+    }
+
+    .cta-div {
+        margin-top: -3vh;
+    }
+
+    /* CORREÇÃO: Reduz o gap da linha principal para evitar transbordamento */
+    .row.g-5 {
+        --bs-gutter-x: 1.5rem; 
+    }
+
+    /* CORREÇÃO: Reduz o padding do card de informações para dar mais respiro */
+    .info-card {
+        padding: var(--spacing-md);
+    }
+}
+

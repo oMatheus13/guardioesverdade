@@ -49,6 +49,7 @@ mail = Mail(app)
 
 # Outras variáveis secretas
 EVENTOS_TOKEN = os.getenv('EVENTOS_TOKEN')
+CONTATO_WHATSAPP = os.getenv('CONTATO_WHATSAPP')
 
 
 # Importações relacionadas à API

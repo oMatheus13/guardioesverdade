@@ -1,5 +1,6 @@
 # Criptografia de URL
 from urllib.parse import quote
+from app import CONTATO_WHATSAPP
 
 def gerar_link_whatsapp(nome=None, sobrenome=None, email=None):
     if nome and sobrenome and email:
@@ -8,7 +9,7 @@ def gerar_link_whatsapp(nome=None, sobrenome=None, email=None):
         msg_inicial = f"Olá, gostaria de saber mais sobre o Clube de Desbravadores Guardiões da Verdade."
     
     msg_codificada = quote(msg_inicial)
-    link_whatsapp = f"https://wa.me/5587981366161?text={msg_codificada}"
+    link_whatsapp = f"https://wa.me/{CONTATO_WHATSAPP}?text={msg_codificada}"
     return link_whatsapp
 
 def link_whatsapp_usuario(usuario):
