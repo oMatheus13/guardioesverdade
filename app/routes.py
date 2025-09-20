@@ -45,11 +45,16 @@ def new_homepage():
 
 @app.route("/")
 def homepage():
-    agora = datetime.datetime.now()
-    proximo_evento = Evento.query.filter(
-        Evento.is_publico == True,
-        Evento.data_evento >= agora
-    ).order_by(Evento.data_evento.asc()).first()
+    proximo_evento = None
+    try:
+        agora = datetime.datetime.now()
+        proximo_evento = Evento.query.filter(
+            Evento.is_publico == True,
+            Evento.data_evento >= agora - datetime.timedelta(hours=12)
+        ).order_by(Evento.data_evento.asc()).first()
+    except Exception as e:
+        flash(f"Falha ao recuperar próximo evento", "danger")
+        app.logger.error(f"Falha ao recuperar próximo evento em 'Homepage', {e}")
 
     return render_template("index.html", user=current_user, proximo_evento=proximo_evento)
 
