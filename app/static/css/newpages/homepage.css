@@ -1,0 +1,191 @@
+/* app/static/css/newpages/homepage.css */
+
+/* --- Seção Hero --- */
+.hero-section {
+    position: relative;
+    min-height: 90vh;
+    background-color: var(--color-black);
+    overflow: hidden;
+}
+/* ... (o resto dos seus estilos do Hero e Seções Gerais continua aqui) ... */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, var(--color-black) 49.8%, var(--color-white) 50%);
+    z-index: 0;
+}
+
+.hero-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(2.5rem, 8vw, 5rem); /* Fonte responsiva */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to bottom right, var(--color-white) 56%, var(--color-black) 63%);
+}
+
+.hero-subtitle {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-medium);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    letter-spacing: 2px;
+    margin-top: var(--spacing-md);
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to bottom right, #ccc 5%, #333 40%);
+}
+
+.hero-button {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--border-radius-md);
+    color: #fff;
+    background: #000;
+    border: 2px solid #7ac223;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.hero-button:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid #5700a8;
+}
+
+.hero-armor {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.armor-left {
+    left: 0;
+    background-position: bottom left;
+}
+
+.armor-right {
+    right: 0;
+    background-position: bottom right;
+}
+
+/* --- Seções Gerais --- */
+.section-title {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-text {
+    font-family: var(--font-family-secondary);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.text-purple {
+    color: var(--color-black-purple);
+}
+
+.reward-icon {
+    height: 80px;
+    opacity: 0.8;
+}
+
+
+/* --- NOVOS ESTILOS: Seção Próximo Evento --- */
+.proximo-evento-card {
+    display: block;
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proximo-evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.proximo-evento-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-lg);
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card-overlay-content h3 {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+}
+.card-overlay-content p {
+    margin: 0;
+    font-family: var(--font-family-secondary);
+    opacity: 0.8;
+}
+
+.overlay-button {
+    white-space: nowrap;
+}
+
+/* --- NOVOS ESTILOS: Seção Sócio Guardião --- */
+.bg-dark .btn-primary {
+    background-color: var(--color-white-purple);
+    border-color: var(--color-white-purple);
+}
+.bg-dark .btn-primary:hover {
+    background-color: var(--color-black-purple);
+    border-color: var(--color-black-purple);
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 991.98px) {
+    .hero-section::before {
+        background: var(--color-black);
+    }
+    .hero-title, .hero-subtitle {
+        color: var(--color-white);
+        background-image: none;
+    }
+    .armor-center {
+        position: relative;
+        width: 80%;
+        max-width: 400px;
+        height: 40vh;
+        margin: var(--spacing-lg) auto 0;
+        display: flex;
+    }
+    .armor-half {
+        width: 50%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .armor-half-left {
+        background-position: 75% bottom; 
+    }
+    .armor-half-right {
+        background-position: 25% bottom;
+    }
+}
+

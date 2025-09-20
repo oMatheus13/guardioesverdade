@@ -29,6 +29,15 @@ def admin_required(f):
 
 
 # Rotas públicas
+@app.route("/homepage")
+def teste_homepage():
+    agora = datetime.datetime.now()
+    proximo_evento = Evento.query.filter(
+        Evento.is_publico == True,
+        Evento.data_evento >= agora
+    ).order_by(Evento.data_evento.asc()).first()
+    return render_template("newpages/homepage.html", proximo_evento=proximo_evento)
+
 @app.route("/new/")
 def new_homepage():
 
@@ -36,8 +45,13 @@ def new_homepage():
 
 @app.route("/")
 def homepage():
+    agora = datetime.datetime.now()
+    proximo_evento = Evento.query.filter(
+        Evento.is_publico == True,
+        Evento.data_evento >= agora
+    ).order_by(Evento.data_evento.asc()).first()
 
-    return render_template("index.html", user=current_user)
+    return render_template("index.html", user=current_user, proximo_evento=proximo_evento)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

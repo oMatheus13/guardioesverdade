@@ -1,0 +1,81 @@
+{% extends "base/base.html" %}
+
+{% block title %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block description %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block ogtitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+{% block ogdescription %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
+{% block twittertitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/index.css') }}" />
+{% endblock %}
+
+<!-- body -->
+    <!-- main -->
+{% block content %}
+    <main class="main">
+      <section class="banner">
+        <a class="banner__link" href="{{ url_for('sobre') }}">
+          <picture>
+            <source
+              media="(max-width: 750px)"
+              srcset="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg') }}"
+              type="image/jpg"
+            />
+            <img
+              class="banner__image"
+              src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}"
+              alt="Banner O Retorno do Guardião"
+            />
+          </picture>
+        </a>
+      </section>
+
+      <section class="section">
+        <h1 class="section__title">Quem são os Guardiões da Verdade?</h1>
+        <p class="section__paragraph">
+          Somos mais do que um clube. <br />
+          Somos uma missão viva.
+        </p>
+        <p class="section__paragraph">
+          Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental
+          e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
+        </p>
+        <p class="section__paragraph">
+          Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno:
+          <strong class="section__highlight">a verdade de Deus.</strong>
+        </p>
+        <a class="section__link"
+        href="{{ url_for('sobre') }}">Conheça nossa história</a>
+      </section>
+
+      <!-- Próximo Evento -->
+      <section class="section">
+        <h1 class="section__title">Próximo Evento</h1>
+        <p class="section__paragraph">
+          O Retorno do Guardião já tem data marcada. <br />
+          Participe de um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.
+        </p>
+        <p class="section__paragraph">
+          9 de agosto | A partir das 15h30 <br>
+          Parte 1 na Igreja Adventista – Loteamento <br>
+          parte 2 na escola Fulano de Tal
+        </p>
+        <a class="section__link"
+        href="{{ url_for('eventos') }}">Ver detalhes</a>
+      </section>
+
+      <!-- Seja um sócio guardião -->
+      <section class="section">
+        <h1 class="section__title">Seja um Sócio Guardião</h1>
+        <p class="section__paragraph">
+          O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
+        </p>
+        <a class="section__link"
+        href="{{ url_for('socioguardiao') }}">Conhecer o Projeto</a>
+      </section>
+    </main>
+{% endblock %}
+
+  </body>
+</html>

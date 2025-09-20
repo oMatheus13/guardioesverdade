@@ -2,80 +2,101 @@
 
 {% block title %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
 {% block description %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
-{% block ogtitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
-{% block ogdescription %}Clube de Desbravadores Guardiões da Verdade — formação de jovens guardiões com propósito, coragem e fé. Um exército de esperança em ação.{% endblock %}
-{% block twittertitle %}Guardiões da Verdade | Clube de Desbravadores{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/index.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/newpages/homepage.css') }}">
 {% endblock %}
 
-<!-- body -->
-    <!-- main -->
 {% block content %}
-    <main class="main">
-      <section class="banner">
-        <a class="banner__link" href="{{ url_for('sobre') }}">
-          <picture>
-            <source
-              media="(max-width: 750px)"
-              srcset="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-smartphone.jpg') }}"
-              type="image/jpg"
-            />
-            <img
-              class="banner__image"
-              src="{{ url_for ('static', filename='/assets/img/o-retorno-do-guardiao/banners/ordg-desktop.jpg') }}"
-              alt="Banner O Retorno do Guardião"
-            />
-          </picture>
-        </a>
-      </section>
+<main>
+    <!-- Seção Hero -->
+    {# CORREÇÃO: trocado class. por class= #}
+    <section class="hero-section text-white text-center d-flex align-items-center">
+        <div class="hero-armor armor-left d-none d-lg-block" style="background-image: url('{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-masculina.png') }}');"></div>
 
-      <section class="section">
-        <h1 class="section__title">Quem são os Guardiões da Verdade?</h1>
-        <p class="section__paragraph">
-          Somos mais do que um clube. <br />
-          Somos uma missão viva.
-        </p>
-        <p class="section__paragraph">
-          Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental
-          e espiritual para adolescentes de 10 a 15 anos, com base nos princípios da Igreja Adventista do Sétimo Dia.
-        </p>
-        <p class="section__paragraph">
-          Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno:
-          <strong class="section__highlight">a verdade de Deus.</strong>
-        </p>
-        <a class="section__link"
-        href="{{ url_for('sobre') }}">Conheça nossa história</a>
-      </section>
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">O RETORNO DO GUARDIÃO</h1>
+                    <p class="hero-subtitle">NÃO VOLTAMOS PARA BRINCAR. VOLTAMOS PARA MARCAR.</p>
+                    <a href="{{ url_for('eventos') }}" class="btn btn-outline-light btn-lg hero-button">Ver Eventos</a>
+                </div>
+            </div>
+        </div>
 
-      <!-- Próximo Evento -->
-      <section class="section">
-        <h1 class="section__title">Próximo Evento</h1>
-        <p class="section__paragraph">
-          O Retorno do Guardião já tem data marcada. <br />
-          Participe de um dia especial com investidura, lançamento, apresentações e um encerramento inesquecível.
-        </p>
-        <p class="section__paragraph">
-          9 de agosto | A partir das 15h30 <br>
-          Parte 1 na Igreja Adventista – Loteamento <br>
-          parte 2 na escola Fulano de Tal
-        </p>
-        <a class="section__link"
-        href="{{ url_for('eventos') }}">Ver detalhes</a>
-      </section>
+        <div class="hero-armor armor-right d-none d-lg-block" style="background-image: url('{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-feminina.png') }}');"></div>
+    </section>
 
-      <!-- Seja um sócio guardião -->
-      <section class="section">
-        <h1 class="section__title">Seja um Sócio Guardião</h1>
-        <p class="section__paragraph">
-          O projeto Sócio Guardião foi criado para todos que acreditam na missão dos Desbravadores. Com sua contribuição, você ajuda diretamente no crescimento do clube e ainda participa de forma especial.
-        </p>
-        <a class="section__link"
-        href="{{ url_for('socioguardiao') }}">Conhecer o Projeto</a>
-      </section>
-    </main>
+    <!-- Seção "Quem São os Guardiões?" -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <img src="{{ url_for('static', filename='assets/img/o-retorno-do-guardiao/armaduras/armadura-social.png') }}" alt="Ícones dos Guardiões" class="img-fluid rounded-3 mb-4 mb-lg-0">
+                </div>
+                <div class="col-lg-7">
+                    <h2 class="section-title">QUEM SÃO OS <span class="text-purple">GUARDIÕES</span>?</h2>
+                    <p class="section-text">
+                        Somos mais do que um clube. Somos uma missão viva. Desde 2016, o Clube de Desbravadores Guardiões da Verdade tem sido um espaço de desenvolvimento físico, mental e espiritual para jovens de 10 a 15 anos.
+                    </p>
+                    <p class="section-text">
+                        Aqui, cada atividade tem propósito, e cada jovem é chamado a guardar algo eterno: a verdade de Deus.
+                    </p>
+                    <a href="{{ url_for('sobre') }}" class="btn btn-outline-light mt-3">Conheça nossa história</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: Próximos Eventos -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row justify-content-center gy-4">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">CONFIRA O NOSSO <span class="text-purple">PRÓXIMO EVENTO</span></h2>
+                </div>
+                <div class="col-lg-6 col-md-8">
+                    {% if proximo_evento %}
+                        <a href="{{ url_for('eventos_detalhe', evento_id=proximo_evento.id) }}" class="proximo-evento-card">
+                            <img src="{{ proximo_evento.imagem_banner_desktop_url or url_for('static', filename='assets/img/templates/banner_template.jpg') }}" alt="Banner do evento {{ proximo_evento.titulo }}" class="img-fluid">
+                            <div class="card-overlay d-flex flex-column flex-sm-row justify-content-sm-between align-items-center">
+                                <div class="card-overlay-content text-center text-sm-start mb-3 mb-sm-0">
+                                    <h3>{{ proximo_evento.titulo }}</h3>
+                                    <p>{{ proximo_evento.data_evento.strftime('%d/%m/%Y') }}</p>
+                                </div>
+                                <span class="btn btn-sm btn-light overlay-button flex-shrink-0">Ver Detalhes</span>
+                            </div>
+                        </a>
+                    {% else %}
+                        {# ADICIONADO: Mensagem para quando não há eventos #}
+                        <div class="text-center p-4 rounded" style="background-color: rgba(255,255,255,0.05);">
+                            <h4 class="text-white-50">Nenhum evento agendado no momento.</h4>
+                            <p class="text-white-50">Fique de olho em nossas redes para futuras novidades!</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: Sócio Guardião -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="section-title">TORNE-SE UM <span class="text-purple">SÓCIO DOS GUARDIÕES</span></h2>
+                    <p class="section-text lead my-4">
+                        Por trás de cada uniforme, acampamento e sorriso, existe o apoio de pessoas como você. O projeto Sócio Guardião é a ponte entre a nossa missão e o futuro.
+                    </p>
+                    <p class="section-text">
+                        Sua contribuição fortalece diretamente o clube e transforma vidas. Faça parte da nossa história.
+                    </p>
+                    <a href="{{ url_for('socioguardiao') }}" class="btn btn-primary btn-lg mt-4">Conhecer o Projeto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</main>
 {% endblock %}
 
-  </body>
-</html>
