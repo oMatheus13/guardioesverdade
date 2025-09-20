@@ -2,76 +2,100 @@
 
 {% block title %}Sobre | Guardiões da Verdade{% endblock %}
 {% block description %}Conheça a história, missão, valores e diferenciais do Clube de Desbravadores Guardiões da Verdade, um espaço de desenvolvimento para jovens líderes.{% endblock %}
-{% block ogtitle %}Sobre | Guardiões da Verdade{% endblock %}
-{% block ogdescription %}Conheça a história, missão, valores e diferenciais do Clube de Desbravadores Guardiões da Verdade, um espaço de desenvolvimento para jovens líderes.{% endblock %}
-{% block twittertitle %}Sobre | Guardiões da Verdade{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/pages/sobre.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/sobre.css') }}">
 {% endblock %}
 
-<!-- body -->
-    <!-- main -->
 {% block content %}
-    <main class="sobre">
-        <section class="sobre__section">
-            <h1 class="sobre__title">Nossa História</h1>
-            <p class="sobre__paragraph">
-                Fundado em 14 de fevereiro de 2016 por Valter Olírio, o Clube de Desbravadores Guardiões da Verdade nasceu da inspiração em personagens bíblicos que se mantiveram fiéis à verdade divina, mesmo em momentos desafiadores.
-            </p>
-        </section>
+<main class="sobre-page">
+    <!-- Seção Hero -->
+    <section class="sobre-hero text-white text-center d-flex align-items-center justify-content-center">
+        <div class="container">
+            <h1 class="hero-title">NOSSA HISTÓRIA, NOSSA MISSÃO</h1>
+            <p class="hero-subtitle">Conheça a essência do Clube de Desbravadores Guardiões da Verdade.</p>
+        </div>
+    </section>
 
-        <section class="sobre__section">
-            <h2 class="sobre__title">Nossa Missão</h2>
-            <p class="sobre__paragraph">
-                Nosso clube tem como missão formar líderes com valores, disciplina, fé e propósito, guiados pelos princípios da verdade.
-            </p>
-        </section>
+    <!-- Seção de Conteúdo Principal -->
+    <section class="container my-5">
+        <!-- História e Missão -->
+        <div class="row g-5 align-items-center mb-5 pb-5 border-bottom">
+            <p class="container-subtitle">Conheça a essência do Clube de Desbravadores Guardiões da Verdade.</p>
+            <div class="col-lg-6 sobre-card">
+                <h2 class="section-title">Nossa <span class="text-purple">História</span></h2>
+                <p class="section-text">
+                    Fundado em 14 de fevereiro de 2016 por Valter Olírio, o Clube de Desbravadores Guardiões da Verdade nasceu da inspiração em personagens bíblicos que se mantiveram fiéis à verdade divina, mesmo em momentos desafiadores.
+                </p>
+            </div>
+            <div class="col-lg-6 sobre-card">
+                <h2 class="section-title">Nossa <span class="text-purple">Missão</span></h2>
+                <p class="section-text">
+                    Nossa missão é formar uma nova geração de líderes com valores, disciplina, fé e propósito, guiados pelos princípios eternos da verdade, prontos para servir a Deus e à comunidade.
+                </p>
+            </div>
+        </div>
 
-        <section class="sobre__section">
-            <h2 class="sobre__title">Nossos Valores</h2>
-            <ul class="sobre__list">
-                <li class="sobre__list-item"><strong>Excelência:</strong> Buscamos a mais alta qualidade em tudo que fazemos.</li>
-                <li class="sobre__list-item"><strong>Propósito:</strong> Agimos com um claro objetivo e direção.</li>
-                <li class="sobre__list-item"><strong>Identidade Espiritual:</strong> Fundamentamos nossas ações em princípios bíblicos sólidos.</li>
-                <li class="sobre__list-item"><strong>Disciplina:</strong> Valorizamos a ordem e o compromisso.</li>
-                <li class="sobre__list-item"><strong>Criatividade:</strong> Estimulamos a inovação e a expressão individual.</li>
-                <li class="sobre__list-item"><strong>Profundidade Bíblica:</strong> Aprofundamos nosso conhecimento das Escrituras.</li>
-                <li class="sobre__list-item"><strong>Presença:</strong> Impactamos positivamente a vida dos desbravadores, da igreja e da comunidade.</li>
-            </ul>
-        </section>
+        <!-- Valores -->
+        <div class="text-center mb-5">
+            <h2 class="section-title">Nossos <span class="text-purple">Valores</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-star icon"></i>
+                    <h5>Excelência</h5>
+                    <p>Buscamos a mais alta qualidade em tudo que fazemos.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-bullseye icon"></i>
+                    <h5>Propósito</h5>
+                    <p>Agimos com um claro objetivo e direção em nossas atividades.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-book-bible icon"></i>
+                    <h5>Profundidade Bíblica</h5>
+                    <p>Fundamentamos nossas ações em princípios bíblicos sólidos.</p>
+                </div>
+            </div>
+             <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-lightbulb icon"></i>
+                    <h5>Criatividade</h5>
+                    <p>Estimulamos a inovação e a expressão individual.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake-angle icon"></i>
+                    <h5>Presença</h5>
+                    <p>Impactamos positivamente a vida dos desbravadores e da comunidade.</p>
+                </div>
+            </div>
+             <div class="col-md-6 col-lg-4 d-flex">
+                <div class="value-card">
+                    <i class="fa-solid fa-shield-heart icon"></i>
+                    <h5>Disciplina</h5>
+                    <p>Valorizamos a ordem, o compromisso e o respeito mútuo.</p>
+                </div>
+            </div>
+        </div>
 
-        <section class="sobre__section">
-            <h2 class="sobre__title">Nossas Unidades</h2>
-            <p class="sobre__paragraph">
-                Inspirados por guardiões da verdade nas Escrituras, organizamos nossos desbravadores em unidades temáticas, cada uma representando um exemplo de coragem, obediência e lealdade:
-            </p>
-            <ul class="sobre__list">
-                <li class="sobre__list-item">Josué</li>
-                <li class="sobre__list-item">Calebe</li>
-                <li class="sobre__list-item">Ester</li>
-                <li class="sobre__list-item">Débora</li>
-                <li class="sobre__list-item">Moisés</li>
-            </ul>
-        </section>
+        <hr class="my-5">
 
-        <section class="sobre__section">
-            <h2 class="sobre__title">Nossos Diferenciais</h2>
-            <ul class="sobre__list">
-                <li class="sobre__list-item"><strong>Moeda Dracma:</strong> Sistema interno de recompensas que incentiva o desenvolvimento e o engajamento.</li>
-                <li class="sobre__list-item"><strong>Produções Exclusivas:</strong> Materiais e recursos personalizados para enriquecer a experiência dos desbravadores.</li>
-                <li class="sobre__list-item"><strong>Comunicação Viva:</strong> Mantemos um diálogo constante com a igreja e a comunidade, promovendo a integração e o serviço.</li>
-            </ul>
-        </section>
-
-        <section class="sobre__section">
-            <h2 class="sobre__title">Informações Práticas</h2>
-            <ul class="sobre__list">
-                <li class="sobre__list-item"><strong>Fundação:</strong> 14 de fevereiro de 2016</li>
-                <li class="sobre__list-item"><strong>Região:</strong> Região 2</li>
-                <li class="sobre__list-item"><strong>Endereço:</strong> Rua Polidoro Alves Vanderley, 121 - Francisco Simão dos Santos Figueira, Garanhuns - PE, 55291-745</li>
-                <li class="sobre__list-item"><strong>Reuni obrigação, mas por convicção. Guardamos a verdade. E não vamos recuar.
-            </p>
-        </section>
-    </main>
+        <!-- Citação Final -->
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <blockquote class="blockquote final-quote">
+                    <p>"Não servimos por obrigação, mas por convicção. Guardamos a verdade. E não vamos recuar."</p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}
